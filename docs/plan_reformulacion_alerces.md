@@ -232,3 +232,38 @@ expuestos y controles en feb-2025 hasta fijar el diseño.
 - el escenario diario de FIRMS en Make;
 - el diseño del test;
 - el MVP de Booking como antecedente.
+
+## 9. Apilar los tres episodios de Los Alerces: verificación con FIRMS (07/11)
+
+Fuente: `src/exposicion_alerces.py` → `data/processed/firms_alerces/episodios_apilados.csv`. Misma regla que en
+2025: días con foco de un evento ≥ 50 a ≤ 25 km de Esquel, Trevelin o Villa Futalaufquen. Se completó el bbox
+norte para nov–dic 2023 y dic-2025 a mar-2026 (sin incendios; solo el volcán Villarrica, que se descarta).
+
+| Episodio | Fechas | Detecciones a ≤ 25 km | Villa Futalaufquen | Esquel | Trevelin |
+|---|---|---|---|---|---|
+| 2024 | 26/01 – 07/02/2024 (13 días) | 637 | 4,0 km (alta) | 8,7 km (media) | 17,4 km (media) |
+| 2025 | 16/02 – 01/03/2025 (14 días) | 423 | 1,5 km (alta) | 14,3 km (media) | 12,0 km (media) |
+| 2026 | 07/01 – 02/02/2026 (27 días) | 1.668 | 10,5 km (media) | **24,8 km (media, en el límite de 25)** | 34,1 km (gris) |
+
+**Controles (sin focos ≥ 50 a ≤ 40 km en el episodio ± 28 días):**
+- Villa La Angostura, San Martín de los Andes y Corcovado están **limpias en los tres episodios**.
+- Bariloche está limpia en 2024 (184 km) y en 2026 (107 km). Solo en 2025 quedó excluida.
+- Ninguna localidad expuesta o de comparación tiene otro episodio dentro de su ventana de análisis (−26/+12
+  semanas), y las ventanas de los tres episodios no se superponen.
+
+**Lectura:**
+- **Apilar es viable:** tres episodios con controles limpios. En 2024 y 2026 se puede sumar Bariloche como control.
+- La exposición cambia entre episodios: en 2024 Esquel quedó más cerca (8,7 km) y en 2026 el fuego estuvo
+  más al norte, dentro del parque.
+- **Esquel queda otra vez en el límite en 2026 (24,8 km contra 25).** Se resuelve igual que en 2025: se informa
+  la sensibilidad, no se mueve el radio.
+- El incendio de 2026 tuvo cierres y evacuaciones grandes del parque: FIRMS mide distancia, no acceso (§7).
+
+**Costo extra (estimado con el ritmo del piloto, ≈ 0,56% del total de cada ficha por mes):**
+- 2026: **0**, porque la bajada desde 2024-03-01 ya llega a hoy.
+- 2024: hace falta el período previo desde el 28/07/2023, ≈ 7 meses más. Son ≈ +22% de reseñas: ≈ USD 3–4,
+  más ≈ USD 2 para volver a bajar las 14 fichas del piloto desde esa fecha.
+
+**Para adoptarlo:** ampliar el pre-registro (episodios, ventanas, controles por episodio, modelo apilado con
+efecto fijo de ficha × episodio y de semana × episodio) **antes** de bajar la muestra completa, y cambiar
+`reviewsStartDate` a 2023-07-28.

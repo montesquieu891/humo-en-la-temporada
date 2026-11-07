@@ -135,6 +135,10 @@ de un incendio forestal, para que una cámara hotelera pueda reclamar, comunicar
 - **Muestra completa (preparada, sin correr):** `run_maps.py --cuentas … catalogo --completo` (≈ USD 6,40) → `muestra`
   (≥ 50 reseñas totales) → `resenas --completa` (desde 2024-03-01, máximo 1.000; reutiliza el piloto; ≈ USD 15–20).
   Hacen falta ≈ USD 22–27 (5–6 cuentas FREE) y subir `TOPE_USD_TOTAL`. Elegibilidad final: ≥ 6 reseñas previas.
+- **Apilar episodios (verificado 07/11):** 2024 (26/01–07/02), 2025 (16/02–01/03) y 2026 (07/01–02/02), con la misma
+  regla. Villa La Angostura, San Martín y Corcovado están limpias en los tres; Bariloche en 2024 y 2026. Esquel
+  está a 24,8 km en 2026 (otra vez en el límite). Costo extra ≈ USD 5–6 (solo 2024 necesita reseñas desde 2023-07-28).
+  Plan §9. Todavía no está adoptado en el pre-registro.
 - FIRMS: se descartan `type` 1/2 (volcán Villarrica en el bbox norte). Crudos nuevos: `firms_crudo_sp_huecos.csv`
   y `firms_crudo_sp_norte.csv`.
 

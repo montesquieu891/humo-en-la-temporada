@@ -217,6 +217,52 @@ def figuras(d: pd.DataFrame, f50: pd.DataFrame, ini, fin):
     print(f"Figuras: {FIGS}/alerces_mapa_focos_2025.png, {FIGS}/alerces_linea_tiempo.png")
 
 
+TEMPORADAS = {"2024": ("2023-11-01", "2024-04-30"), "2025": ("2024-11-01", "2025-04-30"),
+              "2026": ("2025-11-01", "2026-04-30")}
+SEMANAS_ANTES, SEMANAS_DESPUES = 26, 12  # ventana del event study de cada episodio (pre-registro §4)
+
+
+def apilado(epi: pd.DataFrame, f50: pd.DataFrame) -> pd.DataFrame:
+    """Los tres episodios de la Comarca con la misma regla que el de 2025 (días con foco ≥ 50 a ≤ 25 km de alguna
+    localidad expuesta), y para cada uno: distancia de cada localidad al episodio, si la comparación está limpia
+    (≤ 40 km, episodio ± 28 días) y si en su ventana de análisis (−26/+12 semanas) hay OTRO episodio a ≤ 40 km."""
+    filas = []
+    e = epi[(epi["rol"] == "expuesta") & (epi["radio_km"] == 25)].copy()
+    e["inicio"], e["fin"] = pd.to_datetime(e["inicio"]), pd.to_datetime(e["fin"])
+    for temp, (a, b) in TEMPORADAS.items():
+        t = e[(e["inicio"] >= a) & (e["inicio"] <= b)]
+        if t.empty:
+            continue
+        ini, fin = t["inicio"].min(), t["fin"].max()
+        s_epi = f50[f50["acq_date"].between(ini, fin)]  # toda la región en esas fechas (para los controles)
+        cerca = np.zeros(len(s_epi), dtype=bool)
+        for lat, lon, rol in LOCALIDADES.values():
+            if rol == "expuesta":
+                cerca |= haversine(lat, lon, s_epi["latitude"].to_numpy(), s_epi["longitude"].to_numpy()) <= 25
+        n_local = int(cerca.sum())
+        v0 = ini - pd.Timedelta(weeks=SEMANAS_ANTES)
+        v1 = ini + pd.Timedelta(weeks=SEMANAS_DESPUES)
+        m0, m1 = ini - pd.Timedelta(days=MARGEN_COMPARACION_DIAS), fin + pd.Timedelta(days=MARGEN_COMPARACION_DIAS)
+        for nombre, (lat, lon, rol) in LOCALIDADES.items():
+            d_epi = haversine(lat, lon, s_epi["latitude"].to_numpy(), s_epi["longitude"].to_numpy())
+            w = f50[f50["acq_date"].between(m0, m1)]
+            d_m = haversine(lat, lon, w["latitude"].to_numpy(), w["longitude"].to_numpy())
+            # Otros episodios a ≤ 40 km en la ventana de análisis, fuera del propio episodio ± 28 días.
+            o = f50[f50["acq_date"].between(v0, v1) & ~f50["acq_date"].between(m0, m1)]
+            d_o = haversine(lat, lon, o["latitude"].to_numpy(), o["longitude"].to_numpy())
+            otros = episodios(sorted(o.loc[d_o <= RADIO_COMPARACION_KM, "acq_date"].dt.date.unique()))
+            dmin = float(d_epi.min()) if len(d_epi) else np.nan
+            nivel = "alta" if dmin <= 5 else "media" if dmin <= 25 else "gris" if dmin <= 40 else "lejos"
+            filas.append({"temporada": temp, "episodio_inicio": ini.date(), "episodio_fin": fin.date(),
+                          "dias_episodio": (fin - ini).days + 1, "detecciones_episodio": n_local,
+                          "localidad": nombre, "rol": rol, "dist_min_episodio_km": round(dmin, 1),
+                          "nivel": nivel,
+                          "limpia_40km_ventana": bool(len(d_m) == 0 or d_m.min() > RADIO_COMPARACION_KM),
+                          "dist_min_ventana_km": round(float(d_m.min()), 1) if len(d_m) else np.nan,
+                          "otros_episodios_en_analisis": "; ".join(f"{i}→{j}" for i, j in otros)})
+    return pd.DataFrame(filas)
+
+
 def main():
     os.makedirs(OUT, exist_ok=True)
     d = cargar()
@@ -244,6 +290,16 @@ def main():
           f"{(fin + pd.Timedelta(days=MARGEN_COMPARACION_DIAS)).date()}:")
     print(comp.to_string(index=False))
     figuras(d, f50, ini, fin)
+
+    ap = apilado(epi, f50)
+    ap.to_csv(f"{OUT}/episodios_apilados.csv", index=False)
+    print("\nEpisodios para apilar (misma regla que 2025):")
+    for temp, g in ap.groupby("temporada"):
+        r = g.iloc[0]
+        print(f"\n  {temp}: {r['episodio_inicio']} → {r['episodio_fin']} ({r['dias_episodio']} días, "
+              f"{r['detecciones_episodio']} detecciones a ≤ 25 km de las localidades expuestas)")
+        print(g[["localidad", "rol", "dist_min_episodio_km", "nivel", "limpia_40km_ventana", "dist_min_ventana_km",
+                 "otros_episodios_en_analisis"]].to_string(index=False))
     print(f"\nGuardado en {OUT}/: eventos50.csv, detecciones_eventos50.csv, episodios_por_localidad.csv, "
           f"verificacion_comparacion.csv")
 
