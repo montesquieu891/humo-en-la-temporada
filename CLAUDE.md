@@ -149,6 +149,10 @@ de un incendio forestal, para que una cámara hotelera pueda reclamar, comunicar
   Trevelin tienen un pico propio en oct–nov y Villa La Angostura en enero, así que la comparación no es válida.
   Los signos son negativos y hay gradiente (alta −19% > media −7% en el apilado); con el episodio corrido 2 semanas
   da −29% (p = 0,025), pero es secundario y no creíble. No se detecta efecto y no se puede descartar uno.
+- **Fuentes abiertas de validación (07/11, `docs/preregistro_fuentes_abiertas.md`, `src/fuentes_abiertas.py`):**
+  OEDE empleo mensual por departamento (sin efectos significativos con permutación; Cushamen servicios −9,7%, p = 0,125).
+  Pendientes, bajados a mano: visitas mensuales a Parques Nacionales (portal de Turismo con anti-bots) y CEP XXI
+  CLAE 55/56 por departamento (certificado vencido). La encuesta hotelera del INDEC no cubre Esquel.
 - FIRMS: se descartan `type` 1/2 (volcán Villarrica en el bbox norte). Crudos nuevos: `firms_crudo_sp_huecos.csv`
   y `firms_crudo_sp_norte.csv`.
 
