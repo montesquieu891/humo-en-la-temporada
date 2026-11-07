@@ -172,17 +172,19 @@ def a_dict(obj) -> dict:
     return obj.model_dump(by_alias=True, mode="json")  # apify-client 3.x devuelve modelos pydantic
 
 
-def correr(actor, run_input, estimado, etiqueta, max_items=None, dry_run=False):
-    """Valida contra el schema, muestra el costo y corre con tope duro. Devuelve los items."""
+def correr(actor, run_input, estimado, etiqueta, max_items=None, dry_run=False, tope_minimo=0.0):
+    """Valida contra el schema, muestra el costo y corre con tope duro. Devuelve los items.
+    tope_minimo: algunos actores rechazan max_total_charge_usd chicos (compass/* exige ≥ USD 0,50, verificado
+    07/11). El gasto real lo siguen acotando el input (maxItems, maxCrawledPlacesPerSearch, maxReviews)."""
     validar_input(actor, run_input)
     resto = disponible()
-    tope = round(min(estimado * 1.15 + 0.01, resto), 2)
+    tope = round(min(max(estimado * 1.15 + 0.01, tope_minimo), resto), 2)
     print(f"\n[{etiqueta}] {actor}\n  input: {json.dumps(run_input, ensure_ascii=False)[:300]}"
           f"\n  costo estimado: USD {estimado:.2f} | tope duro de esta corrida: USD {tope:.2f}"
           f" | disponible: USD {resto:.2f} (gastado en el repo: USD {gastado():.2f})")
     if dry_run:
         return None
-    if resto <= 0.02 or estimado > resto:
+    if resto <= 0.02 or estimado > resto or tope < tope_minimo:
         sys.exit(f"  FRENO: la corrida estimada (USD {estimado:.2f}) supera lo que queda del tope (USD {resto:.2f}).")
     c = cliente()
     run = a_dict(c.actor(actor).call(run_input=run_input, max_items=max_items,

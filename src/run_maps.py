@@ -9,7 +9,7 @@ Pasos del piloto (docs/plan_reformulacion_alerces.md §5; reglas en docs/preregi
   seleccion    elige ~15 fichas con reglas fijas (estrato × rubro, tamaños mezclados, semilla) usando SOLO FIRMS y
                datos del catálogo. No mira reseñas.
   resenas      compass/google-maps-reviews-scraper por Place ID: todos los orígenes, desde 2024-01-01,
-               sin datos personales, máximo 800 por ficha
+               sin datos personales, máximo 500 por ficha, una corrida por ficha
   diagnostico  formato de fecha, origen, profundidad y cobertura semanal. NO compara expuestos contra
                comparación durante el episodio (pre-registro §6).
 
@@ -37,6 +37,7 @@ import run_booking as rb  # noqa: E402
 ACTOR_CATALOGO = "compass/crawler-google-places"
 ACTOR_RESENAS = "compass/google-maps-reviews-scraper"
 # Precios del tier FREE verificados en la API pública el 07/11/2026 (por ficha y por reseña).
+TOPE_MINIMO = 0.50  # los actores compass/* rechazan max_total_charge_usd < USD 0,50 (verificado 07/11)
 rb.PRECIO_FREE.update({ACTOR_CATALOGO: 0.004, ACTOR_RESENAS: 0.0006})
 
 RAW = os.path.join(rb.RAIZ, "data", "raw", "maps")
@@ -92,7 +93,7 @@ def cmd_catalogo(a):
                      "language": "es", "skipClosedPlaces": False, "scrapePlaceDetailPage": False,
                      "maxReviews": 0, "maxImages": 0, "scrapeContacts": False, **ZONAS[z]}
         est = len(TERMINOS) * a.max_por_busqueda * rb.PRECIO_FREE[ACTOR_CATALOGO] + rb.PRECIO_START * 4
-        items = rb.correr(ACTOR_CATALOGO, run_input, est, f"maps_catalogo_{z}", None, a.dry_run)
+        items = rb.correr(ACTOR_CATALOGO, run_input, est, f"maps_catalogo_{z}", None, a.dry_run, TOPE_MINIMO)
         if items is not None:
             guardar(items, f"catalogo_{z}.json")
 
@@ -192,24 +193,54 @@ def cmd_seleccion(a):
         print(sel[["estrato", "rubro", "nombre", "ciudad", "n_resenas", "dist_episodio_km"]].round(1).to_string(index=False))
 
 
+def gasto_etiqueta(prefijo: str) -> float:
+    g = pd.read_csv(rb.GASTOS)
+    return float(g.loc[g["etiqueta"].astype(str).str.startswith(prefijo), "usd"].sum())
+
+
 def cmd_resenas(a):
+    """Una corrida por ficha, en orden de estrato: cada una con su propio tope, y antes de cada una se controla
+    lo gastado en este paso. Si se acerca al presupuesto, frena y las fichas restantes quedan sin pedir (no a
+    medias). Una sola corrida con tope global cortaría en un punto arbitrario."""
     sel = pd.read_csv(os.path.join(PROC, "maps_piloto_seleccion.csv"))
-    # Estimación: fracción de las reseñas totales publicadas desde 2024-01 (SUPUESTO 0,5; se mide en el piloto).
-    est_res = np.minimum(sel["n_resenas"] * a.frac_desde_2024, a.max_por_ficha).sum()
-    est = est_res * rb.PRECIO_FREE[ACTOR_RESENAS] + rb.PRECIO_START * 4
-    print(f"{len(sel)} fichas | reseñas estimadas desde {a.desde}: {est_res:.0f} (fracción supuesta "
-          f"{a.frac_desde_2024}) | presupuesto {a.presupuesto}")
-    est = min(est, a.presupuesto)  # el tope duro de la corrida sale de acá: Apify corta al llegar
-    run_input = {"placeIds": sel["place_id"].tolist(), "maxReviews": a.max_por_ficha, "reviewsSort": "newest",
-                 "reviewsStartDate": a.desde, "reviewsOrigin": "all", "language": "es", "personalData": False}
-    items = rb.correr(ACTOR_RESENAS, run_input, est, "maps_resenas_piloto", None, a.dry_run)
-    if items is not None:
-        guardar(items, "resenas_piloto.json")
+    # Orden alternado entre estratos (la ficha más chica de cada estrato, después la siguiente, ...): si el
+    # presupuesto frena antes, quedan afuera las más grandes de cada estrato y no un estrato entero.
+    orden = {e: k for k, e in enumerate(CUPOS)}
+    sel = sel.assign(_r=sel.groupby("estrato")["n_resenas"].rank(method="first"), _o=sel["estrato"].map(orden))
+    sel = sel.sort_values(["_r", "_o"]).drop(columns=["_r", "_o"])
+    sel["est_resenas"] = np.minimum(sel["n_resenas"] * a.frac_desde_2024, a.max_por_ficha)
+    precio = rb.PRECIO_FREE[ACTOR_RESENAS]
+    print(f"{len(sel)} fichas | reseñas estimadas desde {a.desde}: {sel['est_resenas'].sum():.0f} (fracción supuesta "
+          f"{a.frac_desde_2024}, máx. {a.max_por_ficha} por ficha) ≈ USD {sel['est_resenas'].sum() * precio:.2f} | "
+          f"presupuesto del paso: USD {a.presupuesto}")
+    dir_out = os.path.join(RAW, "resenas_piloto")
+    os.makedirs(dir_out, exist_ok=True)
+    for _, f in sel.iterrows():
+        ruta = os.path.join(dir_out, f"{f['place_id']}.json")
+        if os.path.exists(ruta):
+            print(f"  ya está: {f['nombre']}")
+            continue
+        peor = a.max_por_ficha * precio + rb.PRECIO_START * 4
+        usado = gasto_etiqueta("maps_resenas") if os.path.exists(rb.GASTOS) else 0.0
+        if usado + peor > a.presupuesto and not a.dry_run:
+            print(f"  FRENO: gastado en reseñas USD {usado:.2f}; la próxima ficha podría costar hasta USD {peor:.2f} "
+                  f"y pasar el presupuesto de USD {a.presupuesto}. Quedan sin pedir desde: {f['nombre']}")
+            break
+        run_input = {"placeIds": [f["place_id"]], "maxReviews": a.max_por_ficha, "reviewsSort": "newest",
+                     "reviewsStartDate": a.desde, "reviewsOrigin": "all", "language": "es", "personalData": False}
+        est = f["est_resenas"] * precio + rb.PRECIO_START * 4
+        items = rb.correr(ACTOR_RESENAS, run_input, est, f"maps_resenas_{f['estrato']}", None, a.dry_run,
+                          TOPE_MINIMO)
+        if items is not None:
+            with open(ruta, "w", encoding="utf-8") as fh:
+                json.dump(items, fh, ensure_ascii=False)
+            print(f"  -> {f['nombre']}: {len(items)} reseñas")
 
 
 def cmd_diagnostico(a):
     sel = pd.read_csv(os.path.join(PROC, "maps_piloto_seleccion.csv"))
-    items = json.load(open(os.path.join(RAW, "resenas_piloto.json"), encoding="utf-8"))
+    items = [x for p in glob.glob(os.path.join(RAW, "resenas_piloto", "*.json"))
+             for x in json.load(open(p, encoding="utf-8"))]
     r = pd.DataFrame(items)
     print(f"Reseñas: {len(r)} | campos: {sorted(r.columns)}\n")
     c_fecha = next((c for c in ["publishedAtDate", "publishAt", "date"] if c in r), None)
@@ -263,12 +294,12 @@ def main():
     p.add_argument("--seed", type=int, default=2025)
     p = sub.add_parser("resenas")
     p.add_argument("--desde", default="2024-01-01")
-    p.add_argument("--max-por-ficha", type=int, default=800)
+    p.add_argument("--max-por-ficha", type=int, default=500)
     p.add_argument("--frac-desde-2024", type=float, default=0.5)
     p.add_argument("--presupuesto", type=float, default=3.0)
     p.add_argument("--dry-run", action="store_true")
     p = sub.add_parser("diagnostico")
-    p.add_argument("--max-por-ficha", type=int, default=800)
+    p.add_argument("--max-por-ficha", type=int, default=500)
     a = ap.parse_args()
     usar_cuenta(a.cuenta)
     {"catalogo": cmd_catalogo, "seleccion": cmd_seleccion, "resenas": cmd_resenas,
