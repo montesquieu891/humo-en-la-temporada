@@ -103,6 +103,17 @@ de un incendio forestal, para que una cámara hotelera pueda reclamar, comunicar
 - `price` es el precio de HOY para una fecha futura: sirve como tarifa de referencia para el ROI, **nunca**
   como outcome del fuego.
 
+### Make (07/11, detalle en `make/README.md`)
+- Booking: escenario 6938238, inactivo y probado. Blueprint en `make/mvp_booking.json`.
+- **FIRMS NRT diario:** escenario 6939387 (`humo_firms_nrt_diario`), inactivo, *Daily 09:00* en hora de Argentina.
+  Flujo Tools (variables; la MAP_KEY solo ahí) → HTTP (ayer, 1 día) → filtro "hay datos" → Parse CSV →
+  filtro confianza ≠ `l` → Add a Row en `focos_nrt`, con `alerta_40km` (SI/NO, equirrectangular a ≤ 40 km de
+  las 10 localidades). Blueprint en `make/mvp_firms_nrt.json`, sin MAP_KEY ni conexión.
+- **Parse CSV de Make:** las claves internas son `col1…colN` aunque la UI muestre los encabezados. Mapear
+  `{{3.col1}}`, no `{{3.latitude}}`.
+- Un día sin focos: FIRMS devuelve solo el encabezado y Parse CSV falla. Por eso está el filtro "hay datos"
+  (verificado 07/11: termina sin error y sin filas).
+
 ## Decisiones de diseño (no cambiar sin discutirlo con el grupo)
 
 1. **Fecha de estadía, no fecha de publicación** de la review, para fechar el efecto.

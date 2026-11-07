@@ -92,10 +92,56 @@ blueprint a `make/mvp_booking.json` (menú `…` del escenario → *Export Bluep
 3. Exportar el blueprint a `make/mvp_booking.json` y commitearlo. Antes, revisar que no tenga el token:
    Make guarda la conexión aparte, pero conviene confirmarlo.
 
-## Próximos escenarios (Producto 1, 12/11)
-- **Diario, FIRMS NRT:** *HTTP → Make a request* a
-  `https://firms.modaps.eosdis.nasa.gov/api/area/csv/{MAP_KEY}/VIIRS_SNPP_NRT/-72.3,-43.4,-70.8,-40.8/1`
-  → *Parse CSV* → filtro `confidence` en `n`/`h` → *Add rows* en `focos` → alerta si hay un foco a menos
-  de 30 km de algún alojamiento. La API acepta **como máximo 5 días por llamada**. La MAP_KEY va en
-  una variable del escenario, no en el blueprint commiteado.
-- **Semanal, Booking:** el mismo flujo de este README, con los 7 destinos.
+## Escenario diario de FIRMS NRT (07/11/2026): hecho y probado
+
+- Escenario **6939387** (`humo_firms_nrt_diario`), **inactivo**, programado **Daily a las 09:00**
+  (zona horaria del escenario: America/Argentina/Buenos_Aires). Activarlo es una decisión del grupo.
+  Make cobra por operación aunque no haya focos: un día sin fuego gasta unos 2 créditos (Tools y HTTP).
+- Blueprint: [`mvp_firms_nrt.json`](mvp_firms_nrt.json). **No es el export de Make**: se armó a partir de
+  la versión guardada del escenario, porque el export descarga un archivo. La MAP_KEY quedó como
+  `PEGAR_MAP_KEY_DE_FIRMS` y falta la conexión de Google. Después de importar: pegar la MAP_KEY en el
+  módulo 1 y elegir la conexión de Google en el módulo 4.
+- Escribe en la pestaña **`focos_nrt`** de `humo_mvp`. Encabezados:
+  `fecha_carga | acq_date | acq_time | lat | lng | bright_ti4 | frp | confidence | daynight | alerta_40km`.
+
+### Módulos
+1. **Tools → Set variables.** Las variables son `map_key`, `fuente` (`VIIRS_SNPP_NRT`), `bbox`
+   (`-72.3,-43.4,-70.8,-40.8`), `dias` (`1`) y `sufijo_fecha` (`/{{formatDate(addDays(now; -1); "YYYY-MM-DD")}}`,
+   o sea ayer). La MAP_KEY vive solo acá, para que el resto del escenario no la repita.
+   Para una prueba con fuego real se cambia `sufijo_fecha` por una fecha fija, por ejemplo `/2025-02-02`.
+2. **HTTP → Make a request:**
+   `https://firms.modaps.eosdis.nasa.gov/api/area/csv/{{1.map_key}}/{{1.fuente}}/{{1.bbox}}/{{1.dias}}{{1.sufijo_fecha}}`.
+   Con *Return error if HTTP request fails* activado, una MAP_KEY vacía o inválida da error (400) en vez de
+   pasar en silencio (verificado 07/11).
+3. **Filtro "hay datos"** entre HTTP y CSV: `{{length(split(trim(2.data); newline))}}` > 1 (operador
+   numérico). En un día sin focos FIRMS devuelve solo la línea de encabezado, y *Parse CSV* fallaba con
+   "Number of columns on line 1 does not match header". **Verificado 07/11:** con el filtro, la corrida de
+   producción sin focos termina sin error y sin escribir filas.
+4. **CSV → Parse CSV** con *CSV contains headers* = Yes y los 14 encabezados del NRT
+   (`latitude,…,daynight`; el SP trae además `type`). **Ojo:** aunque el panel muestre los nombres, las
+   claves internas son `col1…col14`. `{{3.latitude}}` no resuelve; hay que mapear `{{3.col1}}`.
+   Las claves que se usan son `col1` latitude, `col2` longitude, `col3` bright_ti4, `col6` acq_date,
+   `col7` acq_time, `col10` confidence, `col13` frp y `col14` daynight.
+5. **Filtro "confianza n/h (descarta l)"** entre CSV y Sheets: `{{3.col10}}` *Not equal to
+   (case insensitive)* `l`.
+6. **Google Sheets → Add a Row** en `focos_nrt`, con *Value input option* = USER_ENTERED.
+   `fecha_carga = {{formatDate(now; "YYYY-MM-DD HH:mm")}}` queda en hora de Argentina; `acq_date` y
+   `acq_time` vienen de FIRMS en UTC.
+
+### Alerta (`alerta_40km`)
+`SI` si el foco cae a ≤ 40 km del centro de alguna de las 10 localidades del panel (Bariloche,
+Villa La Angostura, Dina Huapi, El Bolsón, Lago Puelo, El Hoyo, Epuyén, Cholila, Esquel y Trevelin).
+- Es una **aproximación equirrectangular**: Make no tiene trigonometría. La distancia al cuadrado es
+  Δlat² · 12.365 + Δlng² · 6.839 (en km², con 111,2 km por grado de latitud y ≈ 111,2 · cos 42° por grado de longitud),
+  y el umbral es 1.600 km². A 40 km la diferencia con haversine es despreciable (supuesto, no medido).
+- Se usan 40 km del centro de la localidad en vez de "30 km de algún alojamiento" porque los
+  alojamientos se reparten hasta unos 10 km del centro: es una alerta conservadora.
+- Fórmula completa en el blueprint (columna J del módulo 4).
+- **Prueba (07/11):** con fecha fija 2025-02-02 y bbox de Mallín Ahogado se escribieron 11 de 12 filas
+  (la de confianza `l` quedó filtrada), todas con `SI`. Coinciden con el cálculo en Python. Esas filas se
+  borraron después. El caso "hay datos" con el filtro nuevo no se volvió a correr: el filtro solo deja
+  pasar la respuesta cuando tiene más de una línea, y esa prueba tenía 13.
+
+## Próximos escenarios
+- **Semanal, Booking:** el mismo flujo de este README, con los 7 destinos. Necesita crédito de Apify
+  (la cuenta 1 se renueva el 13/11).

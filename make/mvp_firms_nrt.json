@@ -1,0 +1,283 @@
+{
+  "name": "humo_firms_nrt_diario (Tools -> HTTP FIRMS -> Parse CSV -> Google Sheets)",
+  "flow": [
+    {
+      "id": 1,
+      "module": "util:SetVariables",
+      "version": 1,
+      "parameters": {},
+      "mapper": {
+        "variables": [
+          {
+            "name": "map_key",
+            "value": "PEGAR_MAP_KEY_DE_FIRMS"
+          },
+          {
+            "name": "fuente",
+            "value": "VIIRS_SNPP_NRT"
+          },
+          {
+            "name": "bbox",
+            "value": "-72.3,-43.4,-70.8,-40.8"
+          },
+          {
+            "name": "dias",
+            "value": "1"
+          },
+          {
+            "name": "sufijo_fecha",
+            "value": "/{{formatDate(addDays(now; -1); \"YYYY-MM-DD\")}}"
+          }
+        ]
+      },
+      "metadata": {
+        "designer": {
+          "x": 0,
+          "y": 0
+        },
+        "restore": {
+          "expect": {
+            "variables": {
+              "items": [
+                null,
+                null,
+                null,
+                null,
+                null
+              ]
+            }
+          }
+        },
+        "interface": [
+          {
+            "name": "map_key",
+            "type": "any",
+            "label": "map_key"
+          },
+          {
+            "name": "fuente",
+            "type": "any",
+            "label": "fuente"
+          },
+          {
+            "name": "bbox",
+            "type": "any",
+            "label": "bbox"
+          },
+          {
+            "name": "dias",
+            "type": "any",
+            "label": "dias"
+          },
+          {
+            "name": "sufijo_fecha",
+            "type": "any",
+            "label": "sufijo_fecha"
+          }
+        ]
+      }
+    },
+    {
+      "id": 2,
+      "module": "http:MakeRequest",
+      "version": 4,
+      "parameters": {
+        "tlsType": "",
+        "authenticationType": "noAuth"
+      },
+      "mapper": {
+        "url": "https://firms.modaps.eosdis.nasa.gov/api/area/csv/{{1.map_key}}/{{1.fuente}}/{{1.bbox}}/{{1.dias}}{{1.sufijo_fecha}}",
+        "method": "get",
+        "timeout": "40",
+        "shareCookies": false,
+        "parseResponse": true,
+        "allowRedirects": true,
+        "stopOnHttpError": true,
+        "requestCompressedContent": true
+      },
+      "metadata": {
+        "designer": {
+          "x": 300,
+          "y": 0
+        }
+      }
+    },
+    {
+      "id": 3,
+      "module": "csv:ParseCSV",
+      "version": 1,
+      "filter": {
+        "name": "hay datos",
+        "conditions": [
+          [
+            {
+              "a": "{{length(split(trim(2.data); newline))}}",
+              "b": "1",
+              "o": "number:greater"
+            }
+          ]
+        ]
+      },
+      "parameters": {
+        "relax": false,
+        "colCount": null,
+        "delimiter": ",",
+        "csvHeaders": "latitude,longitude,bright_ti4,scan,track,acq_date,acq_time,satellite,instrument,confidence,version,bright_ti5,frp,daynight",
+        "delimiterType": "other",
+        "csvContainsHeaders": true
+      },
+      "mapper": {
+        "csv": "{{2.data}}"
+      },
+      "metadata": {
+        "designer": {
+          "x": 600,
+          "y": 0
+        },
+        "restore": {
+          "parameters": {
+            "delimiterType": {
+              "label": "Other"
+            }
+          }
+        },
+        "interface": [
+          {
+            "name": "col1",
+            "type": "text",
+            "label": "latitude"
+          },
+          {
+            "name": "col2",
+            "type": "text",
+            "label": "longitude"
+          },
+          {
+            "name": "col3",
+            "type": "text",
+            "label": "bright_ti4"
+          },
+          {
+            "name": "col4",
+            "type": "text",
+            "label": "scan"
+          },
+          {
+            "name": "col5",
+            "type": "text",
+            "label": "track"
+          },
+          {
+            "name": "col6",
+            "type": "text",
+            "label": "acq_date"
+          },
+          {
+            "name": "col7",
+            "type": "text",
+            "label": "acq_time"
+          },
+          {
+            "name": "col8",
+            "type": "text",
+            "label": "satellite"
+          },
+          {
+            "name": "col9",
+            "type": "text",
+            "label": "instrument"
+          },
+          {
+            "name": "col10",
+            "type": "text",
+            "label": "confidence"
+          },
+          {
+            "name": "col11",
+            "type": "text",
+            "label": "version"
+          },
+          {
+            "name": "col12",
+            "type": "text",
+            "label": "bright_ti5"
+          },
+          {
+            "name": "col13",
+            "type": "text",
+            "label": "frp"
+          },
+          {
+            "name": "col14",
+            "type": "text",
+            "label": "daynight"
+          }
+        ]
+      }
+    },
+    {
+      "id": 4,
+      "module": "google-sheets:addRow",
+      "version": 2,
+      "filter": {
+        "name": "confianza n/h (descarta l)",
+        "conditions": [
+          [
+            {
+              "a": "{{3.col10}}",
+              "b": "l",
+              "o": "text:notequal:ci"
+            }
+          ]
+        ]
+      },
+      "parameters": {},
+      "mapper": {
+        "mode": "map",
+        "spreadsheetId": "1BuKRhJyEQs7hcKrLFykM4VoKoZ62TD9_5zrpp2DNDWs",
+        "sheetId": "focos_nrt",
+        "tableFirstRow": "A1:Z1",
+        "insertDataOption": "INSERT_ROWS",
+        "valueInputOption": "USER_ENTERED",
+        "insertUnformatted": false,
+        "values": {
+          "0": "{{formatDate(now; \"YYYY-MM-DD HH:mm\")}}",
+          "1": "{{3.col6}}",
+          "2": "{{3.col7}}",
+          "3": "{{3.col1}}",
+          "4": "{{3.col2}}",
+          "5": "{{3.col3}}",
+          "6": "{{3.col13}}",
+          "7": "{{3.col10}}",
+          "8": "{{3.col14}}",
+          "9": "{{if(min((parseNumber(3.col1; \".\") + 41.133) * (parseNumber(3.col1; \".\") + 41.133) * 12365 + (parseNumber(3.col2; \".\") + 71.31) * (parseNumber(3.col2; \".\") + 71.31) * 6839; (parseNumber(3.col1; \".\") + 40.762) * (parseNumber(3.col1; \".\") + 40.762) * 12365 + (parseNumber(3.col2; \".\") + 71.646) * (parseNumber(3.col2; \".\") + 71.646) * 6839; (parseNumber(3.col1; \".\") + 41.07) * (parseNumber(3.col1; \".\") + 41.07) * 12365 + (parseNumber(3.col2; \".\") + 71.16) * (parseNumber(3.col2; \".\") + 71.16) * 6839; (parseNumber(3.col1; \".\") + 41.964) * (parseNumber(3.col1; \".\") + 41.964) * 12365 + (parseNumber(3.col2; \".\") + 71.534) * (parseNumber(3.col2; \".\") + 71.534) * 6839; (parseNumber(3.col1; \".\") + 42.066) * (parseNumber(3.col1; \".\") + 42.066) * 12365 + (parseNumber(3.col2; \".\") + 71.6) * (parseNumber(3.col2; \".\") + 71.6) * 6839; (parseNumber(3.col1; \".\") + 42.067) * (parseNumber(3.col1; \".\") + 42.067) * 12365 + (parseNumber(3.col2; \".\") + 71.517) * (parseNumber(3.col2; \".\") + 71.517) * 6839; (parseNumber(3.col1; \".\") + 42.231) * (parseNumber(3.col1; \".\") + 42.231) * 12365 + (parseNumber(3.col2; \".\") + 71.367) * (parseNumber(3.col2; \".\") + 71.367) * 6839; (parseNumber(3.col1; \".\") + 42.513) * (parseNumber(3.col1; \".\") + 42.513) * 12365 + (parseNumber(3.col2; \".\") + 71.447) * (parseNumber(3.col2; \".\") + 71.447) * 6839; (parseNumber(3.col1; \".\") + 42.911) * (parseNumber(3.col1; \".\") + 42.911) * 12365 + (parseNumber(3.col2; \".\") + 71.319) * (parseNumber(3.col2; \".\") + 71.319) * 6839; (parseNumber(3.col1; \".\") + 43.087) * (parseNumber(3.col1; \".\") + 43.087) * 12365 + (parseNumber(3.col2; \".\") + 71.464) * (parseNumber(3.col2; \".\") + 71.464) * 6839) <= 1600; \"SI\"; \"NO\")}}"
+        }
+      },
+      "metadata": {
+        "designer": {
+          "x": 900,
+          "y": 0
+        }
+      }
+    }
+  ],
+  "metadata": {
+    "instant": false,
+    "version": 1,
+    "scenario": {
+      "roundtrips": 1,
+      "maxErrors": 3,
+      "autoCommit": true,
+      "autoCommitTriggerLast": true,
+      "sequential": false,
+      "confidential": false,
+      "dataloss": false,
+      "dlq": false,
+      "freshVariables": false
+    },
+    "designer": {
+      "orphans": []
+    },
+    "zone": "us2.make.com"
+  }
+}
