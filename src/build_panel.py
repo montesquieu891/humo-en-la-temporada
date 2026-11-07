@@ -160,8 +160,10 @@ def dataset_reviews(rev: pd.DataFrame, aloj: pd.DataFrame) -> pd.DataFrame:
               "nota", "tipo_viajero", "menciona_humo", "dist_2025_km", "dist_2026_km"]]
 
 
-def armar_panel(aloj: pd.DataFrame, rev: pd.DataFrame) -> pd.DataFrame:
-    todos_meses = meses("2024-11", "2026-04")
+def armar_panel(aloj: pd.DataFrame, rev: pd.DataFrame, desde: str = "2024-11", hasta: str = "2026-04") -> pd.DataFrame:
+    """Panel alojamiento × mes de estadía. La ventana por defecto es la del análisis principal; el piloto
+    de ventana larga (src/piloto_ventana.py) la extiende a nov-2023."""
+    todos_meses = meses(desde, hasta)
     con_reviews = aloj[aloj["aloj_id"].isin(rev["aloj_id"])]
     base = pd.MultiIndex.from_product([con_reviews["aloj_id"], todos_meses],
                                       names=["aloj_id", "mes_estadia"]).to_frame(index=False)

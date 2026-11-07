@@ -126,6 +126,30 @@ que eligió alojamientos más grandes). Cada alojamiento de Bariloche cuesta ≈
   Cuesta ≈ +60% de reviews por alojamiento. La ganancia de potencia **no está medida**: se puede probar
   bajando la historia larga de 20–30 alojamientos (≈ USD 2–3) antes de decidir. Es combinable con A o B.
 
+**Hallazgo para la opción C (FIRMS, verificado 07/11):** la temporada 2023-24 **no está limpia**. Del 26/01 al
+07/02/2024 hubo un incendio grande en el PN Los Alerces (637 detecciones, centro −42,83 / −71,57, a ≈ 22 km de
+Esquel; `data/processed/firms_2024/`).
+- El Bolsón queda a ≈ 96 km: gana un enero y un febrero sin fuego, que es lo que le falta.
+- 10 de los 29 alojamientos del panel (Esquel) quedan a ≤ 15 km: con ventana larga suman una tercera temporada
+  tratada (2024-02).
+- **Supuesto a confirmar:** en 2024 cuenta solo febrero, igual que en 2025 (los dos fuegos empezaron a fines
+  de enero).
+
+**Prueba de la opción C, lista para correr** (no se corrió: hoy no hay crédito):
+```bash
+python src/run_booking.py --cuenta 1 ventana-larga --dry-run      # 22 alojamientos completos, ≈ USD 2,95
+python src/run_booking.py --cuenta 1 ventana-larga                # después del 13/11
+python src/piloto_ventana.py --reviews data/raw/ventana_larga/reviews_desde_2023-11.json
+```
+- Vuelve a pedir, con cutoff 2023-11-01, los alojamientos cercanos cuya historia corta quedó completa (los
+  11 de El Bolsón primero) y guarda el resultado en `data/raw/ventana_larga/`, fuera del panel principal.
+- `piloto_ventana.py` estima el modelo con ventana corta y con ventana larga sobre los mismos alojamientos,
+  calcula la razón de errores estándar y reescala la tabla de arriba (`data/processed/piloto_ventana.csv`).
+- Validado con los datos actuales: reproduce el modelo (β −0,111, EE 0,330) y da razón 1,01, como corresponde
+  sin estadías anteriores a nov-2024.
+- **Antes de correrla:** el tope acumulado del MVP (USD 10) ya está en USD 9,86, así que la corrida frena.
+  Para el Producto 2 hay que acordar un presupuesto nuevo y fijarlo con `TOPE_USD_TOTAL` en `.env`.
+
 **Recomendación:** decidir el presupuesto con esta tabla. Si no se consigue crédito para A:
 1. hacer la prueba de C (≈ USD 3);
 2. según lo que dé, correr B con ventana larga.

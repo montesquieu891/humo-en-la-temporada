@@ -139,7 +139,10 @@ def main():
                    help="celda×día y *_eventos50.csv usan solo eventos con al menos N detecciones "
                         "(decisión del grupo 07/11: los clusters chicos no cuentan como foco)")
     p.add_argument("--res-celda", type=float, default=0.025, help="lado de la celda en grados (0,025° ≈ 2,8 km)")
+    p.add_argument("--periodos", nargs="+", metavar="DESDE:HASTA",
+                   help="pisa PERIODOS_DEFAULT, p. ej. 2023-12-01:2024-03-31 (chequeo de la temporada 2024)")
     a = p.parse_args()
+    periodos = [tuple(x.split(":")) for x in a.periodos] if a.periodos else PERIODOS_DEFAULT
 
     if a.desde_csv:
         crudo = pd.read_csv(a.desde_csv)
@@ -147,7 +150,7 @@ def main():
         if not a.key:
             sys.exit("Falta --key, FIRMS_KEY en .env, o --desde-csv.")
         print(f"Descargando {a.source} en {a.bbox} ...")
-        crudo = descargar(a.key, a.source, a.bbox, PERIODOS_DEFAULT, a.dias)
+        crudo = descargar(a.key, a.source, a.bbox, periodos, a.dias)
         if a.raw:
             crudo.to_csv(a.raw, index=False)
     if crudo.empty:

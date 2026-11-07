@@ -45,7 +45,9 @@ except ImportError:
 
 ACTOR_LISTINGS = "voyager/booking-scraper"
 ACTOR_REVIEWS = "voyager/booking-reviews-scraper"
-TOPE_USD = 10.0
+# Tope duro de gasto acumulado (todas las cuentas, según apify_gastos.csv). USD 10 = regla del MVP.
+# Para el Producto 2 el grupo puede subirlo con TOPE_USD_TOTAL en .env; sin esa variable sigue en 10.
+TOPE_USD = float(os.getenv("TOPE_USD_TOTAL", "10"))
 GASTOS = os.path.join(RAIZ, "data", "processed", "apify_gastos.csv")
 RAW = os.path.join(RAIZ, "data", "raw")
 
@@ -362,6 +364,57 @@ def cmd_reviews(a):
         print(f"  -> {salida}")
 
 
+# Piloto de ventana larga (docs/decisiones_abiertas.md §3, opción C): estadías desde nov-2023.
+CUTOFF_LARGO = "2023-11-01"
+DIR_LARGO = os.path.join(RAW, "ventana_larga")  # fuera del glob reviews*.json: no entra al panel principal
+
+
+def cmd_ventana_larga(a):
+    """Vuelve a pedir, con cutoff 2023-11-01, alojamientos cuya historia corta quedó COMPLETA
+    (reviews_cobertura.csv). Así se compara el error estándar con ventana corta y larga sobre las mismas
+    unidades (src/piloto_ventana.py). Prioriza El Bolsón: es el que gana un febrero sin fuego (2024)."""
+    cob = pd.read_csv(os.path.join(RAIZ, "data", "processed", "reviews_cobertura.csv"))
+    m = cob[(cob["estado"] == "completo") & cob["grupo"].isin(a.grupos)].drop_duplicates("url").copy()
+    # Booking muestra ~36 meses y nov-2023 → hoy son ~36: se estima con TODAS las reviews visibles.
+    m["rev_est"] = m["n_rev"].astype(float)
+    grandes = m["rev_est"] > MAX_REVIEWS_POR_HOTEL
+    if grandes.any():
+        print(f"Se excluyen {grandes.sum()} alojamientos con más de {MAX_REVIEWS_POR_HOTEL} reviews (quedarían truncados).")
+        m = m[~grandes]
+    m["prioridad"] = np.where(m["destino_busqueda"].eq("el_bolson"), 0, 1)
+    m = m.sample(frac=1, random_state=a.seed).sort_values("prioridad", kind="stable")
+    precio = PRECIO_FREE[ACTOR_REVIEWS]
+    presupuesto = min(a.presupuesto, disponible() - 0.05) if not a.dry_run else a.presupuesto
+    m["acum"] = m["rev_est"].cumsum() * precio + PRECIO_START
+    m = m[m["acum"] <= presupuesto]
+    if m.empty:
+        sys.exit(f"No entra ningún alojamiento en USD {presupuesto:.2f}.")
+    print(m.groupby(["grupo", "destino_busqueda"]).agg(alojamientos=("url", "size"), reviews_est=("rev_est", "sum"))
+          .assign(usd=lambda g: g["reviews_est"] * precio).round(2).to_string())
+    print(f"  total: {len(m)} alojamientos, ≈ {m['rev_est'].sum():.0f} reviews ≈ USD {m['rev_est'].sum() * precio:.2f}"
+          f" (presupuesto USD {presupuesto:.2f})")
+    os.makedirs(DIR_LARGO, exist_ok=True)
+    salida = os.path.join(DIR_LARGO, a.salida)
+    if os.path.exists(salida) and not a.dry_run:
+        sys.exit(f"Ya existe {salida}: elegir otro --salida (no se pisa una corrida paga).")
+    run_input = {
+        "startUrls": [{"url": u, "userData": {"aloj_url": u, "grupo": g}} for u, g in zip(m["url"], m["grupo"])],
+        "maxReviewsPerHotel": MAX_REVIEWS_POR_HOTEL,
+        "sortReviewsBy": "f_recent_desc",
+        "cutoffDate": CUTOFF_LARGO,
+        "reviewScores": ["ALL"],
+    }
+    est = m["rev_est"].sum() * precio + PRECIO_START
+    # Etiqueta sin el prefijo "reviews": cmd_cobertura no la mezcla con la muestra principal.
+    items = correr(ACTOR_REVIEWS, run_input, est, "ventana_larga_piloto", None, a.dry_run)
+    if items is not None:
+        with open(salida, "w", encoding="utf-8") as fh:
+            json.dump(items, fh, ensure_ascii=False)
+        m[["url", "name", "destino_busqueda", "grupo", "n_rev", "rev_est"]].to_csv(
+            os.path.join(DIR_LARGO, "pedidos.csv"), index=False)
+        print(f"  -> {salida}")
+
+
 def cmd_cobertura(_):
     """Estado de cada alojamiento pedido al actor de reviews, a partir de los LOGS de cada corrida
     (evidencia directa) y de lo que devolvió. Escribe data/processed/reviews_cobertura.csv.
@@ -448,6 +501,12 @@ def main():
     p.add_argument("--salida", default="reviews.json", help="archivo en data/raw/ (nunca se pisa)")
     p.add_argument("--seed", type=int, default=42)
     p.add_argument("--dry-run", action="store_true")
+    p = sub.add_parser("ventana-larga", help="piloto: re-pedir con cutoff 2023-11-01 alojamientos completos")
+    p.add_argument("--grupos", nargs="+", default=["cerca_40km"], choices=["cerca_40km", "control_bariloche"])
+    p.add_argument("--presupuesto", type=float, default=3.0, help="USD máximos (por defecto 3)")
+    p.add_argument("--salida", default="reviews_desde_2023-11.json", help="archivo en data/raw/ventana_larga/")
+    p.add_argument("--seed", type=int, default=42)
+    p.add_argument("--dry-run", action="store_true")
     a = ap.parse_args()
     if a.cuenta == "1":
         TOKEN_VAR = "APIFY_TOKEN"
@@ -455,7 +514,7 @@ def main():
         TOKEN_VAR = next((v for v in (f"APIFY_TOKEN_{a.cuenta}", f"APIFY_TOKEN{a.cuenta}") if os.getenv(v)),
                          f"APIFY_TOKEN_{a.cuenta}")
     {"schema": cmd_schema, "cuenta": cmd_cuenta, "listings": cmd_listings, "reviews": cmd_reviews,
-     "cobertura": cmd_cobertura}[a.cmd](a)
+     "cobertura": cmd_cobertura, "ventana-larga": cmd_ventana_larga}[a.cmd](a)
 
 
 if __name__ == "__main__":

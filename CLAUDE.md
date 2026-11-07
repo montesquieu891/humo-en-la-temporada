@@ -168,6 +168,12 @@ de un incendio forestal, para que una cámara hotelera pueda reclamar, comunicar
   ≈ USD 10 → −36/−44%, ≈ USD 20 → −27/−33%, universo cercano + 30 de control (≈ USD 36–42) → −20/−25%.
 - Los controles lejanos casi no suman (30 alcanzan). **El Bolsón es "cerca" en las dos temporadas:** con FE
   alojamiento × mes calendario solo identifica enero. Extender la ventana a nov-2023 lo resolvería (no medido).
+- **FIRMS 2023-24 (verificado 07/11, `firms_backfill.py --periodos 2023-11-01:2024-04-30`):** incendio en el PN Los
+  Alerces del 26/01 al 07/02/2024 (637 detecciones, ≈ 22 km de Esquel). La ventana larga no es control limpio
+  para Esquel; para El Bolsón sí (≈ 96 km). Salidas en `data/processed/firms_2024/`.
+- Piloto listo y no corrido: `run_booking.py ventana-larga` (22 alojamientos, ≈ USD 2,95) → `src/piloto_ventana.py`.
+  El tope acumulado de gasto ahora se lee de `TOPE_USD_TOTAL` en `.env`; sin esa variable sigue en USD 10, y ya
+  hay USD 9,86 gastados.
 
 ### Preguntas abiertas para el grupo (no se cambió nada; memo con evidencia: `docs/decisiones_abiertas.md`)
 - Temporada 2025: hubo fuego en Epuyén del 15 al 30/01/2025 (evento 5) y en Esquel/Trevelin en feb-2025, pero
@@ -227,6 +233,8 @@ python src/did_baseline.py                   # baseline 2x2 + placebo + sin Bari
 python src/fe_preliminar.py                  # FE alojamiento x mes calendario (preliminar)
 python src/analisis_secundario.py            # duración, tipo de viajero y desplazamiento (preliminar)
 python src/potencia.py                       # efecto mínimo detectable según N y costo (≈ 10 min)
+python src/run_booking.py --cuenta 1 ventana-larga --dry-run   # piloto de ventana larga (nov-2023)
+python src/piloto_ventana.py --reviews data/raw/ventana_larga/reviews_desde_2023-11.json
 python src/export_sheets.py
 ```
 
