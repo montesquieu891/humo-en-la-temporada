@@ -234,7 +234,15 @@ def cmd_seleccion(a):
         print(sel[["estrato", "rubro", "nombre", "ciudad", "n_resenas", "dist_episodio_km"]].round(1).to_string(index=False))
 
 
-FRAC_DESDE_2024_03 = 0.18  # medido en el piloto (07/11): mediana de reseñas desde mar-2024 / reseñas totales
+# Medido en el piloto (07/11): las reseñas desde mar-2024 son ≈ 18% del total de cada ficha (≈ 32 meses), o sea
+# ≈ 0,56% del total por mes. Se usa para estimar el costo según la fecha de inicio.
+FRAC_POR_MES = 0.0056
+DESDE_COMPLETA = "2023-07-31"  # pre-registro v2 §8: inicio de la ventana del episodio 2024
+
+
+def frac_desde(desde: str) -> float:
+    meses = (pd.Timestamp("2026-11-07") - pd.Timestamp(desde)).days / 30.44
+    return min(1.0, FRAC_POR_MES * meses)
 
 
 def cmd_muestra(a):
@@ -248,14 +256,15 @@ def cmd_muestra(a):
     print(pd.crosstab(cat["exposicion"], cat["rubro"], margins=True).to_string())
     m = cat[cat["exposicion"].isin(["alta", "media", "comparacion"]) & (cat["rubro"] != "otro")
             & (cat["n_resenas"] >= a.min_total)].copy()
-    m["est_resenas"] = np.minimum(m["n_resenas"] * FRAC_DESDE_2024_03, a.max_por_ficha).round()
+    frac = frac_desde(DESDE_COMPLETA)
+    m["est_resenas"] = np.minimum(m["n_resenas"] * frac, a.max_por_ficha).round()
     m.to_csv(os.path.join(PROC, "maps_muestra.csv"), index=False)
     precio = rb.PRECIO_FREE[ACTOR_RESENAS]
     print(f"\nMuestra (≥ {a.min_total} reseñas totales): {len(m)} fichas")
     print(m.groupby(["exposicion", "zona_busqueda"]).agg(fichas=("place_id", "size"),
                                                           resenas_est=("est_resenas", "sum")).to_string())
-    print(f"Reseñas estimadas desde 2024-03: {m['est_resenas'].sum():.0f} ≈ USD {m['est_resenas'].sum() * precio:.2f} "
-          f"(fracción {FRAC_DESDE_2024_03} medida en el piloto)")
+    print(f"Reseñas estimadas desde {DESDE_COMPLETA}: {m['est_resenas'].sum():.0f} ≈ USD "
+          f"{m['est_resenas'].sum() * precio:.2f} (fracción {frac:.2f} del total, según el ritmo del piloto)")
 
 
 def gasto_etiqueta(prefijo: str) -> float:
@@ -291,9 +300,10 @@ def cmd_resenas(a):
             print(f"  ya está: {f['nombre']}")
             continue
         piloto = os.path.join(RAW, "resenas_piloto", f"{f['place_id']}.json")
-        if completa and os.path.exists(piloto):
+        if completa and os.path.exists(piloto) and a.desde >= "2024-01-01":
             # El piloto bajó desde 2024-01-01 con máximo 500 y todas sus fichas llegaron a ene-2024 (verificado
-            # 07/11): cubren la ventana completa. Se reutilizan en vez de pagarlas de nuevo.
+            # 07/11). Solo sirven si la muestra empieza después de esa fecha; con la ventana larga de la v2
+            # (2023-07-31) se vuelven a bajar.
             items = [x for x in json.load(open(piloto, encoding="utf-8"))
                      if str(x.get("publishedAtDate", "")) >= a.desde]
             with open(ruta, "w", encoding="utf-8") as fh:
@@ -398,7 +408,7 @@ def main():
     a = ap.parse_args()
     usar_cuenta(a.cuenta)
     if a.cmd == "resenas":  # valores por defecto según el modo (pre-registro §6)
-        a.desde = a.desde or ("2024-03-01" if a.completa else "2024-01-01")
+        a.desde = a.desde or (DESDE_COMPLETA if a.completa else "2024-01-01")
         a.max_por_ficha = a.max_por_ficha or (1000 if a.completa else 500)
         a.presupuesto = a.presupuesto or (15.0 if a.completa else 3.0)
     {"catalogo": cmd_catalogo, "seleccion": cmd_seleccion, "muestra": cmd_muestra, "resenas": cmd_resenas,

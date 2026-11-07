@@ -1,6 +1,6 @@
 # Pre-registro: episodio de incendio 2025 en la Comarca de los Alerces
 
-**Versión 1, 07/11/2026.** Se escribe y se commitea **antes** de bajar cualquier reseña de Google Maps. Lo que se
+**Versión 2, 07/11/2026** (la v1 es del mismo día; la v2 agrega la §8). Se escribe y se commitea **antes** de bajar cualquier reseña de Google Maps. Lo que se
 cambie después de ver reseñas va en la sección "Cambios" con la fecha y el motivo, y el análisis original se
 informa igual. Contexto y piloto: `docs/plan_reformulacion_alerces.md`.
 
@@ -124,7 +124,7 @@ la diferencia entre expuestos y comparación en el episodio.
 | Profundidad | 13 de 14 llegan a ene-2024. Camping Las Rocas empieza el 02/02/2025 | sale por elegibilidad (sin período previo) |
 | Cobertura ene–mar 2025 | mediana de 1,0 reseña por ficha y semana, media 2,49, 33% de semanas en 0 | ≥ 1, así que **se mantiene la semana**. La quincena queda como robustez (§5.7) |
 | Período previo | mediana de 40 reseñas por ficha (mar-2024 a ene-2025), mínimo 0 | **mínimo para ser elegible: ≥ 6 reseñas de Google en mar-2024 a ene-2025** (≈ 1 cada dos meses; ver Cambios) |
-| Costo | ≈ 18% de las reseñas totales de cada ficha son de mar-2024 en adelante. Media de 184 por ficha, ≈ USD 0,11 | muestra completa con `reviewsStartDate=2024-03-01` y `maxReviews=1000` |
+| Costo | ≈ 18% de las reseñas totales de cada ficha son de mar-2024 en adelante. Media de 184 por ficha, ≈ USD 0,11 | muestra completa con `maxReviews=1000` y `reviewsStartDate=2024-03-01` (desde la v2: **2023-07-31**, §8) |
 
 **Potencia** (`src/potencia_maps.py`, solo período previo):
 - Método: 300 réplicas con episodios falsos de 2 semanas. Las fichas del piloto se remuestrean y se les asigna al
@@ -148,6 +148,61 @@ la diferencia entre expuestos y comparación en el episodio.
 - **Informes de Esquel** (anuario 2025 y semestral 2026): contraste descriptivo, solo si lo aprueba la profesora.
 - **Booking:** antecedente del MVP.
 
+## 8. Extensión: los tres episodios de Los Alerces apilados (v2, 07/11/2026)
+
+Se agrega **antes** de bajar la muestra completa y sin haber mirado ningún episodio en las reseñas. **El test
+principal sigue siendo el de 2025 (§1–§4)**, porque la profesora pidió una región y un año. Esta extensión es
+un análisis secundario declarado de antemano. Responde si el efecto **se repite** en los otros dos episodios y
+suma potencia. Verificación: `data/processed/firms_alerces/episodios_apilados.csv` y plan §9.
+
+**Episodios** (misma regla que en §2: días con foco de un evento ≥ 50 a ≤ 25 km de Esquel, Trevelin o
+Villa Futalaufquen). Semanas de lunes a domingo. Una semana es "de episodio" si tiene ≥ 4 días de episodio.
+
+| Episodio | Días | Semanas de episodio | Ventana (−26 / +12 semanas) |
+|---|---|---|---|
+| 2024 | 26/01 – 07/02/2024 | 29/01 | 31/07/2023 – 22/04/2024 |
+| 2025 | 16/02 – 01/03/2025 | 17/02 y 24/02 | 19/08/2024 – 12/05/2025 |
+| 2026 | 07/01 – 02/02/2026 | 05/01, 12/01, 19/01 y 26/01 | 07/07/2025 – 30/03/2026 |
+
+Las ventanas no se superponen, y ninguna localidad tiene otro episodio a ≤ 40 km dentro de su ventana.
+
+**Exposición por ficha y por episodio:** la regla de §2, con las detecciones de **ese** episodio.
+- Alta: ≤ 5 km. Media: 5–25 km. Zona gris: 25–40 km, excluida de ese episodio.
+- Una ficha puede ser alta en un episodio y media o gris en otro.
+
+**Comparación por episodio:** localidades sin focos ≥ 50 a ≤ 40 km en el episodio ± 28 días.
+- Villa La Angostura, San Martín de los Andes y Corcovado (con al menos 5 fichas): limpias en los tres.
+- Bariloche está limpia en 2024 y 2026. No entra porque no está en el catálogo (sumarla costaría ≈ USD 6–10).
+  Si se agrega, se anota en "Cambios" antes de bajar sus reseñas.
+
+**Elegibilidad por episodio:** ficha con ≥ 3 reseñas de Google en las 26 semanas previas a ese episodio. Es la misma
+tasa que en §3 (≥ 6 en ≈ 48 semanas). Una ficha que no cumple en un episodio queda fuera solo de ese episodio.
+
+**Modelo apilado:**
+- `fepois(resenas ~ expuesto:semana_episodio | ficha^episodio + rubro^semana^episodio)`, con errores
+  clusterizados por ficha. La misma ficha puede estar en varios episodios.
+- **Resultado secundario:** β apilado < 0 a una cola. Se informan también los tres β por separado, y si el signo
+  y el orden de magnitud coinciden.
+- **Inferencia por permutación:** episodios falsos dentro del período previo de cada ventana, con la misma
+  cantidad de semanas que el episodio real.
+- **Event study apilado:** semanas relativas al inicio de cada episodio, de −26 a +12. La condición de tendencias
+  previas es la de §4.
+
+**Robustez de la extensión:**
+1. 2024 con las semanas parciales (22/01 y 05/02, de 3 días) como semanas de episodio.
+2. Sin Esquel: en 2026 queda a 24,8 km, en el límite de 25; en 2024, a 8,7 km.
+3. Sin 2026, porque ese incendio tuvo cierres y evacuaciones grandes del parque que FIRMS no mide (§7).
+4. Gradiente: la caída tiene que ser alta > media > 0 en el apilado.
+
+**Datos:** la muestra completa se baja con `reviewsStartDate=2023-07-31` (inicio de la ventana de 2024). Las
+14 fichas del piloto se vuelven a bajar desde esa fecha, porque el piloto empezó en 2024-01-01.
+
+**Cómo se lee:**
+- Que 2025 dé significativo **y** los otros dos episodios vayan en la misma dirección es evidencia mucho más
+  sólida que un solo episodio.
+- Que 2025 dé significativo y los otros no, o al revés, se informa como inconsistente. No se elige el episodio
+  que conviene.
+
 ## Cambios
 
 - **07/11/2026, después del piloto y antes de la muestra completa: definición de "truncada".** Antes: llegó a
@@ -168,4 +223,7 @@ la diferencia entre expuestos y comparación en el episodio.
   excursiones, atracción turística), 40 fichas por búsqueda, 5 zonas (Esquel, Trevelin, PN Los Alerces,
   Villa La Angostura y San Martín de los Andes). Las reseñas de las 14 fichas del piloto se reutilizan:
   bajaron desde 2024-01-01 y todas llegan a la ventana completa.
+- **07/11/2026, v2:** se agrega la §8 (tres episodios apilados como análisis secundario), con
+  `reviewsStartDate=2023-07-31` para la muestra completa. Antes de bajar la muestra y sin mirar ningún episodio.
+  El test principal (2025) no cambia.
 
