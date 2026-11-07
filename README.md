@@ -1,8 +1,5 @@
 # Humo en la temporada — prueba de factibilidad
 
-Objetivo: decidir antes del **9/11** si seguimos con el proyecto. Costo total: menos de USD 5.
-Plan completo: documento "Humo en la temporada — plan de implementación".
-
 ## 0. Requisitos (una sola vez)
 
 ```bash
