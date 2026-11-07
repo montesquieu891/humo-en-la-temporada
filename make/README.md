@@ -94,9 +94,11 @@ blueprint a `make/mvp_booking.json` (menú `…` del escenario → *Export Bluep
 
 ## Escenario diario de FIRMS NRT (07/11/2026): hecho y probado
 
-- Escenario **6939387** (`humo_firms_nrt_diario`), **inactivo**, programado **Daily a las 09:00**
-  (zona horaria del escenario: America/Argentina/Buenos_Aires). Activarlo es una decisión del grupo.
-  Make cobra por operación aunque no haya focos: un día sin fuego gasta unos 2 créditos (Tools y HTTP).
+- Escenario **6939387** (`humo_firms_nrt_diario`), **activo desde el 07/11/2026**, programado **Daily a
+  las 09:00** (zona horaria del escenario: America/Argentina/Buenos_Aires). La primera corrida automática
+  es el 08/11.
+  Make cobra por operación aunque no haya focos: un día sin fuego gasta 2 créditos (Tools y HTTP;
+  verificado 07/11), unos 60 por mes. Un día con focos suma 1 crédito por fila (CSV y Sheets).
 - Blueprint: [`mvp_firms_nrt.json`](mvp_firms_nrt.json). **No es el export de Make**: se armó a partir de
   la versión guardada del escenario, porque el export descarga un archivo. La MAP_KEY quedó como
   `PEGAR_MAP_KEY_DE_FIRMS` y falta la conexión de Google. Después de importar: pegar la MAP_KEY en el

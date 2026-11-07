@@ -105,7 +105,8 @@ de un incendio forestal, para que una cámara hotelera pueda reclamar, comunicar
 
 ### Make (07/11, detalle en `make/README.md`)
 - Booking: escenario 6938238, inactivo y probado. Blueprint en `make/mvp_booking.json`.
-- **FIRMS NRT diario:** escenario 6939387 (`humo_firms_nrt_diario`), inactivo, *Daily 09:00* en hora de Argentina.
+- **FIRMS NRT diario:** escenario 6939387 (`humo_firms_nrt_diario`), **activo desde el 07/11**, *Daily 09:00* en hora de Argentina
+  (2 créditos de Make por día sin focos).
   Flujo Tools (variables; la MAP_KEY solo ahí) → HTTP (ayer, 1 día) → filtro "hay datos" → Parse CSV →
   filtro confianza ≠ `l` → Add a Row en `focos_nrt`, con `alerta_40km` (SI/NO, equirrectangular a ≤ 40 km de
   las 10 localidades). Blueprint en `make/mvp_firms_nrt.json`, sin MAP_KEY ni conexión.
