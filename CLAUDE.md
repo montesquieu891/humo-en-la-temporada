@@ -144,6 +144,11 @@ de un incendio forestal, para que una cámara hotelera pueda reclamar, comunicar
   en orden creciente de tamaño hasta agotar la cuenta 3 (corte: 352 reseñas totales). Completitud según el log del
   actor (`run_maps.py completitud`). **75 fichas elegibles: 51 media, 6 alta, 18 comparación.** Efecto mínimo
   detectable ≈ −43%. El episodio 2024 no se ejecuta; el apilado queda 2025 + 2026. Gasto total de Apify: USD 14,73.
+- **RESULTADO DEL TEST (07/11, `src/test_alerces.py`, `docs/resultado_test_alerces.md`): NO SUPERADO.** β = −16%
+  [−45%, +30%], p una cola 0,22, p permutación 0,57. **Las tendencias previas se rechazan** (p < 0,001): Esquel y
+  Trevelin tienen un pico propio en oct–nov y Villa La Angostura en enero, así que la comparación no es válida.
+  Los signos son negativos y hay gradiente (alta −19% > media −7% en el apilado); con el episodio corrido 2 semanas
+  da −29% (p = 0,025), pero es secundario y no creíble. No se detecta efecto y no se puede descartar uno.
 - FIRMS: se descartan `type` 1/2 (volcán Villarrica en el bbox norte). Crudos nuevos: `firms_crudo_sp_huecos.csv`
   y `firms_crudo_sp_norte.csv`.
 
