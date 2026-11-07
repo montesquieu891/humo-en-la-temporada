@@ -1,0 +1,15 @@
+place_id,estrato,rubro,nombre,n_resenas,n,primera,ultima,truncada,llega_a_2024_01,n_previo
+ChIJiRLSAiY1HJYRowRXex5KFQc,alta,camping,Camping Los Maitenes,860.0,237,2024-01-01 15:00:29.495000-03:00,2026-10-20 17:55:27.024000-03:00,False,True,39
+ChIJxabifgA1HJYRcZG-3NiebNc,alta,camping,Camping Las Rocas,62.0,62,2025-02-02 18:53:33.779000-03:00,2026-11-04 22:08:53.707000-03:00,False,False,0
+ChIJEdy0n7o1HJYRbIueLakmstU,alta,atractivo,Playa la usina,215.0,163,2024-01-01 01:55:49.692000-03:00,2026-11-06 17:54:10.332000-03:00,False,True,41
+ChIJsdJR2gs1HJYRK0S4psGrLag,alta,alojamiento,Hosteria Quime Quipan Futalaufquen,409.0,84,2024-01-13 19:21:56.732000-03:00,2026-11-06 08:55:46.514000-03:00,False,True,24
+ChIJ40K1OjqsHZYR7WRcqzfzFYY,media_esquel,alojamiento,Sol del Sur,1296.0,300,2024-01-04 00:21:15.648000-03:00,2026-11-06 17:46:57.502000-03:00,False,True,69
+ChIJPctx9hSsHZYR0mEx9Zqvxg8,media_esquel,alojamiento,Millalén,274.0,58,2024-01-03 16:33:50.133000-03:00,2026-09-11 19:32:58.194000-03:00,False,True,14
+ChIJpdZJPjusHZYRPCCmFP5ZM38,media_esquel,gastronomia,Cervecería Amancay,2502.0,388,2024-01-01 13:05:56.860000-03:00,2026-10-31 20:43:09.454000-03:00,False,True,153
+ChIJYx9dTzCsHZYR8rHXedGXHrM,media_esquel,gastronomia,Restaurant Vascongada,452.0,84,2024-01-30 13:53:19.765000-03:00,2026-11-04 06:37:52.382000-03:00,False,True,30
+ChIJo7nhC8a7HZYRrlUoRHjs-40,media_trevelin,alojamiento,Hosteria y Cabañas La Estancia,250.0,32,2024-01-06 23:38:58.433000-03:00,2026-10-26 22:46:52.149000-03:00,False,True,10
+ChIJJdpefei7HZYRo32jhTLpZlo,media_trevelin,gastronomia,El Bodegón de Nikanor,838.0,318,2024-01-02 23:40:53.690000-03:00,2026-11-05 10:33:01.764000-03:00,False,True,94
+ChIJ88x8jcG7HZYRikw_4xrTnao,media_trevelin,atractivo,Molino Andes y CIA,1584.0,389,2024-01-03 09:54:22.511000-03:00,2026-11-03 20:52:42.590000-03:00,False,True,121
+ChIJS1dlMkO_EJYRloI7BwZM25Y,comparacion,alojamiento,Camping Dormis y Bungalows Osa Mayor,663.0,130,2024-01-02 11:38:58.998000-03:00,2026-07-28 20:35:00.915000-03:00,False,True,28
+ChIJVVUVdmi_EJYRp2_oWCWjg5A,comparacion,gastronomia,Ay Ay Ay María,2042.0,500,2024-01-10 23:38:18.085000-03:00,2026-10-30 09:16:04.252000-03:00,True,True,155
+ChIJx32ollm_EJYRqTEbxyUvyA0,comparacion,camping,UNQUEHUE Apartamentos Dormis y Camping,2321.0,391,2024-01-01 10:00:34.197000-03:00,2026-09-01 18:13:22.892000-03:00,False,True,103

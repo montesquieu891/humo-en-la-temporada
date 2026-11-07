@@ -244,7 +244,9 @@ def cmd_diagnostico(a):
     r = pd.DataFrame(items)
     print(f"Reseñas: {len(r)} | campos: {sorted(r.columns)}\n")
     c_fecha = next((c for c in ["publishedAtDate", "publishAt", "date"] if c in r), None)
-    c_origen = next((c for c in r.columns if re.search(r"origin|source", c, re.I)), None)
+    # Verificado 07/11: el campo es 'reviewOrigin'. Un patrón genérico agarraba 'originalLanguage' (el idioma).
+    c_origen = "reviewOrigin" if "reviewOrigin" in r else next(
+        (c for c in r.columns if re.search(r"origin|source", c, re.I) and "language" not in c.lower()), None)
     c_place = next((c for c in ["placeId", "place_id"] if c in r), None)
     print(f"Campo de fecha: {c_fecha} | ejemplos: {r[c_fecha].head(3).tolist() if c_fecha else '-'}")
     fecha = pd.to_datetime(r[c_fecha], errors="coerce", utc=True) if c_fecha else pd.Series(pd.NaT, index=r.index)
@@ -253,6 +255,10 @@ def cmd_diagnostico(a):
         print(f"  4) origen ({c_origen}): {r[c_origen].value_counts(dropna=False).to_dict()}")
     else:
         print("  4) NO se encontró un campo de origen: revisar a mano un par de reseñas de Tripadvisor u otros")
+    if "visitedIn" in r:
+        vis = r["visitedIn"].fillna("").astype(str).str.strip()
+        print(f"  extra) 'visitedIn' (fecha de visita declarada): {(vis != '').mean():.0%} de las reseñas | "
+              f"ejemplos: {vis[vis != ''].drop_duplicates().head(5).tolist()}")
     r["fecha"] = fecha.dt.tz_convert("America/Argentina/Buenos_Aires")
     r["place_id"] = r[c_place]
     if c_origen:

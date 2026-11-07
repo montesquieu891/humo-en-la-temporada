@@ -111,6 +111,36 @@ Fuente: `src/exposicion_alerces.py`, con VIIRS S-NPP SP de nov-2023 a mar-2026 e
   el tamaño de muestra que permita el presupuesto, y se anota acá antes de bajar la muestra completa.
 - En el piloto **no se calcula** la diferencia entre expuestos y comparación durante el episodio.
 
+### Resultado del piloto y reglas fijadas (07/11/2026, antes de la muestra completa)
+
+Piloto: catálogo de 314 fichas (USD 1,29) y 14 fichas seleccionadas con 3.136 reseñas (USD 1,88 registrados).
+Archivos: `data/processed/maps_piloto_diagnostico.csv` y `data/processed/potencia_maps.csv`. **No se calculó**
+la diferencia entre expuestos y comparación en el episodio.
+
+| Criterio | Resultado | Regla que queda fijada |
+|---|---|---|
+| Formato | `publishedAtDate` exacta (ISO, con milisegundos) en el 100%. `visitedIn` vacío en el 100% | unidad semanal; el outcome es la fecha de **publicación** |
+| Origen | `reviewOrigin` = "Google" en las 3.136, aunque se pidió `all` | se filtra `reviewOrigin == "Google"`; en la muestra completa se pide igual `all` y se informa la proporción |
+| Profundidad | 13 de 14 llegan a ene-2024. Camping Las Rocas empieza el 02/02/2025 | sale por elegibilidad (sin período previo) |
+| Cobertura ene–mar 2025 | mediana de 1,0 reseña por ficha y semana, media 2,49, 33% de semanas en 0 | ≥ 1, así que **se mantiene la semana**. La quincena queda como robustez (§5.7) |
+| Período previo | mediana de 40 reseñas por ficha (mar-2024 a ene-2025), mínimo 0 | **mínimo para ser elegible: ≥ 12 reseñas de Google en mar-2024 a ene-2025** (≈ 1 por mes) |
+| Costo | ≈ 18% de las reseñas totales de cada ficha son de mar-2024 en adelante. Media de 184 por ficha, ≈ USD 0,11 | muestra completa con `reviewsStartDate=2024-03-01` y `maxReviews=1000` |
+
+**Potencia** (`src/potencia_maps.py`, solo período previo):
+- Método: 300 réplicas con episodios falsos de 2 semanas. Las fichas del piloto se remuestrean y se les asigna al
+  azar el rótulo de expuesta o comparación.
+- Efecto mínimo detectable a una cola, α = 5%, potencia 80%:
+
+| Fichas elegibles (expuestas + comparación) | 20 + 10 | 40 + 20 | 80 + 40 | 120 + 60 | 200 + 80 |
+|---|---|---|---|---|---|
+| Efecto mínimo detectable | −53% | −43% | −34% | −28% | −22% |
+
+- Es **optimista**: el piloto tiene fichas grandes (las primeras 15 de cada búsqueda, con 50–3.000 reseñas).
+- Con el catálogo actual hay ≈ 114 fichas expuestas con ≥ 50 reseñas (solo 9 de exposición alta) y 52 de
+  comparación. Es del orden de "120 + 60", ≈ USD 11 en reseñas.
+- **Se declara de antemano:** con esa muestra, una caída menor a ≈ 30% no es detectable. Un resultado nulo se
+  informa como "no detectable con esta potencia", no como "no hubo efecto".
+
 ## 7. Fuera del modelo (pendiente de consulta)
 
 - **Cronología de cierres y reaperturas** del PN Los Alerces: se documenta en un archivo aparte y no define la
@@ -120,4 +150,9 @@ Fuente: `src/exposicion_alerces.py`, con VIIRS S-NPP SP de nov-2023 a mar-2026 e
 
 ## Cambios
 
-_(ninguno)_
+- **07/11/2026, después del piloto y antes de la muestra completa: definición de "truncada".** Antes: llegó a
+  `maxReviews` o le falta historial. Ahora: llegó a `maxReviews` **y** su primera reseña es más de 14 días posterior a
+  `reviewsStartDate`.
+  - Motivo: Ay Ay Ay María llegó al máximo de 500, pero su primera reseña es del 10/01/2024 (cutoff 01/01/2024),
+    así que cubre toda la ventana de análisis.
+  - Es un criterio de completitud de datos, no depende del outcome ni del episodio.

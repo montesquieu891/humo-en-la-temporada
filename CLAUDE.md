@@ -128,6 +128,10 @@ de un incendio forestal, para que una cámara hotelera pueda reclamar, comunicar
   corrió ningún actor de Maps.
 - Piloto de Maps: `src/run_maps.py` (catalogo → seleccion → resenas → diagnostico), con el control de gasto de
   `run_booking.py`. Cuenta 3 (`APIFY_TOKEN3`, FREE, USD 5 desde el 07/11). Catálogo ≈ USD 1,44 y reseñas ≤ USD 3.
+- **Piloto de Maps hecho (07/11):** 314 fichas en el catálogo (USD 1,29) y 14 fichas con 3.136 reseñas (USD 1,88).
+  `publishedAtDate` exacta; `reviewOrigin` = Google; `visitedIn` vacío. Mediana de 1 reseña por ficha y semana.
+  ≈ 18% de las reseñas totales son de mar-2024 en adelante. Efecto mínimo detectable a una cola ≈ −28% con
+  120 + 60 fichas (optimista). Reglas fijadas en el pre-registro §6.
 - FIRMS: se descartan `type` 1/2 (volcán Villarrica en el bbox norte). Crudos nuevos: `firms_crudo_sp_huecos.csv`
   y `firms_crudo_sp_norte.csv`.
 
@@ -264,6 +268,8 @@ python src/analisis_secundario.py            # duración, tipo de viajero y desp
 python src/potencia.py                       # efecto mínimo detectable según N y costo (≈ 10 min)
 python src/sensibilidad_esquel.py             # Esquel y umbral de distancia, con placebos (preliminar)
 python src/exposicion_alerces.py              # episodio 2025, ventanas por localidad, comparación y figuras
+python src/run_maps.py --cuenta 3 catalogo --dry-run   # piloto Maps: catalogo → seleccion → resenas → diagnostico
+python src/potencia_maps.py                   # efecto mínimo detectable con la varianza del piloto (solo período previo)
 python src/run_booking.py --cuenta 1 ventana-larga --dry-run   # piloto de ventana larga (nov-2023)
 python src/piloto_ventana.py --reviews data/raw/ventana_larga/reviews_desde_2023-11.json
 python src/export_sheets.py
