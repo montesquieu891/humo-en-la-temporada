@@ -183,7 +183,10 @@ de un incendio forestal, para que una cámara hotelera pueda reclamar, comunicar
   tratado en las dos temporadas.
 - Volumen: base −10% [−53, +71]; sin Esquel −55% [−86, +43]; umbral 10 km −49% [−63, −31]; umbral 12 km −40%
   [−61, −9]. Los placebos de volumen incluyen 0. Son 12 tratados y 7 variantes probadas: no es un resultado.
-- Propuesta para el grupo: fijar la especificación (umbral 10 km como principal) **antes** de la corrida completa.
+- **Se mantiene 15 km como referencia** (decisión 3). 10 y 12 km se presentan como exposición más localizada,
+  no como resultado principal: a 10 km, 11 de 12 tratados son de El Bolsón, y el radio se eligió después de ver
+  las variantes (la corrida completa lo vuelve a estimar, no lo valida). Si el grupo quiere 10 km como principal,
+  tiene que formular esa pregunta más acotada y justificar el radio por el tipo de exposición.
   Borradores de mails a Parques y a la profesora en `docs/borradores_mails.md` (no enviados).
 
 ### Preguntas abiertas para el grupo (no se cambió nada; memo con evidencia: `docs/decisiones_abiertas.md`)

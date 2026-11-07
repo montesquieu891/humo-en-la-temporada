@@ -197,13 +197,20 @@ nuevas (ingresos al parque, Google Maps) no entran al modelo. Ver los borradores
 - La cronología de cierres del parque (evacuación del 07/01, reapertura de la RN 71 el 14/02/2026) viene de la
   propuesta y **no está verificada** en este repo. La variante de acceso usa los meses completos de enero y febrero.
 
-**Recomendación:** fijar la especificación **antes** de la corrida completa de reviews, para que no la elijan
-los datos. Propuesta:
-- **Principal:** umbral de 10 km. Saca a Esquel del límite y le da a El Bolsón un febrero de comparación.
-- **Robustez declarada de antemano:** 15 km (la actual), sin Esquel, y Esquel tratado por el acceso al parque.
-- Recalcular la potencia con 10 km (`src/potencia.py` usa los estratos de 15 km). Cambia la composición:
-  El Bolsón deja de estar tratado en las dos temporadas.
-
-Cambiar el umbral es cambiar la **decisión 3** de CLAUDE.md: lo decide el grupo.
+**Recomendación (revisada el 07/11):**
+- **Para la entrega, mantener 15 km como especificación de referencia** (la del MVP y la decisión 3).
+- **Presentar 10 y 12 km como análisis de exposición más localizada**, no como el resultado principal:
+  - A 10 km, 11 de los 12 alojamientos tratados son de El Bolsón. El número informa sobre todo sobre Mallín
+    Ahogado y ese destino, no sobre la zona.
+  - El radio de 10 km se eligió **después** de ver las variantes. Fijarlo ahora sirve para que la próxima
+    corrida siga un plan definido de antemano. Pero sumar reseñas de los **mismos** incendios no convierte esa
+    elección en una validación independiente: la corrida completa la vuelve a estimar con más datos, no la confirma.
+- Si el grupo quiere que 10 km sea el análisis principal, tiene que **formular explícitamente esa pregunta más
+  acotada** (por ejemplo: "¿cuánto pierde un alojamiento a muy corta distancia del frente de fuego?") y
+  justificar el radio por el tipo de exposición que quiere medir (humo denso, cortes de ruta, evacuaciones),
+  no por el resultado.
+- Para la corrida completa, dejar escrito antes de bajar los datos: referencia = 15 km; exposición localizada =
+  10 y 12 km; robustez = sin Esquel, y Esquel afectado por el cierre del parque. Se informan todas, sea cual sea
+  el resultado.
 
 **Decisión:** ______________________ (fecha, quién)
