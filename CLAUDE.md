@@ -124,7 +124,9 @@ de un incendio forestal, para que una cámara hotelera pueda reclamar, comunicar
    `humo|incendio|fuego|ceniza`.
 3. **Tratamiento por distancia calculada** (haversine al foco más cercano de cada temporada), no por
    nombre de localidad. Bandas: 0–15, 15–40, 40–80, más de 80 km. Tratado = 15 km o menos.
-4. **Meses de fuego:** 2025-02 (Mallín Ahogado) y 2026-01, 2026-02 (Chubut).
+4. **Meses de fuego:** 2025-02 (Mallín Ahogado) y 2026-01, 2026-02 (Chubut). Si se usa la ventana larga
+   (desde nov-2023): también 2024-02 (PN Los Alerces, desde el 26/01/2024; solo febrero, igual que Mallín Ahogado,
+   porque los dos empezaron a fines de enero). Decidido el 07/11.
 5. **Estacionalidad:** efecto fijo alojamiento × mes calendario (compara contra el mismo mes del año sin fuego)
    + efecto fijo año-mes.
 6. **Dos eventos → stacked DiD** (estimar cada evento por separado), no un TWFE único.

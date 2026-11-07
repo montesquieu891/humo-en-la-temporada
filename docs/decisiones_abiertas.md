@@ -132,8 +132,8 @@ Esquel; `data/processed/firms_2024/`).
 - El Bolsón queda a ≈ 96 km: gana un enero y un febrero sin fuego, que es lo que le falta.
 - 10 de los 29 alojamientos del panel (Esquel) quedan a ≤ 15 km: con ventana larga suman una tercera temporada
   tratada (2024-02).
-- **Supuesto a confirmar:** en 2024 cuenta solo febrero, igual que en 2025 (los dos fuegos empezaron a fines
-  de enero).
+- **Decidido (07/11):** en 2024 cuenta solo febrero, igual que en 2025 (los dos fuegos empezaron a fines de
+  enero).
 
 **Prueba de la opción C, lista para correr** (no se corrió: hoy no hay crédito):
 ```bash

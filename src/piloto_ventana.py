@@ -11,8 +11,8 @@ Se mide sobre los MISMOS alojamientos (los re-pedidos con `run_booking.py ventan
 
 fuego_cerca:
   2024-02 si el alojamiento está a ≤15 km de un foco de la temporada 2024 (eventos FIRMS ≥50 detecciones;
-          PN Los Alerces, 26/01–07/02/2024). SUPUESTO a confirmar por el grupo: como Mallín Ahogado empezó
-          el 30/01 y en 2025 cuenta solo febrero, en 2024 también cuenta solo febrero.
+          PN Los Alerces, 26/01–07/02/2024). Decidido el 07/11: como Mallín Ahogado empezó el 30/01 y en
+          2025 cuenta solo febrero, en 2024 también cuenta solo febrero (CLAUDE.md, decisión 4).
   2025-02 cerca de un foco 2025 · 2026-01 y 2026-02 cerca de un foco 2026 (decisión 4).
 
 Salida:
