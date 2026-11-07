@@ -66,8 +66,14 @@ de un incendio forestal, para que una cámara hotelera pueda reclamar, comunicar
   address.city, location.lat, location.lng, url, hotelId`. **`location.lat/lng` vienen como texto.**
   `stars` es casi todo nulo (98%). `price` es por la estadía completa (2 noches). Necesita `checkIn/checkOut`.
   **La búsqueda se limita a la ciudad** ("Lago Puelo" no trae El Hoyo): una corrida por localidad.
-  Universo real en Booking (07/11): El Bolsón 103, Lago Puelo 41, El Hoyo 23, Esquel 98, Epuyén 6,
-  Cholila 9, Trevelin 59; Bariloche truncado en 120 → **459 alojamientos únicos** (consigna: ≥700).
+  **Con fechas a 14 meses Booking lista solo ~la mitad** (los que ya abrieron calendario; verificado 07/11
+  con búsquedas sin fechas de 1 ítem: el actor informa "N properties found"). Universo sin fechas:
+  El Bolsón 209, Lago Puelo 93, El Hoyo 33, Esquel 212, Trevelin 108, Epuyén 14, Cholila 14,
+  Villa La Angostura 280, Bariloche 1.386 (`UNIVERSO_SIN_FECHAS` en `run_booking.py`).
+  Sin fechas **no trae precio**: el precio de referencia sale solo de las corridas con fechas.
+  Tenemos **834 alojamientos únicos**: zona tratada completa sin fechas (salvo El Bolsón: los 155 más
+  cercanos de 209, y Trevelin: solo con fechas), Bariloche 136, Villa La Angostura 64, Dina Huapi 16.
+  Para Make y la corrida semanal: usar fechas cercanas (≤ 3 meses) o no usar fechas.
 - `voyager/booking-reviews-scraper`: texto, rating, partes "gustó/no gustó", habitación, duración y
   **fecha de estadía (por mes)**. Los nombres exactos de campo se confirman en el piloto: anotarlos acá.
   - Campo fecha de estadía: **`checkInDate`** (verificado 07/11: fecha exacta `YYYY-MM-DD`, no solo el mes;
@@ -85,9 +91,12 @@ de un incendio forestal, para que una cámara hotelera pueda reclamar, comunicar
     paginación (queda truncado), con bloqueos 202 en el log. Reintentar solo los que no devolvieron nada
     recupera parte; los truncados repiten la falla tras la página 1. Estado por alojamiento en
     `data/processed/reviews_cobertura.csv` (completo / truncado_falla_actor / truncado_tope / sin_reviews).
-  - Muestra MVP (07/11), 3 corridas (`reviews.json`, `reviews_bariloche.json`, `reviews_reintento.json`):
-    37 alojamientos pedidos (28 a ≤40 km de un foco + 9 de Bariloche al azar) → 2.062 reviews únicas.
-    Completos: 21 de 28 tratados y 5 de 9 de Bariloche.
+  - Muestra MVP (07/11), 4 corridas (`reviews.json`, `reviews_bariloche.json`, `reviews_reintento.json`,
+    `reviews_extra.json`): 42 alojamientos pedidos (33 a ≤40 km de un foco + 9 de Bariloche al azar)
+    → 2.231 reviews únicas. Completos: 25 de 33 tratados y 5 de 9 de Bariloche
+    (`python src/run_booking.py cobertura` regenera el estado desde los logs).
+  - Corrida completa de la zona tratada: 352 alojamientos con ≥10 reviews a ≤40 km ≈ 11.800 reviews en la
+    ventana ≈ **USD 23,6 en tier FREE** (USD 0,002/review). Planificar créditos (una cuenta por integrante).
   - Cuentas de Apify: `APIFY_TOKEN` (cuenta 1) y `APIFY_TOKEN2` (cuenta 2, `--cuenta 2`). Gasto en
     `data/processed/apify_gastos.csv`: **el cobro se asienta minutos después de terminar la corrida**
     (se cobra cada ítem entregado); releer el run antes de dar por cerrado el gasto.
@@ -116,14 +125,23 @@ de un incendio forestal, para que una cámara hotelera pueda reclamar, comunicar
 
 ### Datasets de la consigna (07/11)
 - **Dataset 1 (FIRMS):** `firms_celda_dia.csv` = celda de 0,025° × día, solo eventos ≥50 → 1.669 filas × 9 col.
-- **Dataset 2 (Booking):** `reviews_dataset.csv` = 1 fila por review en la ventana nov-2024 a abr-2026,
-  con coordenadas y distancia → 1.654 filas × 13 col, sin nulos. `alojamientos.csv` (459) es tabla auxiliar.
-  Llegar a ≥700 alojamientos queda pendiente (Villa La Angostura + más Bariloche, ≈ USD 1,5–2).
+- **Dataset 2 (Booking):** `alojamientos.csv` = 834 filas × 16 col (cumple 700–2.000; `precio_ref` nulo en
+  los que vienen de búsquedas sin fechas). Alternativa/complemento: `reviews_dataset.csv` = 1 fila por review
+  en la ventana nov-2024 a abr-2026, con coordenadas y distancia → 1.789 filas × 13 col, sin nulos.
 
-### Primer número (MVP 07/11, DiD 2×2, sin truncados, IC95% bootstrap por alojamiento)
-- Volumen apilado: β = −2,28 reviews por alojamiento-mes (−35% contra el contrafactual), IC [−4,72; −0,12].
-- Nota apilada: β = −0,58, IC [−1,24; +0,01]. Por temporada, ningún β de volumen excluye el 0.
-- Muestra chica (47 alojamientos en el apilado, 5–6 "lejos" en 2025): es un primer número, no un resultado.
+### Primer número y chequeos (MVP 07/11, sin truncados; `sheets/kpi_did.csv` los reúne)
+- DiD 2×2 apilado (IC95% bootstrap por alojamiento): volumen β = −2,25 (−35%), IC [−4,28; −0,42];
+  nota β = −0,53, IC [−1,09; −0,01].
+- **Placebo (fuego falso en el mes previo): volumen β = +2,43, IC [+0,67; +4,52] → el 2×2 NO es creíble:**
+  cerca y lejos tienen estacionalidad distinta (pico de enero más fuerte cerca). Sin Bariloche: −1,54, IC toca 0.
+- **FE alojamiento × mes calendario + año-mes (decisión 5, `src/fe_preliminar.py`, preliminar):**
+  volumen −10% (IC −53% a +71%), nota −0,11 (IC −0,55 a +0,33). **Con 29 alojamientos no se detecta efecto.**
+  Es el número a mostrar con su IC, no el del 2×2. Hace falta la corrida completa de reviews.
+
+### Preguntas abiertas para el grupo (no se cambió nada)
+- Temporada 2025: hubo fuego en Epuyén del 15 al 30/01/2025 (evento 5) y en Esquel/Trevelin en feb-2025, pero
+  los meses de fuego 2025 son solo 2025-02. ¿Agregar 2025-01 para Epuyén, o tratar a Chubut 2025 como contaminado?
+- ¿Qué dataset de Booking presentamos como "Dataset 2": alojamientos (834) o reviews (1.789)? Ambos cumplen.
 
 ## Modelo
 
@@ -168,11 +186,14 @@ python firms_backfill.py --dias 5 --raw data/raw/firms_crudo_sp.csv --salida dat
 # Booking (APIFY_TOKEN / APIFY_TOKEN2 en .env). Siempre primero --dry-run para ver el costo
 python src/run_booking.py --cuenta 2 cuenta
 python src/run_booking.py --cuenta 2 listings --solo esquel --dry-run
+python src/run_booking.py --cuenta 2 listings --solo esquel --sin-fechas --dry-run   # universo completo, sin precio
 python src/run_booking.py --cuenta 2 reviews --grupos control_bariloche --n-bariloche 50 --presupuesto 2 --salida reviews_x.json --dry-run
 # Veredicto, panel, DiD, CSV para Sheets
 python booking_pilot_check.py --listings "data/raw/listings_*.json" --reviews "data/raw/reviews*.json" --firms data/processed/firms_detecciones_eventos50.csv
 python src/build_panel.py --listings "data/raw/listings_*.json" --reviews "data/raw/reviews*.json" --firms data/processed/firms_detecciones_eventos50.csv
-python src/did_baseline.py
+python src/run_booking.py cobertura          # estado por alojamiento desde los logs (antes de build_panel)
+python src/did_baseline.py                   # baseline 2x2 + placebo + sin Bariloche
+python src/fe_preliminar.py                  # FE alojamiento x mes calendario (preliminar)
 python src/export_sheets.py
 ```
 

@@ -12,16 +12,20 @@ blueprint a `make/mvp_booking.json` (menú `…` del escenario → *Export Bluep
    `python src/export_sheets.py`.
 2. **Pestaña nueva `booking_make`** con esta fila de encabezados (es donde escribe Make):
    `fecha_corrida | destino | nombre | tipo | precio | moneda | rating | reviews | lat | lng | url`
-3. **Token de Apify:** usar la **cuenta 2**, que tiene crédito hasta el 06/12. El token se pega en la
-   conexión de Make, nunca en el repo.
+3. **Token de Apify:** al 07/11 las dos cuentas FREE quedaron con ≈ USD 0,08 cada una. La cuenta 1 se
+   renueva el **13/11** (USD 5) y la 2 el 06/12. Una prueba de 10 alojamientos cuesta ≈ USD 0,05, así que
+   alcanza para *Run once*, pero no para más. El token se pega en la conexión de Make, nunca en el repo.
 
 ## Módulos
 
 ### 1. Apify → *Run an Actor*
-- Connection: crear una conexión con el token de la cuenta 2.
+- Connection: crear una conexión con el token de la cuenta que tenga crédito (ver arriba).
 - Actor: `voyager/booking-scraper`.
 - **Run synchronously: Yes**. Así el módulo espera a que termine y devuelve el `defaultDatasetId`.
 - Input JSON. Son los mismos nombres de campo que valida `src/run_booking.py` contra el schema real.
+  **Ojo con las fechas:** a 14 meses, Booking lista solo los alojamientos que ya abrieron calendario
+  (≈ la mitad; verificado 07/11). Para el escenario semanal conviene usar fechas a ≤ 3 meses, o no usar
+  fechas, aunque así no viene precio.
   Usar **`maxItems` chico**: cada alojamiento cuesta USD 0,005, así que 10 alojamientos son ≈ USD 0,05 por corrida.
   ```json
   {
