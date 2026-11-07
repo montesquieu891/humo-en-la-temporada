@@ -1,0 +1,42 @@
+localidad,rol,radio_km,inicio,fin,dias,dias_con_foco,detecciones,dist_min_km,eventos
+Villa Futalaufquen (PN Los Alerces),expuesta,5,2024-01-30,2024-02-05,7,7,37,4.0,64
+Villa Futalaufquen (PN Los Alerces),expuesta,5,2025-02-20,2025-03-01,10,10,160,1.5,26
+Villa Futalaufquen (PN Los Alerces),expuesta,15,2024-01-26,2024-02-07,13,13,637,4.0,64
+Villa Futalaufquen (PN Los Alerces),expuesta,15,2025-02-20,2025-03-01,10,10,212,1.5,26
+Villa Futalaufquen (PN Los Alerces),expuesta,15,2026-01-11,2026-01-27,17,14,266,10.5,31
+Villa Futalaufquen (PN Los Alerces),expuesta,25,2024-01-26,2024-02-07,13,13,637,4.0,64
+Villa Futalaufquen (PN Los Alerces),expuesta,25,2025-02-20,2025-03-01,10,10,212,1.5,26
+Villa Futalaufquen (PN Los Alerces),expuesta,25,2026-01-07,2026-02-02,27,25,1666,10.5,"31,40"
+Villa Futalaufquen (PN Los Alerces),expuesta,40,2024-01-26,2024-02-07,13,13,637,4.0,64
+Villa Futalaufquen (PN Los Alerces),expuesta,40,2025-02-16,2025-03-01,14,14,423,1.5,"25,26"
+Villa Futalaufquen (PN Los Alerces),expuesta,40,2026-01-04,2026-02-10,38,35,4416,10.5,"31,37,40,41"
+Trevelin,expuesta,15,2025-02-16,2025-02-17,2,2,38,12.0,25
+Trevelin,expuesta,25,2024-02-05,2024-02-07,3,2,75,17.4,64
+Trevelin,expuesta,25,2025-02-16,2025-02-28,13,13,392,12.0,"25,26"
+Trevelin,expuesta,40,2024-01-26,2024-02-07,13,13,637,17.4,64
+Trevelin,expuesta,40,2025-02-16,2025-03-01,14,14,423,12.0,"25,26"
+Trevelin,expuesta,40,2026-01-10,2026-01-27,18,16,330,34.1,31
+Esquel,expuesta,15,2024-02-05,2024-02-07,3,2,42,8.7,64
+Esquel,expuesta,15,2025-02-19,2025-02-26,8,4,9,14.3,25
+Esquel,expuesta,25,2024-01-26,2024-02-07,13,12,396,8.7,64
+Esquel,expuesta,25,2025-02-16,2025-02-26,11,11,299,14.3,"25,26"
+Esquel,expuesta,25,2026-02-01,2026-02-01,1,1,2,24.8,31
+Esquel,expuesta,40,2024-01-26,2024-02-07,13,13,637,8.7,64
+Esquel,expuesta,40,2025-02-16,2025-03-01,14,14,423,14.3,"25,26"
+Esquel,expuesta,40,2026-01-07,2026-02-10,35,32,2443,24.8,"31,40"
+Junín de los Andes,comparación,40,2025-02-08,2025-02-10,3,3,105,37.4,79
+El Bolsón,referencia,5,2025-02-08,2025-02-10,3,2,2,4.6,15
+El Bolsón,referencia,15,2025-01-31,2025-02-12,13,12,308,4.6,15
+El Bolsón,referencia,15,2026-01-07,2026-01-10,4,4,43,13.6,33
+El Bolsón,referencia,25,2025-01-31,2025-02-12,13,12,308,4.6,15
+El Bolsón,referencia,25,2026-01-05,2026-01-14,10,9,781,13.6,33
+El Bolsón,referencia,40,2025-01-15,2025-02-12,29,24,563,4.6,"5,15"
+El Bolsón,referencia,40,2026-01-05,2026-02-02,29,25,2595,13.6,"33,39"
+Cholila,referencia,5,2026-01-26,2026-02-02,8,6,27,3.2,31
+Cholila,referencia,15,2026-01-23,2026-02-10,19,17,1021,3.2,"31,39,41"
+Cholila,referencia,25,2025-01-22,2025-01-29,8,5,19,24.0,5
+Cholila,referencia,25,2026-01-07,2026-02-10,35,33,3168,3.2,"31,37,39,41"
+Cholila,referencia,40,2024-01-26,2024-02-06,12,12,550,30.7,64
+Cholila,referencia,40,2025-01-15,2025-01-30,16,12,255,24.0,5
+Cholila,referencia,40,2025-12-07,2025-12-11,5,5,129,36.2,29
+Cholila,referencia,40,2026-01-06,2026-02-10,36,34,6963,3.2,"31,33,37,39,40,41"

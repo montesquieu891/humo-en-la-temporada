@@ -116,6 +116,19 @@ de un incendio forestal, para que una cámara hotelera pueda reclamar, comunicar
 - Un día sin focos: FIRMS devuelve solo el encabezado y Parse CSV falla. Por eso está el filtro "hay datos"
   (verificado 07/11: termina sin error y sin filas).
 
+### Reformulación Comarca de los Alerces 2025 (07/11, a partir de la devolución de la profesora; EN CURSO)
+- Fuentes nuevas: FIRMS + Google Maps vía Apify (`compass/crawler-google-places` para el catálogo y
+  `compass/google-maps-reviews-scraper` para las reseñas por Place ID). Booking queda como antecedente.
+  Esto reemplaza la regla "ni Google Maps" de la consigna original. Plan: `docs/plan_reformulacion_alerces.md`;
+  reglas del test: **`docs/preregistro_alerces.md`** (commiteado antes de bajar reseñas).
+- Episodio FIRMS: 16/02–01/03/2025 (eventos 26 en el PN Los Alerces y 25 al sur-sudeste de Esquel). Esquel queda
+  a 14,3 km, Trevelin a 12,0 y Villa Futalaufquen a 1,5. Comparación: Villa La Angostura (principal),
+  San Martín de los Andes (secundaria: fuego del Lanín a 59 km) y Corcovado. `src/exposicion_alerces.py`.
+- Precios FREE verificados 07/11: catálogo USD 0,004 por ficha y reseñas USD 0,0006 cada una. Todavía no se
+  corrió ningún actor de Maps.
+- FIRMS: se descartan `type` 1/2 (volcán Villarrica en el bbox norte). Crudos nuevos: `firms_crudo_sp_huecos.csv`
+  y `firms_crudo_sp_norte.csv`.
+
 ## Decisiones de diseño (no cambiar sin discutirlo con el grupo)
 
 1. **Fecha de estadía, no fecha de publicación** de la review, para fechar el efecto.
@@ -248,6 +261,7 @@ python src/fe_preliminar.py                  # FE alojamiento x mes calendario (
 python src/analisis_secundario.py            # duración, tipo de viajero y desplazamiento (preliminar)
 python src/potencia.py                       # efecto mínimo detectable según N y costo (≈ 10 min)
 python src/sensibilidad_esquel.py             # Esquel y umbral de distancia, con placebos (preliminar)
+python src/exposicion_alerces.py              # episodio 2025, ventanas por localidad, comparación y figuras
 python src/run_booking.py --cuenta 1 ventana-larga --dry-run   # piloto de ventana larga (nov-2023)
 python src/piloto_ventana.py --reviews data/raw/ventana_larga/reviews_desde_2023-11.json
 python src/export_sheets.py

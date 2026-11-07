@@ -1,0 +1,11 @@
+localidad,rol,dist_min_km_ventana,limpia_40km,episodios_40km_en_ventana_analisis
+Villa Futalaufquen (PN Los Alerces),expuesta,1.5,False,2025-02-16→2025-03-01
+Trevelin,expuesta,12.0,False,2025-02-16→2025-03-01
+Esquel,expuesta,14.3,False,2025-02-16→2025-03-01
+Corcovado,comparación,52.3,True,
+Villa La Angostura,comparación,69.3,True,
+San Martín de los Andes,comparación,58.7,True,
+Junín de los Andes,comparación,37.4,False,2025-02-08→2025-02-10
+Bariloche,referencia,42.0,True,
+El Bolsón,referencia,4.6,False,2025-01-15→2025-02-12
+Cholila,referencia,24.0,False,2025-01-15→2025-01-30; 2025-12-07→2025-12-11
