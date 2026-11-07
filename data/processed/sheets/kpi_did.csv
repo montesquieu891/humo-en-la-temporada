@@ -1,7 +1,13 @@
-outcome,temporada,beta,ic95_lo,ic95_hi,pct_contrafactual,n_cerca,n_lejos
-n_reviews,2025,-1.247,-4.391979166666666,2.33062865497076,-0.3327154772937905,16,6
-n_reviews,2026,-1.311,-7.082056277056277,2.967783258408257,-0.1738206544836379,13,12
-n_reviews,apilado,-2.279,-4.718007664922988,-0.1169146825396832,-0.3532934131736527,29,18
-nota_media,2025,-1.128,-2.2484735502592645,-0.0953049728049729,-0.1125623534456503,13,5
-nota_media,2026,-0.337,-1.1399820868006956,0.3128920600598229,-0.0358460358315486,12,11
-nota_media,apilado,-0.581,-1.2361473137408652,0.0143775022869845,-0.0607549232282702,25,16
+especificacion,outcome,temporada,beta,ic95_lo,ic95_hi,pct_contrafactual,n_cerca,n_lejos
+DiD 2x2,n_reviews,2025,-0.953,-4.153,2.498,-0.266,19.0,6.0
+DiD 2x2,n_reviews,2026,-0.863,-5.391,2.821,-0.122,13.0,16.0
+DiD 2x2,n_reviews,apilado,-2.249,-4.279,-0.416,-0.355,32.0,22.0
+DiD 2x2,nota_media,2025,-1.041,-2.18,-0.073,-0.103,16.0,5.0
+DiD 2x2,nota_media,2026,-0.394,-1.122,0.187,-0.042,12.0,14.0
+DiD 2x2,nota_media,apilado,-0.532,-1.09,-0.013,-0.055,28.0,19.0
+placebo (fuego falso en rel_t = -1),n_reviews,apilado,2.433,0.672,4.518,0.556,26.0,20.0
+placebo (fuego falso en rel_t = -1),nota_media,apilado,-0.414,-0.843,0.019,-0.044,20.0,11.0
+sin Bariloche,n_reviews,apilado,-1.542,-3.093,0.032,-0.274,32.0,15.0
+sin Bariloche,nota_media,apilado,-0.318,-0.745,0.111,-0.034,28.0,13.0
+FE alojamiento x mes calendario (preliminar),n_reviews,ambas,-0.111,-0.757,0.536,-0.105,,
+FE alojamiento x mes calendario (preliminar),nota_media,ambas,-0.113,-0.551,0.325,,,
