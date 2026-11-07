@@ -140,6 +140,10 @@ de un incendio forestal, para que una cámara hotelera pueda reclamar, comunicar
   está a 24,8 km en 2026 (otra vez en el límite). Costo extra ≈ USD 5–6 (solo 2024 necesita reseñas desde 2023-07-28).
   Plan §9. **Adoptado en el pre-registro v2 (§8) como análisis secundario**; el principal sigue siendo 2025.
   La muestra completa baja desde 2023-07-31.
+- **Muestra final de Maps (07/11, sin más crédito; pre-registro v3):** catálogo del piloto, reseñas desde 2024-08-19,
+  en orden creciente de tamaño hasta agotar la cuenta 3 (corte: 352 reseñas totales). Completitud según el log del
+  actor (`run_maps.py completitud`). **75 fichas elegibles: 51 media, 6 alta, 18 comparación.** Efecto mínimo
+  detectable ≈ −43%. El episodio 2024 no se ejecuta; el apilado queda 2025 + 2026. Gasto total de Apify: USD 14,73.
 - FIRMS: se descartan `type` 1/2 (volcán Villarrica en el bbox norte). Crudos nuevos: `firms_crudo_sp_huecos.csv`
   y `firms_crudo_sp_norte.csv`.
 

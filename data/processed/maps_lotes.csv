@@ -1,0 +1,101 @@
+lote,place_id,nombre,n_resenas,est_resenas,resenas_bajadas,posible_truncada
+piloto,ChIJxabifgA1HJYRcZG-3NiebNc,Camping Las Rocas,62.0,,62,False
+piloto,ChIJEdy0n7o1HJYRbIueLakmstU,Playa la usina,215.0,,97,False
+piloto,ChIJo7nhC8a7HZYRrlUoRHjs-40,Hosteria y Cabañas La Estancia,250.0,,23,False
+piloto,ChIJPctx9hSsHZYR0mEx9Zqvxg8,Millalén,274.0,,21,False
+piloto,ChIJsdJR2gs1HJYRK0S4psGrLag,Hosteria Quime Quipan Futalaufquen,409.0,,68,False
+piloto,ChIJYx9dTzCsHZYR8rHXedGXHrM,Restaurant Vascongada,452.0,,67,False
+piloto,ChIJS1dlMkO_EJYRloI7BwZM25Y,Camping Dormis y Bungalows Osa Mayor,663.0,,88,False
+piloto,ChIJJdpefei7HZYRo32jhTLpZlo,El Bodegón de Nikanor,838.0,,264,False
+piloto,ChIJiRLSAiY1HJYRowRXex5KFQc,Camping Los Maitenes,860.0,,134,False
+piloto,ChIJ40K1OjqsHZYR7WRcqzfzFYY,Sol del Sur,1296.0,,240,False
+piloto,ChIJ88x8jcG7HZYRikw_4xrTnao,Molino Andes y CIA,1584.0,,286,False
+piloto,ChIJVVUVdmi_EJYRp2_oWCWjg5A,Ay Ay Ay María,2042.0,,368,False
+piloto,ChIJx32ollm_EJYRqTEbxyUvyA0,UNQUEHUE Apartamentos Dormis y Camping,2321.0,,256,False
+piloto,ChIJpdZJPjusHZYRPCCmFP5ZM38,Cervecería Amancay,2502.0,,273,False
+1,ChIJoY_HwsO7HZYRJSqlfOOkMd0,Camping Trevelin,51.0,8.0,32,True
+1,ChIJa6l4T8O7HZYRx23Jw-YIRts,Cabañas El Cisne,52.0,8.0,13,True
+1,ChIJN6yu0W2sHZYRWeqoTGtzQrc,Cabañas Pyracantha,54.0,8.0,8,True
+1,ChIJZSMxlGSpHZYRlbch0323H48,CARTEL ESQUEL NARANJA,60.0,9.0,48,True
+1,ChIJj2uRDhOsHZYRIout2iMAMiQ,Cabañas Nunatak,62.0,9.0,5,True
+1,ChIJlbLgaXK_EJYRjELP4b6iRfI,El Aleph,62.0,9.0,14,True
+1,ChIJDZK8_yS7HZYRONL3sgSzX0M,Marcando Ruta EVyT,63.0,9.0,15,True
+1,ChIJdw__S-q_EJYRKFYzEc2xAMM,Green House Bed & Breakfast,64.0,10.0,54,True
+1,ChIJ-9Y-JTC_EJYR2yKICMEz1Ms,Angostura Lacustre ~ Paseos en Barco,64.0,10.0,17,True
+1,ChIJaVg6lyy9HZYRLL-xObGf76s,KrysTob,65.0,10.0,38,True
+1,ChIJDyweTvi3HZYR9-3noHCC-4U,Cabañas Don Edmundo Trevelin,66.0,10.0,24,True
+1,ChIJ5fovvvm7HZYR-mTonopPsSQ,Cabañas Luana,71.0,11.0,4,True
+1,ChIJc0rYW0O_EJYRUBbKS1S8JJ0,Cartel Villa la Angostura,72.0,11.0,48,True
+1,ChIJs6Hawy81HJYRUnIjUBinkYE,Camping Rahué,73.0,11.0,1,True
+1,ChIJ52pc1em7HZYRby1tMneB9lw,Benedetta,74.0,11.0,0,True
+1,ChIJDympZX42HJYRwSelal_nAv4,Tejas Negras Cabañas y Proveeduría,77.0,11.0,20,True
+1,ChIJrdCo49y9HZYRqd1ktQ8fnzI,La Rosa Búlgara,77.0,11.0,15,True
+1,ChIJCd85agC_EJYRUDFP2PT0d2g,Playa Costa Las Balsas,77.0,11.0,37,True
+1,ChIJSWi8DPC7HZYRlJWNEt_UuEA,El Tropezon,81.0,12.0,15,True
+1,ChIJiTIXI8O7HZYRa5bWsVpYxHg,Cabaña los Ciruelos,81.0,12.0,8,True
+1,ChIJbyhEqvG7HZYRtPiFhhyiRQw,Ñam - Buena Comida,85.0,13.0,0,True
+1,ChIJEfFwjJ6_EJYRFh8fLidOKqE,Los Rodriguez Restaurant,86.0,13.0,0,True
+1,ChIJAYaOCae_EJYR92cPBZ_OJdQ,Cabañas La Estancia,88.0,13.0,0,True
+1,ChIJAzjgR6ROHJYR-WpH-3TSK1k,Huemules - Reserva de Montaña,89.0,13.0,0,True
+1,ChIJoaav10q3HZYR-QBabm63ogI,Pueblo Alto Lodge,91.0,14.0,0,True
+1,ChIJn7e6Lk6tHZYRcAredT1AK8I,Meraki Sur Agencia de Viajes,93.0,14.0,47,True
+1,ChIJayC7JFS_EJYR0dTlDpJHvF0,Dalca Kayak Adventures,94.0,14.0,36,True
+1,ChIJ9dFoLj3BEJYR1lJTWNxxoGg,Cabañas Del Árbol,95.0,14.0,11,True
+1,ChIJh_bEbre_EJYRXcV7ya1o8Tc,Solar Selvana | Casas de montaña,97.0,14.0,47,True
+1,ChIJ3Sqs66tKHJYRlCcLnMeBFA0,Laguna Larga Lodge,101.0,15.0,24,True
+1,ChIJEzcVwJq7HZYRAUFCjSsLmrI,Alojamiento Familiar R259,101.0,15.0,33,True
+1,ChIJOduyL-S7HZYRPMMDOzTahWI,"""De la Cabaña"" - Casero & Gourmet",108.0,16.0,37,True
+1,ChIJVbwEuu27HZYR84eBjY7ubjo,Cabañas Trevelin,110.0,16.0,3,True
+1,ChIJc8AJ9wauHZYReckf76h-0vQ,Hostería La Chacra,113.0,17.0,13,True
+1,ChIJkeZev7HAEJYRGYNYdtIxlcM,Cabañas Rukayén,113.0,17.0,15,True
+1,ChIJhZhunEesHZYRkjpKpInRgsc,Lago Verde,114.0,17.0,6,True
+1,ChIJoS8mWIe7HZYRsryGbzkjQac,Gales al Sur Trevelin,115.0,17.0,8,True
+1,ChIJcaUV-MG7HZYR5LxMtCoz3DM,Cabañas Nueva Era,117.0,17.0,13,True
+1,ChIJ48IWg8y7HZYRm8vc2mBqYNs,Cabañas Rocio Trevelin,120.0,18.0,33,True
+1,ChIJpYS7y3-_EJYRmD4cU113hJw,Gluck Patagonia Aparts,120.0,18.0,91,True
+2,ChIJIYoq-DmsHZYRoeiJqbTVq3U,Limits Adventure,124.0,18.0,9,True
+2,ChIJsX0tEma_EJYRk8yPCgO530U,Cordillera Fly - Excursiones de pesca en Villa La Angostura,127.0,19.0,45,True
+2,ChIJ6YYhc9Y6HJYRgZgqPu_Fcw0,Glaxiar Mountain & Adventure Co.,134.0,20.0,23,True
+2,ChIJ8eKoVH-5HZYRiFnlf9QU8gU,Cabaña & Spa - Regbue,134.0,20.0,12,True
+2,ChIJYdxc-WTHEJYR4IzE_G-INsA,Kayak 7 Lagos,134.0,20.0,33,True
+2,ChIJdyG9XMS7HZYRQddBEWvO4Qc,Cabañas La Señalada,142.0,21.0,19,True
+2,ChIJEQy5k9S_EJYR_OiEGzrPHqE,Gula Focacceria,143.0,21.0,143,True
+2,ChIJzTjhI742HJYRfdpF3PMpLao,Camping Club Empleados Banco Chubut,146.0,22.0,36,True
+2,ChIJJ6tzK2a3HZYRMX__iY7TFI0,Mirador y Puente Sobre Rio Percey,148.0,22.0,25,True
+2,ChIJl5yaxfm7HZYRgGJYfE8iSYc,Cabañas Natanael Trevelín,159.0,24.0,15,True
+2,ChIJCb4ETLs1HJYRQYh6m3OY1RY,Cabañas Rincon Del Sol,164.0,24.0,25,True
+2,ChIJ110MoTusHZYR08o6AYUCskY,El Jabalí Rojo,166.0,25.0,44,True
+2,ChIJZ88g9Jx8GpYR96aGMal8ujE,Frontera Sur,167.0,25.0,19,True
+2,ChIJb4PYLOS7HZYRPeaJwBGMoXM,Círculo De Oficiales Policía de la provincia de Chubut,171.0,25.0,25,True
+2,ChIJk6qP5EK_EJYRaddDHmDQ7lE,Patagonia Infinita Kayak & Adventure,177.0,26.0,39,True
+2,ChIJ27QMv2o1HJYR2NSh8r5KuSw,Lago Futalaufquen,183.0,27.0,15,True
+2,ChIJFTIsLTSsHZYRZvXB5BGF-wY,Cabañas Patagonia Encantada,188.0,28.0,56,True
+2,ChIJ02wqcgC7HZYRWPCnC37-W-0,Morchella Pizza y Pasta,189.0,28.0,142,True
+2,ChIJJ9nkLsO7HZYRJte9i4eYZ24,Cabañas Rincones Del Sur,199.0,30.0,36,True
+2,ChIJI1PjW-GtHZYRMR_ijki0gGk,Safari Lacustre,200.0,30.0,40,True
+2,ChIJS0ZvXaStHZYRBs9Fu-byCGA,Restaurante Aladino 🧞‍♂️,204.0,30.0,32,True
+3,ChIJn9QkpPu7HZYRLWZ_2sVUE6k,Cabañas Pañil,208.0,31.0,40,True
+3,ChIJCWkQ1Da_EJYRM9ON0GOHzy0,Ruma Andina by DOT Cabana,210.0,31.0,0,True
+3,ChIJiTIXI8O7HZYRrmUEIFk4zEU,Cabañas Costa del Percy,214.0,32.0,33,True
+3,ChIJ_8TbH6rAEJYRg9rgsG0KJJU,Hostería Las Nieves,217.0,32.0,34,True
+3,ChIJg0RsXKcxHJYRlhIKBj9UKtI,Punta Mattos,223.0,33.0,8,True
+3,ChIJBfdm0BE7HJYR9vp9jspyP4o,El Aura Lodge - Lago Verde,225.0,34.0,30,True
+3,ChIJC6l0XkGsHZYR8455vQOlAY4,Restaurant el Viejo Expreso,228.0,34.0,7,True
+3,ChIJhUlrcTqsHZYRpBb75R_96yA,Patagonia Verde,235.0,35.0,36,True
+3,ChIJAyeeIdutHZYRyZNrMzWNMQM,Villa AZUL,235.0,35.0,9,True
+3,ChIJa_5fkPG7HZYR7lFM58B6rKA,Camping El chacay,250.0,37.0,47,True
+3,ChIJnVTygsK7HZYRss2A9lflzV4,La Perla Hotel Boutique,250.0,37.0,21,True
+3,ChIJxzk_0UK_EJYR2Nu6p-CL6AY,Quetrihue Viajes y Turismo,256.0,38.0,42,True
+3,ChIJHTJLEW2sHZYRaKaJstF9uH4,Cabañas Abelard,261.0,39.0,25,True
+3,ChIJiSFZBK-7HZYRmF63sGnEx9M,La Escuela Restobar & Café,261.0,39.0,261,True
+3,ChIJI_DjnoS_EJYRX5X-5mbGUrM,Villa La Angostura Neuquén,263.0,39.0,140,True
+3,ChIJGR0wbxA7HJYRBw6XoRIQW-s,Lago Verde Camping Agreste,266.0,40.0,20,True
+3,ChIJYZ99-YG5HZYR5zVxUPKl94w,Hotel Casa de Piedra 3 estrellas,289.0,43.0,70,True
+3,ChIJYefuf1W_EJYR3wIk2m9oIY0,Hostería PICHI RINCÓN,313.0,47.0,62,True
+3,ChIJz3H5kui7HZYRTDNokGrL2Ik,IMPERIAL - Casa de Comidas/Panificadora Artesanal,314.0,47.0,61,True
+3,ChIJ81mlZcK7HZYRCHjW_AsO04c,2 Naciones,319.0,48.0,42,True
+3,ChIJffVzA8E2HJYRWatVkuob-ME,DOMOS Y CAMPING agreste Bahia Rosales,328.0,49.0,109,True
+3,ChIJ67etXxOsHZYRswJfYAl37j8,Cabañas Nativa,335.0,50.0,35,True
+3,ChIJk0UeBzqsHZYRnXSH_x89xu8,Las Bayas Home Suites,337.0,50.0,20,True
+3,ChIJfeCJeWPAEJYRHL-OjURkJJw,Hostería El Establo,348.0,52.0,14,True
+3,ChIJBadl_BKsHZYR8lgIiM38Fqk,Chaltén - Cabañas de montaña,352.0,52.0,0,True

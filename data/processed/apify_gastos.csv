@@ -47,3 +47,6 @@ fecha_utc,cuenta,actor,etiqueta,run_id,status,items,usd_estimado,usd,usage_total
 2026-11-07 15:20,APIFY_TOKEN3,compass/google-maps-reviews-scraper,maps_resenas_comparacion,Z9kakbFkbvqSDzFDi,SUCCEEDED,391,0.3004,0.2347,0.16804999999999998,"{""review-scraped"": 360, ""apify-actor-start"": 1}"
 2026-11-07 15:20,APIFY_TOKEN3,compass/google-maps-reviews-scraper,maps_resenas_alta,zc7ZRZhGELT8V79q3,SUCCEEDED,237,0.2584,0.1423,0.08404999999999999,"{""review-scraped"": 220, ""apify-actor-start"": 1}"
 2026-11-07 15:21,APIFY_TOKEN3,compass/google-maps-reviews-scraper,maps_resenas_media_esquel,fEb4WHFXcTfnMdrRn,SUCCEEDED,388,0.3004,0.2329,0.13204999999999997,"{""review-scraped"": 340, ""apify-actor-start"": 1}"
+2026-11-07 17:19,APIFY_TOKEN3,compass/google-maps-reviews-scraper,maps_resenas_lote1,SANaPTWsPptGDkzut,SUCCEEDED,833,0.304,0.4999,0.44284999999999997,"{""review-scraped"": 738, ""apify-actor-start"": 1}"
+2026-11-07 17:20,APIFY_TOKEN3,compass/google-maps-reviews-scraper,maps_resenas_lote2,mxquFzIWwLgDlU1UE,SUCCEEDED,833,0.3034,0.4999,0.44344999999999996,"{""review-scraped"": 739, ""apify-actor-start"": 1}"
+2026-11-07 17:21,APIFY_TOKEN3,compass/google-maps-reviews-scraper,maps_resenas_lote3,p6R5CO4BEnyAVolfM,SUCCEEDED,1166,0.6028,0.6997,0.5652499999999999,"{""review-scraped"": 1117, ""apify-actor-start"": 1}"

@@ -237,7 +237,7 @@ def cmd_seleccion(a):
 # Medido en el piloto (07/11): las reseñas desde mar-2024 son ≈ 18% del total de cada ficha (≈ 32 meses), o sea
 # ≈ 0,56% del total por mes. Se usa para estimar el costo según la fecha de inicio.
 FRAC_POR_MES = 0.0056
-DESDE_COMPLETA = "2023-07-31"  # pre-registro v2 §8: inicio de la ventana del episodio 2024
+DESDE_COMPLETA = "2024-08-19"  # pre-registro v3: 26 semanas antes del episodio 2025 (sin crédito para 2024)
 
 
 def frac_desde(desde: str) -> float:
@@ -249,13 +249,16 @@ def cmd_muestra(a):
     """Muestra del test a partir del catálogo completo (pre-registro §3 y §6): expuestas (alta o media) y
     comparación, en un rubro de la lista, con ≥ a.min_total reseñas totales. Es un prefiltro de costo: la
     elegibilidad final (≥ 6 reseñas de Google en el período previo) se aplica después de bajar las reseñas."""
-    cat = exposicion(leer_catalogo("catalogo_full"))
+    prefijo = "catalogo_full" if a.catalogo == "completo" else "catalogo"
+    cat = exposicion(leer_catalogo(prefijo))
     cat["rubro"] = [rubro_de(f"{c} {cs}") for c, cs in zip(cat["categoria"], cat["categorias"])]
     cat.to_csv(os.path.join(PROC, "maps_catalogo.csv"), index=False)
-    print(f"Catálogo completo: {len(cat)} fichas únicas → data/processed/maps_catalogo.csv")
+    print(f"Catálogo {a.catalogo}: {len(cat)} fichas únicas → data/processed/maps_catalogo.csv")
     print(pd.crosstab(cat["exposicion"], cat["rubro"], margins=True).to_string())
     m = cat[cat["exposicion"].isin(["alta", "media", "comparacion"]) & (cat["rubro"] != "otro")
             & (cat["n_resenas"] >= a.min_total)].copy()
+    if a.max_total:
+        m = m[m["n_resenas"] <= a.max_total]
     frac = frac_desde(DESDE_COMPLETA)
     m["est_resenas"] = np.minimum(m["n_resenas"] * frac, a.max_por_ficha).round()
     m.to_csv(os.path.join(PROC, "maps_muestra.csv"), index=False)
@@ -265,6 +268,142 @@ def cmd_muestra(a):
                                                           resenas_est=("est_resenas", "sum")).to_string())
     print(f"Reseñas estimadas desde {DESDE_COMPLETA}: {m['est_resenas'].sum():.0f} ≈ USD "
           f"{m['est_resenas'].sum() * precio:.2f} (fracción {frac:.2f} del total, según el ritmo del piloto)")
+
+
+def cmd_resenas_lotes(a):
+    """Muestra con crédito acotado (pre-registro v3): reutiliza el piloto y baja el resto en orden creciente de
+    reseñas totales, en lotes. Cada corrida exige un tope ≥ USD 0,50, así que ficha por ficha dejaría medio dólar sin
+    usar: los lotes son de ≈ USD 0,40 estimados y, cuando queda menos de ≈ USD 1, el último lote usa todo el saldo.
+    Si un lote toca su tope (Apify corta), sus fichas se marcan como posiblemente truncadas."""
+    m = pd.read_csv(os.path.join(PROC, "maps_muestra.csv")).sort_values("n_resenas", kind="stable")
+    precio = rb.PRECIO_FREE[ACTOR_RESENAS]
+    dir_out = os.path.join(RAW, "resenas_full")
+    os.makedirs(dir_out, exist_ok=True)
+    reg_path = os.path.join(PROC, "maps_lotes.csv")
+    registro = pd.read_csv(reg_path).to_dict("records") if os.path.exists(reg_path) else []
+    pend = []
+    for _, f in m.iterrows():
+        ruta = os.path.join(dir_out, f"{f['place_id']}.json")
+        piloto = os.path.join(RAW, "resenas_piloto", f"{f['place_id']}.json")
+        if os.path.exists(ruta):
+            continue
+        if os.path.exists(piloto):
+            items = [x for x in json.load(open(piloto, encoding="utf-8"))
+                     if str(x.get("publishedAtDate", "")) >= a.desde]
+            with open(ruta, "w", encoding="utf-8") as fh:
+                json.dump(items, fh, ensure_ascii=False)
+            registro.append({"lote": "piloto", "place_id": f["place_id"], "nombre": f["nombre"],
+                             "n_resenas": f["n_resenas"], "est_resenas": np.nan, "resenas_bajadas": len(items),
+                             "posible_truncada": False})
+            continue
+        pend.append(f)
+    print(f"Muestra: {len(m)} fichas | ya bajadas o del piloto: {len(m) - len(pend)} | pendientes: {len(pend)} "
+          f"(estimado total USD {sum(f['est_resenas'] for f in pend) * precio:.2f})")
+    k = 0
+    while pend:
+        resto = rb.disponible()
+        if resto < TOPE_MINIMO + 0.03:
+            print(f"  Fin del crédito: quedan USD {resto:.2f} (< {TOPE_MINIMO + 0.03:.2f}). Sin pedir: {len(pend)} fichas, "
+                  f"desde {pend[0]['nombre']} ({pend[0]['n_resenas']:.0f} reseñas totales).")
+            break
+        cupo = (resto - 0.03) if resto < 1.03 else 0.40  # último lote: todo el saldo
+        lote, acum = [], 0.0
+        for f in pend:
+            c = f["est_resenas"] * precio * 1.3
+            if lote and acum + c > cupo:
+                break
+            lote.append(f)
+            acum += c
+        if acum > resto - 0.03:
+            print(f"  La próxima ficha ({lote[0]['nombre']}) no entra en el saldo (USD {resto:.2f}). Fin.")
+            break
+        k += 1
+        est = sum(f["est_resenas"] for f in lote) * precio + rb.PRECIO_START * 4
+        tope = round(min(max(est * 1.15 + 0.01, TOPE_MINIMO), resto), 2)
+        run_input = {"placeIds": [f["place_id"] for f in lote], "maxReviews": a.max_por_ficha,
+                     "reviewsSort": "newest", "reviewsStartDate": a.desde, "reviewsOrigin": "all",
+                     "language": "es", "personalData": False}
+        print(f"\nLote {k}: {len(lote)} fichas ({lote[0]['n_resenas']:.0f}–{lote[-1]['n_resenas']:.0f} reseñas totales)")
+        items = rb.correr(ACTOR_RESENAS, run_input, est, f"maps_resenas_lote{k}", None, a.dry_run, TOPE_MINIMO)
+        if items is None:  # dry-run: simular el gasto para seguir mostrando los lotes
+            pend = pend[len(lote):]
+            continue
+        usado = float(pd.read_csv(rb.GASTOS).iloc[-1]["usd"])
+        corte = usado >= 0.95 * tope
+        por_ficha = {}
+        for x in items:
+            por_ficha.setdefault(x.get("placeId"), []).append(x)
+        for f in lote:
+            xs = por_ficha.get(f["place_id"], [])
+            with open(os.path.join(dir_out, f"{f['place_id']}.json"), "w", encoding="utf-8") as fh:
+                json.dump(xs, fh, ensure_ascii=False)
+            registro.append({"lote": k, "place_id": f["place_id"], "nombre": f["nombre"], "n_resenas": f["n_resenas"],
+                             "est_resenas": f["est_resenas"], "resenas_bajadas": len(xs), "posible_truncada": corte})
+        pd.DataFrame(registro).to_csv(reg_path, index=False)
+        print(f"  lote {k}: USD {usado:.3f} de tope {tope:.2f}{' — TOCÓ EL TOPE: fichas marcadas' if corte else ''}")
+        pend = pend[len(lote):]
+    if not a.dry_run:
+        pd.DataFrame(registro).to_csv(reg_path, index=False)
+        bajadas = [r for r in registro if r["lote"] != "piloto"]
+        if bajadas:
+            print(f"\nCorte efectivo: la ficha más grande bajada tiene {max(r['n_resenas'] for r in bajadas):.0f} "
+                  f"reseñas totales. Registro: {reg_path}")
+
+
+def cmd_completitud(a):
+    """Estado de cada ficha de la muestra a partir de los LOGS del actor (evidencia directa, verificado 07/11).
+    El actor procesa varias fichas en paralelo, así que un lote cortado por el tope no deja "primeras completas":
+    el log escribe, por ficha, "[a/b] Stopping: Reached review older than <fecha de inicio>" (a = reseñas bajadas de
+    esa ficha, b = reseñas totales) y "[a/b] Reached charge limit" en la que estaba al cortar. Se asocia cada línea a
+    su ficha por (a, b).
+      completa        llegó a la fecha de inicio (o es del piloto)
+      truncada_corte  la que estaba en curso al tocar el tope
+      no_empezada     sin reseñas y sin línea de parada
+      sin_senal       con reseñas pero sin línea de parada: se excluye (sensibilidad que la incluye)"""
+    reg = pd.read_csv(os.path.join(PROC, "maps_lotes.csv"))
+    m = pd.read_csv(os.path.join(PROC, "maps_muestra.csv")).set_index("place_id")
+    desde = pd.Timestamp(a.desde, tz="UTC")
+    fin_prev = pd.Timestamp("2025-02-10", tz="UTC")  # pre-registro v3: período previo 19/08/2024 – 09/02/2025
+    filas = []
+    for _, r in reg.iterrows():
+        xs = json.load(open(os.path.join(RAW, "resenas_full", f"{r['place_id']}.json"), encoding="utf-8"))
+        f = (pd.DatetimeIndex(pd.to_datetime([x["publishedAtDate"] for x in xs], utc=True)) if xs
+             else pd.DatetimeIndex([], tz="UTC"))
+        filas.append({"lote": str(r["lote"]), "place_id": r["place_id"], "nombre": r["nombre"],
+                      "exposicion": m.loc[r["place_id"], "exposicion"], "rubro": m.loc[r["place_id"], "rubro"],
+                      "n_total": r["n_resenas"], "bajadas": len(xs),
+                      "previas": int(((f >= desde) & (f < fin_prev)).sum()), "estado": None})
+    d = pd.DataFrame(filas)
+    d.loc[d["lote"] == "piloto", "estado"] = "completa"
+    g = pd.read_csv(rb.GASTOS)
+    for _, r in g[g["etiqueta"].astype(str).str.startswith("maps_resenas_lote")].iterrows():
+        rb.TOKEN_VAR = r["cuenta"]
+        lote = r["etiqueta"].replace("maps_resenas_lote", "")
+        log = rb.cliente().run(r["run_id"]).log().get() or ""
+        sub = d[d["lote"] == lote]
+        usados = set()
+        for patron, estado in ((r"\[(\d+)/(\d+)\] Stopping: Reached review older", "completa"),
+                               (r"\[(\d+)/(\d+)\] Reached charge limit", "truncada_corte")):
+            for ln in log.splitlines():
+                mm = re.search(patron, ln)
+                if not mm:
+                    continue
+                bajadas, total = map(int, mm.groups())
+                cand = sub[(sub["n_total"] == total) & ~sub.index.isin(usados)]
+                exacta = cand[cand["bajadas"] == bajadas]
+                cand = exacta if len(exacta) else cand
+                if len(cand):
+                    usados.add(cand.index[0])
+                    d.loc[cand.index[0], "estado"] = estado
+        resto = d.index.isin(sub.index) & d["estado"].isna()
+        d.loc[resto & (d["bajadas"] == 0), "estado"] = "no_empezada"
+        d.loc[resto & (d["bajadas"] > 0), "estado"] = "sin_senal"
+    d["elegible"] = (d["estado"] == "completa") & (d["previas"] >= a.min_previas)
+    d.to_csv(os.path.join(PROC, "maps_completitud.csv"), index=False)
+    print(pd.crosstab(d["lote"], d["estado"]).to_string())
+    e = d[d["elegible"]]
+    print(f"\nElegibles (completa según el log y ≥ {a.min_previas} reseñas previas): {len(e)} | "
+          f"{e['exposicion'].value_counts().to_dict()} → data/processed/maps_completitud.csv")
 
 
 def gasto_etiqueta(prefijo: str) -> float:
@@ -394,6 +533,8 @@ def main():
     p.add_argument("--max-resenas", type=int, default=3000)
     p.add_argument("--seed", type=int, default=2025)
     p = sub.add_parser("muestra")
+    p.add_argument("--catalogo", choices=["completo", "piloto"], default="completo")
+    p.add_argument("--max-total", type=int, help="máximo de reseñas totales (opcional)")
     p.add_argument("--min-total", type=int, default=50, help="prefiltro de costo: reseñas totales de la ficha")
     p.add_argument("--max-por-ficha", type=int, default=1000)
     p = sub.add_parser("resenas")
@@ -403,6 +544,13 @@ def main():
     p.add_argument("--frac-desde-2024", type=float, default=0.5)
     p.add_argument("--presupuesto", type=float)
     p.add_argument("--dry-run", action="store_true")
+    p = sub.add_parser("resenas-lotes", help="muestra con crédito acotado: orden creciente, en lotes")
+    p.add_argument("--desde", default=DESDE_COMPLETA)
+    p.add_argument("--max-por-ficha", type=int, default=1000)
+    p.add_argument("--dry-run", action="store_true")
+    p = sub.add_parser("completitud", help="estado de cada ficha según los logs del actor")
+    p.add_argument("--desde", default=DESDE_COMPLETA)
+    p.add_argument("--min-previas", type=int, default=3)
     p = sub.add_parser("diagnostico")
     p.add_argument("--max-por-ficha", type=int, default=500)
     a = ap.parse_args()
@@ -412,6 +560,7 @@ def main():
         a.max_por_ficha = a.max_por_ficha or (1000 if a.completa else 500)
         a.presupuesto = a.presupuesto or (15.0 if a.completa else 3.0)
     {"catalogo": cmd_catalogo, "seleccion": cmd_seleccion, "muestra": cmd_muestra, "resenas": cmd_resenas,
+     "resenas-lotes": cmd_resenas_lotes, "completitud": cmd_completitud,
      "diagnostico": cmd_diagnostico}[a.cmd](a)
 
 

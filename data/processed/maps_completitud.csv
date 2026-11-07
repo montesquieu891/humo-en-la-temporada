@@ -1,0 +1,101 @@
+lote,place_id,nombre,exposicion,rubro,n_total,bajadas,previas,estado,elegible
+piloto,ChIJxabifgA1HJYRcZG-3NiebNc,Camping Las Rocas,alta,camping,62.0,62,31,completa,True
+piloto,ChIJEdy0n7o1HJYRbIueLakmstU,Playa la usina,alta,atractivo,215.0,97,30,completa,True
+piloto,ChIJo7nhC8a7HZYRrlUoRHjs-40,Hosteria y Cabañas La Estancia,media,alojamiento,250.0,23,7,completa,True
+piloto,ChIJPctx9hSsHZYR0mEx9Zqvxg8,Millalén,media,alojamiento,274.0,21,9,completa,True
+piloto,ChIJsdJR2gs1HJYRK0S4psGrLag,Hosteria Quime Quipan Futalaufquen,alta,alojamiento,409.0,68,22,completa,True
+piloto,ChIJYx9dTzCsHZYR8rHXedGXHrM,Restaurant Vascongada,media,gastronomia,452.0,67,17,completa,True
+piloto,ChIJS1dlMkO_EJYRloI7BwZM25Y,Camping Dormis y Bungalows Osa Mayor,comparacion,alojamiento,663.0,88,27,completa,True
+piloto,ChIJJdpefei7HZYRo32jhTLpZlo,El Bodegón de Nikanor,media,gastronomia,838.0,264,77,completa,True
+piloto,ChIJiRLSAiY1HJYRowRXex5KFQc,Camping Los Maitenes,alta,camping,860.0,134,33,completa,True
+piloto,ChIJ40K1OjqsHZYR7WRcqzfzFYY,Sol del Sur,media,alojamiento,1296.0,240,31,completa,True
+piloto,ChIJ88x8jcG7HZYRikw_4xrTnao,Molino Andes y CIA,media,atractivo,1584.0,286,84,completa,True
+piloto,ChIJVVUVdmi_EJYRp2_oWCWjg5A,Ay Ay Ay María,comparacion,gastronomia,2042.0,368,101,completa,True
+piloto,ChIJx32ollm_EJYRqTEbxyUvyA0,UNQUEHUE Apartamentos Dormis y Camping,comparacion,camping,2321.0,256,82,completa,True
+piloto,ChIJpdZJPjusHZYRPCCmFP5ZM38,Cervecería Amancay,media,gastronomia,2502.0,273,92,completa,True
+1,ChIJoY_HwsO7HZYRJSqlfOOkMd0,Camping Trevelin,media,alojamiento,51.0,32,11,completa,True
+1,ChIJa6l4T8O7HZYRx23Jw-YIRts,Cabañas El Cisne,media,alojamiento,52.0,13,6,completa,True
+1,ChIJN6yu0W2sHZYRWeqoTGtzQrc,Cabañas Pyracantha,media,alojamiento,54.0,8,1,completa,False
+1,ChIJZSMxlGSpHZYRlbch0323H48,CARTEL ESQUEL NARANJA,media,atractivo,60.0,48,15,completa,True
+1,ChIJj2uRDhOsHZYRIout2iMAMiQ,Cabañas Nunatak,media,alojamiento,62.0,5,2,completa,False
+1,ChIJlbLgaXK_EJYRjELP4b6iRfI,El Aleph,comparacion,alojamiento,62.0,14,5,completa,True
+1,ChIJDZK8_yS7HZYRONL3sgSzX0M,Marcando Ruta EVyT,media,excursiones,63.0,15,3,completa,True
+1,ChIJdw__S-q_EJYRKFYzEc2xAMM,Green House Bed & Breakfast,comparacion,alojamiento,64.0,54,7,completa,True
+1,ChIJ-9Y-JTC_EJYR2yKICMEz1Ms,Angostura Lacustre ~ Paseos en Barco,comparacion,excursiones,64.0,17,4,completa,True
+1,ChIJaVg6lyy9HZYRLL-xObGf76s,KrysTob,media,alojamiento,65.0,38,17,completa,True
+1,ChIJDyweTvi3HZYR9-3noHCC-4U,Cabañas Don Edmundo Trevelin,media,alojamiento,66.0,24,3,completa,True
+1,ChIJ5fovvvm7HZYR-mTonopPsSQ,Cabañas Luana,media,alojamiento,71.0,4,1,completa,False
+1,ChIJc0rYW0O_EJYRUBbKS1S8JJ0,Cartel Villa la Angostura,comparacion,atractivo,72.0,48,9,completa,True
+1,ChIJs6Hawy81HJYRUnIjUBinkYE,Camping Rahué,alta,camping,73.0,1,0,completa,False
+1,ChIJ52pc1em7HZYRby1tMneB9lw,Benedetta,media,gastronomia,74.0,0,0,completa,False
+1,ChIJDympZX42HJYRwSelal_nAv4,Tejas Negras Cabañas y Proveeduría,media,alojamiento,77.0,20,7,completa,True
+1,ChIJrdCo49y9HZYRqd1ktQ8fnzI,La Rosa Búlgara,media,alojamiento,77.0,15,8,completa,True
+1,ChIJCd85agC_EJYRUDFP2PT0d2g,Playa Costa Las Balsas,comparacion,atractivo,77.0,37,0,truncada_corte,False
+1,ChIJSWi8DPC7HZYRlJWNEt_UuEA,El Tropezon,media,alojamiento,81.0,15,9,completa,True
+1,ChIJiTIXI8O7HZYRa5bWsVpYxHg,Cabaña los Ciruelos,media,alojamiento,81.0,8,3,completa,True
+1,ChIJbyhEqvG7HZYRtPiFhhyiRQw,Ñam - Buena Comida,media,gastronomia,85.0,0,0,no_empezada,False
+1,ChIJEfFwjJ6_EJYRFh8fLidOKqE,Los Rodriguez Restaurant,comparacion,gastronomia,86.0,0,0,no_empezada,False
+1,ChIJAYaOCae_EJYR92cPBZ_OJdQ,Cabañas La Estancia,comparacion,alojamiento,88.0,0,0,no_empezada,False
+1,ChIJAzjgR6ROHJYR-WpH-3TSK1k,Huemules - Reserva de Montaña,media,atractivo,89.0,0,0,no_empezada,False
+1,ChIJoaav10q3HZYR-QBabm63ogI,Pueblo Alto Lodge,media,alojamiento,91.0,0,0,no_empezada,False
+1,ChIJn7e6Lk6tHZYRcAredT1AK8I,Meraki Sur Agencia de Viajes,media,excursiones,93.0,47,18,completa,True
+1,ChIJayC7JFS_EJYR0dTlDpJHvF0,Dalca Kayak Adventures,comparacion,excursiones,94.0,36,14,completa,True
+1,ChIJ9dFoLj3BEJYR1lJTWNxxoGg,Cabañas Del Árbol,comparacion,alojamiento,95.0,11,3,completa,True
+1,ChIJh_bEbre_EJYRXcV7ya1o8Tc,Solar Selvana | Casas de montaña,comparacion,alojamiento,97.0,47,17,completa,True
+1,ChIJ3Sqs66tKHJYRlCcLnMeBFA0,Laguna Larga Lodge,alta,alojamiento,101.0,24,8,completa,True
+1,ChIJEzcVwJq7HZYRAUFCjSsLmrI,Alojamiento Familiar R259,media,alojamiento,101.0,33,7,completa,True
+1,ChIJOduyL-S7HZYRPMMDOzTahWI,"""De la Cabaña"" - Casero & Gourmet",media,gastronomia,108.0,37,11,completa,True
+1,ChIJVbwEuu27HZYR84eBjY7ubjo,Cabañas Trevelin,media,alojamiento,110.0,3,1,completa,False
+1,ChIJc8AJ9wauHZYReckf76h-0vQ,Hostería La Chacra,media,alojamiento,113.0,13,4,completa,True
+1,ChIJkeZev7HAEJYRGYNYdtIxlcM,Cabañas Rukayén,comparacion,atractivo,113.0,15,4,completa,True
+1,ChIJhZhunEesHZYRkjpKpInRgsc,Lago Verde,media,alojamiento,114.0,6,0,completa,False
+1,ChIJoS8mWIe7HZYRsryGbzkjQac,Gales al Sur Trevelin,media,excursiones,115.0,8,6,completa,True
+1,ChIJcaUV-MG7HZYR5LxMtCoz3DM,Cabañas Nueva Era,media,alojamiento,117.0,13,4,completa,True
+1,ChIJ48IWg8y7HZYRm8vc2mBqYNs,Cabañas Rocio Trevelin,media,alojamiento,120.0,33,11,completa,True
+1,ChIJpYS7y3-_EJYRmD4cU113hJw,Gluck Patagonia Aparts,comparacion,alojamiento,120.0,91,15,completa,True
+2,ChIJIYoq-DmsHZYRoeiJqbTVq3U,Limits Adventure,media,excursiones,124.0,9,1,completa,False
+2,ChIJsX0tEma_EJYRk8yPCgO530U,Cordillera Fly - Excursiones de pesca en Villa La Angostura,comparacion,excursiones,127.0,45,20,completa,True
+2,ChIJ6YYhc9Y6HJYRgZgqPu_Fcw0,Glaxiar Mountain & Adventure Co.,media,excursiones,134.0,23,11,completa,True
+2,ChIJ8eKoVH-5HZYRiFnlf9QU8gU,Cabaña & Spa - Regbue,media,alojamiento,134.0,12,5,completa,True
+2,ChIJYdxc-WTHEJYR4IzE_G-INsA,Kayak 7 Lagos,comparacion,excursiones,134.0,33,10,completa,True
+2,ChIJdyG9XMS7HZYRQddBEWvO4Qc,Cabañas La Señalada,media,alojamiento,142.0,19,6,completa,True
+2,ChIJEQy5k9S_EJYR_OiEGzrPHqE,Gula Focacceria,comparacion,gastronomia,143.0,143,0,sin_senal,False
+2,ChIJzTjhI742HJYRfdpF3PMpLao,Camping Club Empleados Banco Chubut,media,camping,146.0,36,25,completa,True
+2,ChIJJ6tzK2a3HZYRMX__iY7TFI0,Mirador y Puente Sobre Rio Percey,media,atractivo,148.0,25,4,completa,True
+2,ChIJl5yaxfm7HZYRgGJYfE8iSYc,Cabañas Natanael Trevelín,media,alojamiento,159.0,15,3,completa,True
+2,ChIJCb4ETLs1HJYRQYh6m3OY1RY,Cabañas Rincon Del Sol,media,alojamiento,164.0,25,8,completa,True
+2,ChIJ110MoTusHZYR08o6AYUCskY,El Jabalí Rojo,media,gastronomia,166.0,44,11,completa,True
+2,ChIJZ88g9Jx8GpYR96aGMal8ujE,Frontera Sur,media,excursiones,167.0,19,11,completa,True
+2,ChIJb4PYLOS7HZYRPeaJwBGMoXM,Círculo De Oficiales Policía de la provincia de Chubut,media,alojamiento,171.0,25,6,completa,True
+2,ChIJk6qP5EK_EJYRaddDHmDQ7lE,Patagonia Infinita Kayak & Adventure,comparacion,excursiones,177.0,39,21,completa,True
+2,ChIJ27QMv2o1HJYR2NSh8r5KuSw,Lago Futalaufquen,alta,camping,183.0,15,3,completa,True
+2,ChIJFTIsLTSsHZYRZvXB5BGF-wY,Cabañas Patagonia Encantada,media,alojamiento,188.0,56,16,completa,True
+2,ChIJ02wqcgC7HZYRWPCnC37-W-0,Morchella Pizza y Pasta,media,gastronomia,189.0,142,16,truncada_corte,False
+2,ChIJJ9nkLsO7HZYRJte9i4eYZ24,Cabañas Rincones Del Sur,media,alojamiento,199.0,36,5,completa,True
+2,ChIJI1PjW-GtHZYRMR_ijki0gGk,Safari Lacustre,media,excursiones,200.0,40,0,sin_senal,False
+2,ChIJS0ZvXaStHZYRBs9Fu-byCGA,Restaurante Aladino 🧞‍♂️,media,gastronomia,204.0,32,17,completa,True
+3,ChIJn9QkpPu7HZYRLWZ_2sVUE6k,Cabañas Pañil,media,alojamiento,208.0,40,22,completa,True
+3,ChIJCWkQ1Da_EJYRM9ON0GOHzy0,Ruma Andina by DOT Cabana,comparacion,alojamiento,210.0,0,0,no_empezada,False
+3,ChIJiTIXI8O7HZYRrmUEIFk4zEU,Cabañas Costa del Percy,media,alojamiento,214.0,33,12,completa,True
+3,ChIJ_8TbH6rAEJYRg9rgsG0KJJU,Hostería Las Nieves,comparacion,alojamiento,217.0,34,6,completa,True
+3,ChIJg0RsXKcxHJYRlhIKBj9UKtI,Punta Mattos,media,atractivo,223.0,8,1,completa,False
+3,ChIJBfdm0BE7HJYR9vp9jspyP4o,El Aura Lodge - Lago Verde,media,alojamiento,225.0,30,9,completa,True
+3,ChIJC6l0XkGsHZYR8455vQOlAY4,Restaurant el Viejo Expreso,media,gastronomia,228.0,7,3,completa,True
+3,ChIJhUlrcTqsHZYRpBb75R_96yA,Patagonia Verde,media,excursiones,235.0,36,12,completa,True
+3,ChIJAyeeIdutHZYRyZNrMzWNMQM,Villa AZUL,media,alojamiento,235.0,9,2,completa,False
+3,ChIJa_5fkPG7HZYR7lFM58B6rKA,Camping El chacay,media,camping,250.0,47,21,completa,True
+3,ChIJnVTygsK7HZYRss2A9lflzV4,La Perla Hotel Boutique,media,alojamiento,250.0,21,7,completa,True
+3,ChIJxzk_0UK_EJYR2Nu6p-CL6AY,Quetrihue Viajes y Turismo,comparacion,excursiones,256.0,42,5,completa,True
+3,ChIJHTJLEW2sHZYRaKaJstF9uH4,Cabañas Abelard,media,alojamiento,261.0,25,6,completa,True
+3,ChIJiSFZBK-7HZYRmF63sGnEx9M,La Escuela Restobar & Café,media,gastronomia,261.0,261,37,sin_senal,False
+3,ChIJI_DjnoS_EJYRX5X-5mbGUrM,Villa La Angostura Neuquén,comparacion,alojamiento,263.0,140,0,sin_senal,False
+3,ChIJGR0wbxA7HJYRBw6XoRIQW-s,Lago Verde Camping Agreste,media,atractivo,266.0,20,7,completa,True
+3,ChIJYZ99-YG5HZYR5zVxUPKl94w,Hotel Casa de Piedra 3 estrellas,media,alojamiento,289.0,70,15,completa,True
+3,ChIJYefuf1W_EJYR3wIk2m9oIY0,Hostería PICHI RINCÓN,comparacion,alojamiento,313.0,62,30,completa,True
+3,ChIJz3H5kui7HZYRTDNokGrL2Ik,IMPERIAL - Casa de Comidas/Panificadora Artesanal,media,gastronomia,314.0,61,20,completa,True
+3,ChIJ81mlZcK7HZYRCHjW_AsO04c,2 Naciones,media,gastronomia,319.0,42,15,completa,True
+3,ChIJffVzA8E2HJYRWatVkuob-ME,DOMOS Y CAMPING agreste Bahia Rosales,media,camping,328.0,109,32,completa,True
+3,ChIJ67etXxOsHZYRswJfYAl37j8,Cabañas Nativa,media,alojamiento,335.0,35,8,completa,True
+3,ChIJk0UeBzqsHZYRnXSH_x89xu8,Las Bayas Home Suites,media,alojamiento,337.0,20,0,sin_senal,False
+3,ChIJfeCJeWPAEJYRHL-OjURkJJw,Hostería El Establo,comparacion,alojamiento,348.0,14,0,truncada_corte,False
+3,ChIJBadl_BKsHZYR8lgIiM38Fqk,Chaltén - Cabañas de montaña,media,alojamiento,352.0,0,0,no_empezada,False

@@ -1,6 +1,6 @@
 # Pre-registro: episodio de incendio 2025 en la Comarca de los Alerces
 
-**Versión 2, 07/11/2026** (la v1 es del mismo día; la v2 agrega la §8). Se escribe y se commitea **antes** de bajar cualquier reseña de Google Maps. Lo que se
+**Versión 3, 07/11/2026** (v1 y v2 son del mismo día; la v3 ajusta la muestra al crédito disponible, ver Cambios). Se escribe y se commitea **antes** de bajar cualquier reseña de Google Maps. Lo que se
 cambie después de ver reseñas va en la sección "Cambios" con la fecha y el motivo, y el análisis original se
 informa igual. Contexto y piloto: `docs/plan_reformulacion_alerces.md`.
 
@@ -226,4 +226,43 @@ tasa que en §3 (≥ 6 en ≈ 48 semanas). Una ficha que no cumple en un episodi
 - **07/11/2026, v2:** se agrega la §8 (tres episodios apilados como análisis secundario), con
   `reviewsStartDate=2023-07-31` para la muestra completa. Antes de bajar la muestra y sin mirar ningún episodio.
   El test principal (2025) no cambia.
+- **07/11/2026, v3: muestra ajustada al crédito disponible** (no hay más crédito: quedan USD 1,83 en la cuenta 3).
+  Se decide antes de bajar la muestra y sin mirar ningún episodio. Esta versión manda sobre lo anterior donde
+  difieran.
+  - **Catálogo:** el del piloto (314 fichas). No se baja el catálogo completo, así que no hay San Martín de los
+    Andes ni Corcovado. **La comparación es solo Villa La Angostura** y la robustez "sin San Martín" no aplica.
+  - **Muestra:** fichas del catálogo con exposición alta, media o comparación, de un rubro de la lista y con
+    ≥ 50 reseñas totales.
+    - Las 14 del piloto se reutilizan: tienen reseñas desde 2024-01-01.
+    - El resto se baja **en orden creciente de reseñas totales** hasta agotar el crédito, en lotes. El último lote
+      usa todo el saldo. El corte efectivo (la ficha más grande bajada) se anota acá después de la bajada.
+    - Las fichas de un lote que haya tocado su tope de gasto se excluyen como posiblemente truncadas, con
+      sensibilidad que las incluye.
+    - El orden por tamaño excluye primero a las fichas más populares. Eso limita la validez externa y se declara.
+  - **Reseñas desde el 19/08/2024** (26 semanas antes del episodio 2025). La **ventana del test principal** pasa a
+    ser del 19/08/2024 al 29/12/2025 (antes empezaba el 04/03/2024).
+  - **Período previo** para la elegibilidad: del 19/08/2024 al 09/02/2025. Mínimo de **≥ 3 reseñas de Google**,
+    la misma tasa que antes (≥ 6 en ≈ 48 semanas).
+  - **Episodio 2024: no se ejecuta.** No hay reseñas de 2023. La §8 queda reducida a **2025 + 2026 apilados**; el
+    de 2026 entra sin costo porque las reseñas llegan hasta hoy.
+  - **Potencia esperada,** con el catálogo del piloto: ≈ 50 expuestas + 15 de comparación elegibles. El efecto
+    mínimo detectable a una cola es de **≈ −45%**. **Solo se pueden detectar caídas muy grandes**; un nulo se
+    informa como "no detectable con esta muestra".
+  - **Consigna:** sin el catálogo completo, el Dataset 2 no llega a 700 fichas. Queda para consultar con la
+    profesora qué se presenta (catálogo, reseñas o panel).
+- **07/11/2026, resultado de la bajada v3** (sin mirar ningún episodio):
+  - Se bajaron 3 lotes por USD 1,70 reales: 2.832 reseñas. Quedan USD 0,16, que no alcanzan para otra corrida
+    (el mínimo es USD 0,50).
+  - **Corte efectivo: 352 reseñas totales.** Quedaron sin pedir 51 fichas, desde 357 reseñas en adelante.
+  - Los tres lotes tocaron su tope: la estimación de costo se quedó corta porque las fichas chicas tienen más
+    reseñas recientes que el promedio del piloto.
+  - **Completitud por ficha según el log del actor** (`run_maps.py completitud`). El actor procesa varias fichas en
+    paralelo y escribe por ficha "[bajadas/total] Stopping: Reached review older than 19/08/2024". Cada línea se
+    asoció a su ficha por (bajadas, total), sin ambigüedades: 71 de 71.
+  - **Resultado:** 85 completas (71 nuevas y 14 del piloto), 3 cortadas por el tope, 7 nunca empezadas y 5 sin
+    señal en el log. Solo entran las completas; las "sin señal" van como sensibilidad.
+  - **Muestra elegible** (completa y ≥ 3 reseñas de Google entre el 19/08/2024 y el 09/02/2025): **75 fichas**.
+    Son 51 de exposición media, 6 de alta y 18 de comparación (Villa La Angostura).
+    Archivo: `data/processed/maps_completitud.csv`.
+  - **Efecto mínimo detectable esperado** (a una cola, 80%, con la varianza del piloto): **≈ −43%**.
 
