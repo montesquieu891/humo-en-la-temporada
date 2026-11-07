@@ -138,7 +138,7 @@ de un incendio forestal, para que una cámara hotelera pueda reclamar, comunicar
   volumen −10% (IC −53% a +71%), nota −0,11 (IC −0,55 a +0,33). **Con 29 alojamientos no se detecta efecto.**
   Es el número a mostrar con su IC, no el del 2×2. Hace falta la corrida completa de reviews.
 
-### Preguntas abiertas para el grupo (no se cambió nada)
+### Preguntas abiertas para el grupo (no se cambió nada; memo con evidencia: `docs/decisiones_abiertas.md`)
 - Temporada 2025: hubo fuego en Epuyén del 15 al 30/01/2025 (evento 5) y en Esquel/Trevelin en feb-2025, pero
   los meses de fuego 2025 son solo 2025-02. ¿Agregar 2025-01 para Epuyén, o tratar a Chubut 2025 como contaminado?
 - ¿Qué dataset de Booking presentamos como "Dataset 2": alojamientos (834) o reviews (1.789)? Ambos cumplen.
