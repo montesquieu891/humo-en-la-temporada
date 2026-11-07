@@ -52,7 +52,17 @@ LOCALIDADES = {
     "Trevelin": (-43.087, -71.464),
 }
 
-PATRON_HUMO = re.compile(r"\b(?:humo|incendi\w*|fuego\w*|ceniza\w*|smoke|fire\w*|wildfire\w*)\b", re.I)
+# Menciones al incendio forestal en el texto de la review. Verificado 07/11: el patrón anterior
+# ("fuego\w*|fire\w*") marcaba chimeneas ("should have a fireplace") y fuegos de leña. Se usan solo
+# términos inequívocos y se excluyen las reviews que hablan de chimenea/estufa/leña/fogón.
+# Hallazgo: en 2.231 reviews casi no hay menciones (quien cancela por el humo no deja review),
+# así que pct_humo es un indicador descriptivo, no un outcome.
+PATRON_HUMO = re.compile(r"\b(?:humo|incendios?\s+forestal\w*|incendio\w*\s+(?:en|cerca|de la zona)|"
+                         r"ceniza\w*|smoke\w*|smoky|wildfire\w*|forest\s+fire\w*|bush\s*fire\w*|"
+                         r"evacua\w*|brigadist\w*)\b", re.I)
+TIPOS_VIAJERO = {"familia": "Family", "pareja": "Couple", "grupo": "Group", "solo": "Solo traveler"}
+EXCLUSION_HUMO = re.compile(r"chimenea|estufa|salamandra|le[ñn]a|fog[oó]n|fireplace|fire\s*pit|parrilla|asado",
+                            re.I)
 
 
 def norm_url(u) -> str:
@@ -117,7 +127,7 @@ def preparar_reviews(paths, f_stay=None, f_hotel=None) -> pd.DataFrame:
         "noches": pd.to_numeric(rev.get("numberOfNights"), errors="coerce"),
         "nota": pd.to_numeric(rev[c_score], errors="coerce") if c_score else np.nan,
         "tipo_viajero": rev.get("travelerType"),
-        "menciona_humo": texto.str.contains(PATRON_HUMO).astype(int),
+        "menciona_humo": (texto.str.contains(PATRON_HUMO) & ~texto.str.contains(EXCLUSION_HUMO)).astype(int),
     })
     antes = len(out)
     out = out.drop_duplicates("review_id") if out["review_id"].notna().all() else out
@@ -155,10 +165,17 @@ def armar_panel(aloj: pd.DataFrame, rev: pd.DataFrame) -> pd.DataFrame:
     con_reviews = aloj[aloj["aloj_id"].isin(rev["aloj_id"])]
     base = pd.MultiIndex.from_product([con_reviews["aloj_id"], todos_meses],
                                       names=["aloj_id", "mes_estadia"]).to_frame(index=False)
-    agg = rev.groupby(["aloj_id", "mes_estadia"]).agg(
-        n_reviews=("nota", "size"), nota_media=("nota", "mean"), pct_humo=("menciona_humo", "mean"))
+    # Outcomes secundarios (decidido 07/11): duración de la estadía y composición del viajero.
+    # "noches_total" = noches asociadas a reviews: NO son pernoctaciones totales ni habitaciones vendidas.
+    r = rev.assign(**{f"es_{k}": (rev["tipo_viajero"] == v).astype(float)
+                      for k, v in TIPOS_VIAJERO.items()})
+    agg = r.groupby(["aloj_id", "mes_estadia"]).agg(
+        n_reviews=("nota", "size"), nota_media=("nota", "mean"), pct_humo=("menciona_humo", "mean"),
+        noches_total=("noches", "sum"), noches_media=("noches", "mean"),
+        **{f"pct_{k}": (f"es_{k}", "mean") for k in TIPOS_VIAJERO})
     panel = base.merge(agg.reset_index(), on=["aloj_id", "mes_estadia"], how="left")
     panel["n_reviews"] = panel["n_reviews"].fillna(0).astype(int)
+    panel["noches_total"] = panel["noches_total"].fillna(0)
     # Un alojamiento cuenta como activo desde su primer mes con review en la muestra.
     primero = rev.groupby("aloj_id")["mes_estadia"].min().rename("primer_mes")
     panel = panel.merge(primero, on="aloj_id")

@@ -138,6 +138,17 @@ de un incendio forestal, para que una cámara hotelera pueda reclamar, comunicar
   volumen −10% (IC −53% a +71%), nota −0,11 (IC −0,55 a +0,33). **Con 29 alojamientos no se detecta efecto.**
   Es el número a mostrar con su IC, no el del 2×2. Hace falta la corrida completa de reviews.
 
+### Análisis secundarios (07/11, `src/analisis_secundario.py`; mismos FE, PRELIMINAR)
+- Panel con outcomes nuevos: `noches_total` (noches asociadas a reviews, NO pernoctaciones), `noches_media`,
+  `pct_familia`, `pct_pareja`, `pct_grupo`, `pct_solo`.
+- Duración: noches −14% [−61%, +87%]; noches por review +0,17 [−0,38; +0,71] → sin señal de viajes más cortos.
+- Tipo de viajero: sin cambios detectables (familias −3,4 pp, parejas +3,9 pp; IC incluyen 0).
+- **Desplazamiento:** contra la banda 15–40 km, los lejanos (> 40 km, Bariloche) dan +253% [−11%, +1.293%] en
+  meses de fuego y el efecto "cerca" pasa a +25%. Compatible con control lejano inflado por turistas desplazados;
+  con solo 4 alojamientos lejanos. Producto 2: muestra de control más grande y banda 15–40 como control alternativo.
+- Texto: con el patrón corregido (sin chimenea/leña/fireplace) hay 1 mención al incendio en 1.481 reviews →
+  `pct_humo` es descriptivo, no outcome (quien cancela no deja review).
+
 ### Preguntas abiertas para el grupo (no se cambió nada; memo con evidencia: `docs/decisiones_abiertas.md`)
 - Temporada 2025: hubo fuego en Epuyén del 15 al 30/01/2025 (evento 5) y en Esquel/Trevelin en feb-2025, pero
   los meses de fuego 2025 son solo 2025-02. ¿Agregar 2025-01 para Epuyén, o tratar a Chubut 2025 como contaminado?
@@ -194,6 +205,7 @@ python src/build_panel.py --listings "data/raw/listings_*.json" --reviews "data/
 python src/run_booking.py cobertura          # estado por alojamiento desde los logs (antes de build_panel)
 python src/did_baseline.py                   # baseline 2x2 + placebo + sin Bariloche
 python src/fe_preliminar.py                  # FE alojamiento x mes calendario (preliminar)
+python src/analisis_secundario.py            # duración, tipo de viajero y desplazamiento (preliminar)
 python src/export_sheets.py
 ```
 

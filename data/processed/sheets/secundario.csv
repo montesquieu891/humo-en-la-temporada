@@ -1,0 +1,9 @@
+outcome,especificacion,variable,coef,ic95_lo,ic95_hi,efecto_pct,efecto_pct_lo,efecto_pct_hi,n
+noches_total,FE (fepois),fuego_cerca,-0.155,-0.935,0.625,-0.144,-0.607,0.867,228
+noches_media,"FE (feols, ponderado)",fuego_cerca,0.166,-0.376,0.708,,,,186
+pct_familia,"FE (feols, ponderado)",fuego_cerca,-0.034,-0.207,0.138,,,,186
+pct_pareja,"FE (feols, ponderado)",fuego_cerca,0.039,-0.154,0.231,,,,186
+n_reviews,desplazamiento (ref. 15–40 km),fuego_cerca,0.22,-0.212,0.652,0.247,-0.191,0.92,228
+n_reviews,desplazamiento (ref. 15–40 km),fuego_lejos,1.261,-0.112,2.634,2.529,-0.106,12.928,228
+noches_total,desplazamiento (ref. 15–40 km),fuego_cerca,0.199,-0.311,0.709,0.22,-0.267,1.031,228
+noches_total,desplazamiento (ref. 15–40 km),fuego_lejos,1.0,-0.609,2.609,1.719,-0.456,12.592,228

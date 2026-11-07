@@ -63,6 +63,9 @@ def main():
                "n_cerca", "n_lejos"]].round(3)
 
     tablas = {"focos": focos, "alojamientos": aloj, "panel": panel, "reviews": rev, "kpi_did": did}
+    sec_path = f"{PROC}/analisis_secundario.csv"
+    if os.path.exists(sec_path):  # duración, tipo de viajero y desplazamiento (src/analisis_secundario.py)
+        tablas["secundario"] = pd.read_csv(sec_path).round(3)
     for nombre, df in tablas.items():
         ruta = os.path.join(OUT, f"{nombre}.csv")
         df.to_csv(ruta, index=False, encoding="utf-8")
