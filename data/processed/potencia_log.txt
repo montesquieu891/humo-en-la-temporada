@@ -1,0 +1,15 @@
+Panel actual: 29 alojamientos | por estrato: {'nunca': 5, 's1': 11, 's2': 2, 's3': 11}
+Universo a bajar: 380 cerca (≥10 reviews, ≤40 km) + 147 lejos disponibles | proporciones cerca: {'s1': 0.51, 's3': 0.36, 's2': 0.1, 'nunca': 0.03}
+Cobertura MVP: completos 76% cerca, 56% lejos | costo por alojamiento pedido: USD 0.087 cerca, USD 0.289 lejos
+
+Modelo con el panel real: volumen β = -0.111 (EE CRV1 0.330) | nota β = -0.113 (EE 0.212)
+
+actual (MVP)  pedidos  33+  9 → ~ 31 completos | USD   5.5 | EE 0.231 (CRV1 0.247) | MDE volumen -50% | MDE nota -0.49 | potencia −20%: 15% | 32s
+≈ USD 10      pedidos  90+ 10 → ~ 73 completos | USD  10.7 | EE 0.149 (CRV1 0.162) | MDE volumen -36% | MDE nota -0.30 | potencia −20%: 28% | 46s
+≈ USD 20      pedidos 190+ 15 → ~153 completos | USD  20.9 | EE 0.103 (CRV1 0.110) | MDE volumen -27% | MDE nota -0.20 | potencia −20%: 53% | 83s
+≈ USD 30      pedidos 280+ 20 → ~224 completos | USD  30.2 | EE 0.084 (CRV1 0.091) | MDE volumen -23% | MDE nota -0.17 | potencia −20%: 69% | 112s
+universo cerca pedidos 380+ 30 → ~305 completos | USD  41.8 | EE 0.068 (CRV1 0.078) | MDE volumen -20% | MDE nota -0.14 | potencia −20%: 81% | 148s
+universo + control pedidos 380+100 → ~344 completos | USD  62.0 | EE 0.070 (CRV1 0.080) | MDE volumen -20% | MDE nota -0.14 | potencia −20%: 80% | 164s
+
+Guardado: data/processed/potencia.csv
+SUPUESTOS: los alojamientos nuevos se parecen a los del panel actual de su estrato; s2 (El Hoyo) tiene 2 alojamientos; cobertura y costo según la muestra MVP.

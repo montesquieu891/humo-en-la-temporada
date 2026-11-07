@@ -96,7 +96,8 @@ de un incendio forestal, para que una cámara hotelera pueda reclamar, comunicar
     → 2.231 reviews únicas. Completos: 25 de 33 tratados y 5 de 9 de Bariloche
     (`python src/run_booking.py cobertura` regenera el estado desde los logs).
   - Corrida completa de la zona tratada: 352 alojamientos con ≥10 reviews a ≤40 km ≈ 11.800 reviews en la
-    ventana ≈ **USD 23,6 en tier FREE** (USD 0,002/review). Planificar créditos (una cuenta por integrante).
+    ventana ≈ **USD 23,6 en tier FREE** (USD 0,002/review). Recalculado el 07/11 con `alojamientos.csv`: 380 alojamientos, ≈ 13.700
+    reviews en la ventana (≈ 70% del total de cada uno) ≈ **USD 27,5**, más ≈ USD 0,29 por cada control de Bariloche. Planificar créditos (una cuenta por integrante).
   - Cuentas de Apify: `APIFY_TOKEN` (cuenta 1) y `APIFY_TOKEN2` (cuenta 2, `--cuenta 2`). Gasto en
     `data/processed/apify_gastos.csv`: **el cobro se asienta minutos después de terminar la corrida**
     (se cobra cada ítem entregado); releer el run antes de dar por cerrado el gasto.
@@ -161,6 +162,13 @@ de un incendio forestal, para que una cámara hotelera pueda reclamar, comunicar
 - Texto: con el patrón corregido (sin chimenea/leña/fireplace) hay 1 mención al incendio en 1.481 reviews →
   `pct_humo` es descriptivo, no outcome (quien cancela no deja review).
 
+### Efecto mínimo detectable (07/11, `src/potencia.py`, simulado; detalle en `docs/decisiones_abiertas.md` §3)
+- Bootstrap estratificado de los 29 alojamientos del panel, reescalado al universo de 380 cercanos
+  (≥ 10 reviews, ≤ 40 km), descontando truncados. MDE volumen al 80% de potencia:
+  ≈ USD 10 → −36/−44%, ≈ USD 20 → −27/−33%, universo cercano + 30 de control (≈ USD 36–42) → −20/−25%.
+- Los controles lejanos casi no suman (30 alcanzan). **El Bolsón es "cerca" en las dos temporadas:** con FE
+  alojamiento × mes calendario solo identifica enero. Extender la ventana a nov-2023 lo resolvería (no medido).
+
 ### Preguntas abiertas para el grupo (no se cambió nada; memo con evidencia: `docs/decisiones_abiertas.md`)
 - Temporada 2025: hubo fuego en Epuyén del 15 al 30/01/2025 (evento 5) y en Esquel/Trevelin en feb-2025, pero
   los meses de fuego 2025 son solo 2025-02. ¿Agregar 2025-01 para Epuyén, o tratar a Chubut 2025 como contaminado?
@@ -218,6 +226,7 @@ python src/run_booking.py cobertura          # estado por alojamiento desde los 
 python src/did_baseline.py                   # baseline 2x2 + placebo + sin Bariloche
 python src/fe_preliminar.py                  # FE alojamiento x mes calendario (preliminar)
 python src/analisis_secundario.py            # duración, tipo de viajero y desplazamiento (preliminar)
+python src/potencia.py                       # efecto mínimo detectable según N y costo (≈ 10 min)
 python src/export_sheets.py
 ```
 

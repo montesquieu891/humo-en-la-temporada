@@ -1,6 +1,6 @@
 # Decisiones abiertas para el grupo (07/11/2026)
 
-Son dos preguntas que no se resolvieron solas porque tocan decisiones de diseño (CLAUDE.md). Cada una tiene
+Son tres preguntas que no se resolvieron solas porque tocan decisiones de diseño (CLAUDE.md). Cada una tiene
 las opciones, la evidencia medida con datos reales y una recomendación. Cuando el grupo decida, completar
 **Decisión** y actualizar CLAUDE.md.
 
@@ -68,5 +68,68 @@ representan el fenómeno de la consigna ("oferta y reputación turística").
 - Las reviews quedan como tabla derivada del panel.
 - Alternativa para reducir nulos: volver a correr con fechas cercanas (≤ 3 meses) para todo el universo
   cuando haya crédito (≈ USD 4).
+
+**Decisión:** ______________________ (fecha, quién)
+
+---
+
+## 3. ¿Cuánto gastar en la corrida de reviews del Producto 2? (efecto mínimo detectable)
+
+**Pregunta:** con el modelo de la decisión 5 (FE alojamiento × mes calendario + año-mes, `fepois`, errores
+por alojamiento), ¿qué caída del volumen de reviews se puede detectar según cuántos alojamientos se bajen?
+
+**Método** (`src/potencia.py`, 400 réplicas, semilla 7, `data/processed/potencia.csv`):
+- Bootstrap estratificado de los 29 alojamientos reales del panel, con su historia mes a mes, reescalado
+  a cada tamaño de muestra en las proporciones del universo a bajar.
+- El universo son 380 alojamientos con ≥ 10 reviews a ≤ 40 km de un foco: 51% Esquel (cerca solo en 2025),
+  36% El Bolsón (cerca en las dos temporadas), 10% El Hoyo (cerca solo en 2026) y 3% nunca cerca.
+- Se descuentan los truncados: los completos son el 76% de los alojamientos cercanos pedidos y el 56% de los
+  de Bariloche (muestra MVP).
+- MDE = 80% de potencia, α = 5%.
+
+| Escenario (pedidos cerca + lejos) | Completos | Costo USD* | MDE volumen** | Potencia ante −20% | ante −30% | MDE nota |
+|---|---|---|---|---|---|---|
+| Actual MVP (33 + 9) | 31 | 5 | −50% a −59% | 15% | 30% | −0,49 |
+| 90 + 10 | 73 | 9–11 | −36% a −44% | 28% | 60% | −0,30 |
+| 190 + 15 | 153 | 18–21 | −27% a −33% | 53% | 90% | −0,20 |
+| 280 + 20 | 224 | 26–30 | −23% a −28% | 69% | 97% | −0,17 |
+| **Universo cercano (380 + 30)** | **305** | **36–42** | **−20% a −25%** | **81%** | 100% | −0,14 |
+| Universo + 100 de control (380 + 100) | 344 | 56–62 | −20% a −24% | 80% | 99% | −0,14 |
+
+\* El rango va del costo promedio del universo (USD 0,072 por alojamiento cercano) al de la muestra MVP (USD 0,087,
+que eligió alojamientos más grandes). Cada alojamiento de Bariloche cuesta ≈ USD 0,29.
+\** El primer número sale de la simulación. El segundo escala el error estándar real del panel actual
+(0,330 con 29 alojamientos) por √(29/N). Con los datos actuales la simulación subestima el error.
+
+**Lectura (simulado, no medido):**
+- Con el crédito de una sola renovación (≈ USD 10) solo se detectan caídas de más de un tercio. Con el
+  presupuesto actual, un resultado "sin efecto" no diría nada.
+- Para detectar −20% con 80% de potencia hace falta prácticamente **todo el universo cercano** (≈ USD 36–42).
+  Aun así es el escenario optimista: el pesimista da −25%.
+- **Sumar controles lejanos casi no ayuda** (de 30 a 100 el MDE no se mueve y cuesta USD 20 más). Los controles
+  salen sobre todo de los propios alojamientos cercanos en la temporada en que no les tocó el fuego.
+- **El Bolsón queda "cerca" en las dos temporadas.** Con el efecto fijo alojamiento × mes calendario, su
+  febrero 2025 (con fuego) se compara contra su febrero 2026 (también con fuego), así que para él solo
+  identifica enero. Es el 36% del universo y aporta poco.
+- **Supuestos:** los alojamientos nuevos se parecen a los del panel en su estrato (El Hoyo tiene solo 2), y la
+  tasa de truncados y el costo son los de la muestra MVP. La muestra MVP tiene alojamientos más grandes que el
+  universo (mediana de 56 reviews contra 34). Con alojamientos más chicos la potencia sería algo menor.
+
+**Opciones:**
+- **A — Universo cercano (380) + 30 de Bariloche, ≈ USD 36–42.** Es la única que llega a detectar −20 a −25%.
+  Hace falta crédito de unas 8 cuentas FREE (USD 5 cada una) o un mes de un plan pago. Hay que correrlo entre el
+  13/11 (renovación de la cuenta 1) y el 18/11 para llegar al 20/11.
+- **B — 190 + 15, ≈ USD 20.** Detecta caídas de 30% o más (potencia del 90% ante −30%). Si el efecto real es
+  chico, queda como "no detectable" con un IC más angosto.
+- **C — Extender la ventana un año hacia atrás** (estadías desde nov-2023; Booking guarda unos 36 meses).
+  Le da a El Bolsón un febrero sin fuego (2024) y agrega una comparación más por mes calendario a todos.
+  Cuesta ≈ +60% de reviews por alojamiento. La ganancia de potencia **no está medida**: se puede probar
+  bajando la historia larga de 20–30 alojamientos (≈ USD 2–3) antes de decidir. Es combinable con A o B.
+
+**Recomendación:** decidir el presupuesto con esta tabla. Si no se consigue crédito para A:
+1. hacer la prueba de C (≈ USD 3);
+2. según lo que dé, correr B con ventana larga.
+
+Con cualquier opción, no pedir más de 30 controles lejanos y no gastar en alojamientos con < 10 reviews.
 
 **Decisión:** ______________________ (fecha, quién)
