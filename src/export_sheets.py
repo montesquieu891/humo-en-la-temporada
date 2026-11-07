@@ -67,6 +67,70 @@ def main():
         ruta = os.path.join(OUT, f"{nombre}.csv")
         df.to_csv(ruta, index=False, encoding="utf-8")
         print(f"{ruta}: {len(df)} filas × {len(df.columns)} columnas")
+    escribir_xlsx(tablas, os.path.join(OUT, "humo_mvp.xlsx"))
+
+
+LEEME = [
+    ("humo_mvp — datos del MVP de \"Humo en la temporada\"", None),
+    ("Generado por src/export_sheets.py desde data/processed/ (repo montesquieu891/humo-en-la-temporada).", None),
+    ("", None),
+    ("Pestaña", "Contenido y fuente"),
+    ("focos", "NASA FIRMS VIIRS S-NPP (procesamiento estándar), celda de 0,025° × día, solo eventos con ≥50 "
+              "detecciones. Bajado el 06/11/2026. Dataset 1 de la consigna."),
+    ("alojamientos", "Booking vía Apify voyager/booking-scraper, 07/11/2026. Distancia haversine al foco más "
+                     "cercano de cada temporada y banda. precio_ref = estadía 15–17/01/2027 (2 noches, USD): "
+                     "vacío en los que vienen de búsquedas sin fechas. Tarifa de referencia para el ROI, nunca outcome."),
+    ("panel", "Alojamiento × mes de estadía × temporada (muestra de reviews, sin alojamientos truncados)."),
+    ("reviews", "Booking vía Apify voyager/booking-reviews-scraper, 07/11/2026: 1 fila por review en la "
+                "ventana nov-2024 a abr-2026. Sin nombres de usuarios."),
+    ("kpi_did", "Primer número y sus chequeos: DiD 2×2, placebo, sin Bariloche y FE alojamiento × mes "
+                "calendario (preliminar). Mostrar siempre con su IC95%."),
+    ("", None),
+    ("Advertencia", "Muestra chica (29 alojamientos en el panel). El placebo invalida el DiD 2×2 de volumen; "
+                    "con FE el efecto preliminar es −10% (IC −53% a +71%): con esta muestra no se detecta efecto."),
+]
+
+
+def escribir_xlsx(tablas: dict, ruta: str):
+    """Un solo .xlsx con todas las pestañas, para subir a Drive y abrir como Google Sheet."""
+    from openpyxl.styles import Alignment, Font, PatternFill
+    from openpyxl.utils import get_column_letter
+
+    fechas = {"focos": ["fecha"], "panel": ["mes"], "reviews": ["fecha_checkin", "mes"]}
+    with pd.ExcelWriter(ruta, engine="openpyxl") as xw:
+        pd.DataFrame(LEEME).to_excel(xw, sheet_name="leeme", index=False, header=False)
+        for nombre, df in tablas.items():
+            d = df.copy()
+            for c in fechas.get(nombre, []):
+                d[c] = pd.to_datetime(d[c], errors="coerce")
+            d.to_excel(xw, sheet_name=nombre, index=False)
+        wb = xw.book
+        base, negrita = Font(name="Arial", size=10), Font(name="Arial", size=10, bold=True)
+        for ws in wb.worksheets:
+            for fila in ws.iter_rows():
+                for celda in fila:
+                    celda.font = base
+            if ws.title == "leeme":
+                ws["A1"].font = Font(name="Arial", size=12, bold=True)
+                for r in (4, 11):
+                    ws.cell(r, 1).font = negrita
+                ws.column_dimensions["A"].width = 16
+                ws.column_dimensions["B"].width = 110
+                for fila in ws.iter_rows(min_col=2, max_col=2):
+                    fila[0].alignment = Alignment(wrap_text=True, vertical="top")
+                continue
+            for celda in ws[1]:
+                celda.font = negrita
+                celda.fill = PatternFill("solid", fgColor="EEEDE9")
+            ws.freeze_panes = "A2"
+            ws.auto_filter.ref = ws.dimensions
+            for i, col in enumerate(tablas[ws.title].columns, start=1):
+                ancho = min(max(len(str(col)), *(len(str(v)) for v in tablas[ws.title][col].head(200))) + 2, 45)
+                ws.column_dimensions[get_column_letter(i)].width = ancho
+                if col in fechas.get(ws.title, []):
+                    for celda in ws.iter_rows(min_row=2, min_col=i, max_col=i):
+                        celda[0].number_format = "yyyy-mm-dd"
+    print(f"{ruta}: {len(tablas)} pestañas de datos + leeme")
 
 
 if __name__ == "__main__":

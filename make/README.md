@@ -6,10 +6,17 @@ blueprint a `make/mvp_booking.json` (menú `…` del escenario → *Export Bluep
 
 ## Antes de empezar
 
-1. **Google Sheet `humo_mvp`.** Subir los CSV de `data/processed/sheets/`, uno por pestaña
-   (*Archivo → Importar → Subir → Insertar hojas nuevas*; separador coma). Las pestañas son
-   `focos`, `alojamientos` y `panel`, más `reviews` y `kpi_did` como extras. Para regenerarlos, correr
-   `python src/export_sheets.py`.
+1. **Google Sheet `humo_mvp`.** Está todo en un solo archivo, `data/processed/sheets/humo_mvp.xlsx`, con las
+   pestañas `leeme`, `focos`, `alojamientos`, `panel`, `reviews` y `kpi_did`:
+   - Subir el `.xlsx` a Google Drive (*Nuevo → Subir archivo*). Después: clic derecho → *Abrir con →
+     Hojas de cálculo de Google* → *Archivo → Guardar como Hojas de cálculo de Google*. Renombrarla `humo_mvp`
+     y borrar el `.xlsx` subido, para que quede un solo archivo.
+   - Atajo: con *Configuración de Drive → Convertir archivos subidos* activado, la conversión es automática.
+   - Las fechas (`fecha`, `mes`, `fecha_checkin`) llegan como fechas, que es lo que Looker Studio necesita
+     para las series. Los CSV sueltos de la misma carpeta sirven si se prefiere importar pestaña por pestaña.
+   - Para regenerar todo: `python src/export_sheets.py`.
+   - No se subió desde Claude porque esta sesión no tiene el conector de Google Sheets, y por Drive el
+     archivo (≈ 320 KB) tendría que viajar entero dentro de la llamada.
 2. **Pestaña nueva `booking_make`** con esta fila de encabezados (es donde escribe Make):
    `fecha_corrida | destino | nombre | tipo | precio | moneda | rating | reviews | lat | lng | url`
 3. **Token de Apify:** al 07/11 las dos cuentas FREE quedaron con ≈ USD 0,08 cada una. La cuenta 1 se
