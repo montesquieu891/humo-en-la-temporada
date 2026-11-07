@@ -66,9 +66,14 @@ DESTINOS = {
     "epuyen": {"search": "Epuyén, Chubut, Argentina", "maxItems": 60},
     "cholila": {"search": "Cholila, Chubut, Argentina", "maxItems": 60},
     "trevelin": {"search": "Trevelin, Chubut, Argentina", "maxItems": 120},
-    "villa_la_angostura": {"search": "Villa La Angostura, Neuquén, Argentina", "maxItems": 250},
+    "villa_la_angostura": {"search": "Villa La Angostura, Neuquén, Argentina", "maxItems": 300},
+    "dina_huapi": {"search": "Dina Huapi, Río Negro, Argentina", "maxItems": 60},
 }
 CHECK_IN, CHECK_OUT = "2027-01-15", "2027-01-17"
+# Universo sin fechas medido el 07/11 (el actor informa "N properties found" antes de scrapear).
+# Con fechas 15–17/01/2027 Booking devolvía ~la mitad (solo alojamientos con calendario abierto).
+UNIVERSO_SIN_FECHAS = {"el_bolson": 209, "lago_puelo": 93, "el_hoyo": 33, "esquel": 212, "trevelin": 108,
+                       "epuyen": 14, "cholila": 14, "villa_la_angostura": 280, "bariloche": 1386}
 
 # Reviews: newest first hasta el 01/11/2024 (una review se publica después de la estadía, así que
 # todo lo publicado antes no puede ser una estadía de la ventana nov-2024 → abr-2026).
@@ -175,7 +180,7 @@ def correr(actor, run_input, estimado, etiqueta, max_items=None, dry_run=False):
           f" | disponible: USD {resto:.2f} (gastado en el repo: USD {gastado():.2f})")
     if dry_run:
         return None
-    if tope <= 0.02 or estimado > resto:
+    if resto <= 0.02 or estimado > resto:
         sys.exit(f"  FRENO: la corrida estimada (USD {estimado:.2f}) supera lo que queda del tope (USD {resto:.2f}).")
     c = cliente()
     run = a_dict(c.actor(actor).call(run_input=run_input, max_items=max_items,
@@ -216,18 +221,27 @@ def cmd_listings(a):
     destinos = a.solo or list(DESTINOS)
     for nombre in destinos:
         cfg = DESTINOS[nombre]
-        salida = os.path.join(RAW, f"listings_{nombre}.json")
+        sufijo = "_sinfechas" if a.sin_fechas else ""
+        salida = os.path.join(RAW, f"listings_{nombre}{sufijo}.json")
         if os.path.exists(salida) and not a.forzar:
             print(f"\n[{nombre}] ya existe {salida}: se saltea (usar --forzar para volver a pagar).")
             continue
-        run_input = {"search": cfg["search"], "maxItems": cfg["maxItems"], "checkIn": CHECK_IN,
-                     "checkOut": CHECK_OUT, "currency": "USD", "language": "es", "adults": 2, "rooms": 1,
-                     "sortBy": "distance_from_search", "extractAdditionalHotelData": False}
-        est = cfg["maxItems"] * PRECIO_FREE[ACTOR_LISTINGS] + PRECIO_START
-        items = correr(ACTOR_LISTINGS, run_input, est, f"listings_{nombre}", cfg["maxItems"], a.dry_run)
+        max_items = a.max_items or (UNIVERSO_SIN_FECHAS.get(nombre) if a.sin_fechas else None) or cfg["maxItems"]
+        if a.sin_fechas:
+            # Sin fechas Booking lista todo el universo (con fechas a 14 meses solo aparecen los que ya
+            # abrieron calendario: verificado 07/11). No trae precio: el precio sale de la corrida con fechas.
+            run_input = {"search": cfg["search"], "maxItems": max_items, "currency": "USD", "language": "es",
+                         "sortBy": "distance_from_search", "extractAdditionalHotelData": False}
+        else:
+            run_input = {"search": cfg["search"], "maxItems": max_items, "checkIn": CHECK_IN,
+                         "checkOut": CHECK_OUT, "currency": "USD", "language": "es", "adults": 2, "rooms": 1,
+                         "sortBy": "distance_from_search", "extractAdditionalHotelData": False}
+        est = max_items * PRECIO_FREE[ACTOR_LISTINGS] + PRECIO_START
+        items = correr(ACTOR_LISTINGS, run_input, est, f"listings_{nombre}{sufijo}", max_items, a.dry_run)
         if items is not None:
             for it in items:
                 it["destino_busqueda"] = nombre
+                it["con_fechas"] = not a.sin_fechas
             with open(salida, "w", encoding="utf-8") as f:
                 json.dump(items, f, ensure_ascii=False)
             print(f"  -> {salida}")
@@ -249,6 +263,8 @@ def cmd_reviews(a):
     lst["url_norm"] = lst["url"].map(lambda u: re.sub(r"[?#].*$", "", str(u)).rstrip("/").lower())
     for c in ("location.lat", "location.lng"):  # el actor las devuelve como texto
         lst[c] = pd.to_numeric(lst[c], errors="coerce")
+    lst["_con_precio"] = pd.to_numeric(lst.get("price"), errors="coerce").notna()
+    lst = lst.sort_values("_con_precio", ascending=False)  # al deduplicar, preferir la corrida con fechas
     lst = lst.drop_duplicates("url_norm").dropna(subset=["location.lat", "location.lng"]).copy()
     lst["n_rev"] = pd.to_numeric(lst["reviews"], errors="coerce").fillna(0)
     pts, n_ev = focos_principales(a.firms, a.min_det_evento)
@@ -346,6 +362,66 @@ def cmd_reviews(a):
         print(f"  -> {salida}")
 
 
+def cmd_cobertura(_):
+    """Estado de cada alojamiento pedido al actor de reviews, a partir de los LOGS de cada corrida
+    (evidencia directa) y de lo que devolvió. Escribe data/processed/reviews_cobertura.csv.
+      completo              el log dice "Cutoff date was reached", o devolvió todas sus reviews
+      truncado_falla_actor  el log dice "No reviews found" después de haber devuelto algo
+      truncado_tope         llegó a MAX_REVIEWS_POR_HOTEL
+      truncado_tope_gasto   la corrida terminó por max_total_charge_usd antes de completarlo
+      sin_reviews           no devolvió nada (falla del actor en la 1ª página)
+    Los truncados se excluyen del panel (build_panel.py) porque sus meses viejos quedan subcontados."""
+    global TOKEN_VAR
+    g = pd.read_csv(GASTOS)
+    estado, corte_gasto = {}, set()
+    for cta, rid, et in zip(g["cuenta"], g["run_id"], g["etiqueta"]):
+        if not str(et).startswith("reviews"):
+            continue
+        TOKEN_VAR = cta
+        log = cliente().run(rid).log().get() or ""
+        if re.search(r"max(imum)? total charge|maxTotalChargeUsd|charge limit", log, re.I):
+            corte_gasto.add(et)
+        for linea in log.splitlines():
+            m = re.search(r"hotel/ar/([^.?\"]+)", linea)
+            if not m:
+                continue
+            slug = m.group(1)
+            if "Cutoff date was reached" in linea:
+                estado[slug] = "completo"
+            elif "Remaining items limit" in linea or "Reached max items" in linea:
+                estado[slug] = "truncado_tope"
+            elif "No reviews found" in linea:
+                estado[slug] = "falla_actor"
+    pedidos = pd.read_csv(os.path.join(RAIZ, "data", "processed", "muestra_reviews.csv")).drop_duplicates("url")
+    rev = []
+    for f in sorted(glob.glob(os.path.join(RAW, "reviews*.json"))):
+        rev += [{"url": r.get("startUrl"), "id": r.get("id"), "pub": r.get("reviewDate"),
+                 "total": r.get("hotelReviews")} for r in json.load(open(f, encoding="utf-8"))]
+    rev = pd.DataFrame(rev).drop_duplicates("id")
+    c = rev.groupby("url").agg(reviews_devueltas=("id", "size"), pub_min=("pub", "min"))
+    cob = pedidos.merge(c, left_on="url", right_index=True, how="left")
+    cob["reviews_devueltas"] = cob["reviews_devueltas"].fillna(0).astype(int)
+    cob["pub_min"] = cob["pub_min"].str[:10]
+    slug = cob["url"].str.extract(r"hotel/ar/([^.?]+)")[0]
+    e = slug.map(estado).fillna("sin_evento")
+    e = np.where((e == "falla_actor") & (cob["reviews_devueltas"] > 0), "truncado_falla_actor", e)
+    e = np.where((e == "falla_actor") & (cob["reviews_devueltas"] == 0), "sin_reviews", e)
+    e = np.where(cob["reviews_devueltas"] >= cob["n_rev"], "completo", e)
+    # Sin evento en el log: si su corrida se cortó por gasto, es truncado; si no devolvió nada, sin reviews.
+    sin_ev = e == "sin_evento"
+    etiqueta_corrida = cob["corrida"].str.replace(".json", "", regex=False).replace({"reviews": "reviews_muestra"})
+    e = np.where(sin_ev & etiqueta_corrida.isin(corte_gasto), "truncado_tope_gasto", e)
+    e = np.where(sin_ev & (cob["reviews_devueltas"] == 0), "sin_reviews", e)
+    e = np.where(e == "sin_evento", "completo", e)  # terminó la paginación sin llegar al cutoff
+    cob["estado"] = e
+    salida = os.path.join(RAIZ, "data", "processed", "reviews_cobertura.csv")
+    cob.to_csv(salida, index=False)
+    print(pd.crosstab(cob["corrida"], cob["estado"], margins=True).to_string())
+    if corte_gasto:
+        print(f"Corridas cortadas por el tope de gasto: {sorted(corte_gasto)}")
+    print(f"-> {salida}")
+
+
 def main():
     global TOKEN_VAR
     ap = argparse.ArgumentParser()
@@ -353,10 +429,13 @@ def main():
     sub = ap.add_subparsers(dest="cmd", required=True)
     sub.add_parser("schema")
     sub.add_parser("cuenta")
+    sub.add_parser("cobertura")
     p = sub.add_parser("listings")
     p.add_argument("--dry-run", action="store_true")
     p.add_argument("--solo", nargs="+", choices=list(DESTINOS))
     p.add_argument("--forzar", action="store_true")
+    p.add_argument("--sin-fechas", action="store_true", help="universo completo, sin precio (ver UNIVERSO_SIN_FECHAS)")
+    p.add_argument("--max-items", type=int, help="pisa el maxItems del destino")
     p = sub.add_parser("reviews")
     p.add_argument("--firms", default=os.path.join(RAIZ, "data", "processed", "firms_detecciones.csv"))
     p.add_argument("--radio-km", type=float, default=40)
@@ -375,7 +454,8 @@ def main():
     else:  # acepta APIFY_TOKEN_2 o APIFY_TOKEN2
         TOKEN_VAR = next((v for v in (f"APIFY_TOKEN_{a.cuenta}", f"APIFY_TOKEN{a.cuenta}") if os.getenv(v)),
                          f"APIFY_TOKEN_{a.cuenta}")
-    {"schema": cmd_schema, "cuenta": cmd_cuenta, "listings": cmd_listings, "reviews": cmd_reviews}[a.cmd](a)
+    {"schema": cmd_schema, "cuenta": cmd_cuenta, "listings": cmd_listings, "reviews": cmd_reviews,
+     "cobertura": cmd_cobertura}[a.cmd](a)
 
 
 if __name__ == "__main__":

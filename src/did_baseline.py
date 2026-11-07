@@ -102,6 +102,25 @@ def main():
         filas.append({"outcome": y, "temporada": "apilado", **reportar("Apilado (ambas temporadas)", d_all, rng)})
 
     pd.DataFrame(filas).to_csv(a.salida, index=False)
+
+    # Robustez (buenas prácticas; NO cambia la especificación principal de arriba):
+    #  - placebo: el "fuego" se corre al último mes previo (rel_t = -1) usando solo meses previos.
+    #    Si β_placebo ≠ 0, cerca y lejos ya divergían antes del fuego (falla de tendencias paralelas).
+    #  - sin Bariloche: el control queda solo con la Comarca/Esquel; aísla la estacionalidad propia
+    #    de Bariloche (pico de enero mucho más fuerte que el de las cabañas).
+    pre = panel[panel["rel_t"] < 0].copy()
+    pre["fuego"] = (pre["rel_t"] == -1).astype(int)
+    pre["rel_t"] = pre["rel_t"] + 1          # el mes placebo deja de contar como "antes"
+    variantes = {"placebo (fuego falso en rel_t = -1)": pre,
+                 "sin Bariloche": panel[panel["localidad"] != "Bariloche"]}
+    rob = []
+    print("\n=== ROBUSTEZ (apilado) ===")
+    for nombre, p in variantes.items():
+        for y, ponderar in [("n_reviews", False), ("nota_media", True)]:
+            d = deltas(p, y, ponderar)
+            print(f"\n  [{nombre}] {y}", end="")
+            rob.append({"variante": nombre, "outcome": y, **reportar("", d, rng)})
+    pd.DataFrame(rob).to_csv(a.salida.replace(".csv", "_robustez.csv"), index=False)
     print(f"\nGuardado: {a.salida}")
     print("Lectura: β < 0 en volumen = los alojamientos cerca del fuego perdieron reviews (y ocupación) "
           "respecto de los lejanos, netos de la estacionalidad común.")

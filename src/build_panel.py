@@ -79,7 +79,9 @@ def preparar_alojamientos(paths, focos, f_id=None) -> pd.DataFrame:
         lst[c] = pd.to_numeric(lst[c], errors="coerce")
     lst = lst.dropna(subset=[c_lat, c_lng]).copy()
     lst["aloj_id"] = lst[c_id].map(norm_url)
-    lst = lst.drop_duplicates("aloj_id")
+    # Un alojamiento puede venir de la corrida con fechas (trae precio) y de la sin fechas: preferir la primera.
+    lst["_con_precio"] = pd.to_numeric(lst.get("price"), errors="coerce").notna()
+    lst = lst.sort_values("_con_precio", ascending=False, kind="stable").drop_duplicates("aloj_id")
     out = pd.DataFrame({
         "aloj_id": lst["aloj_id"],
         "nombre": lst.get("name"),

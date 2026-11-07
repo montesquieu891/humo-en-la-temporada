@@ -48,7 +48,19 @@ def main():
     rev["mes"] = rev["mes_estadia"] + "-01"
     rev = rev.round({"dist_2025_km": 1, "dist_2026_km": 1})
 
-    did = pd.read_csv(f"{PROC}/did_baseline.csv", dtype={"temporada": str}).round(3)
+    # KPI: las tres especificaciones juntas, para no mostrar solo el número más favorable.
+    did = pd.read_csv(f"{PROC}/did_baseline.csv", dtype={"temporada": str}).assign(especificacion="DiD 2x2")
+    rob_path, fe_path = f"{PROC}/did_baseline_robustez.csv", f"{PROC}/fe_preliminar.csv"
+    if os.path.exists(rob_path):
+        rob = pd.read_csv(rob_path).rename(columns={"variante": "especificacion"}).assign(temporada="apilado")
+        did = pd.concat([did, rob], ignore_index=True)
+    if os.path.exists(fe_path):
+        fe = pd.read_csv(fe_path).rename(columns={"coef": "beta", "efecto_pct": "pct_contrafactual"})
+        fe["especificacion"] = "FE alojamiento x mes calendario (preliminar)"
+        fe["temporada"] = "ambas"
+        did = pd.concat([did, fe.drop(columns=["modelo", "n"])], ignore_index=True)
+    did = did[["especificacion", "outcome", "temporada", "beta", "ic95_lo", "ic95_hi", "pct_contrafactual",
+               "n_cerca", "n_lejos"]].round(3)
 
     tablas = {"focos": focos, "alojamientos": aloj, "panel": panel, "reviews": rev, "kpi_did": did}
     for nombre, df in tablas.items():
