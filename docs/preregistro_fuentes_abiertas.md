@@ -90,6 +90,38 @@ permutación no lo es. **Ninguna señal de OEDE es significativa.**
 - **Si dan nulos:** se informa que tres mediciones independientes no detectan efecto en el episodio 2025.
 - Ninguna de estas fuentes cambia el veredicto del test pre-registrado de Maps, que ya está informado.
 
+## Resultados (07/11/2026)
+
+**A. Parques: el análisis pre-registrado NO es ejecutable.**
+- Los dos CSV del portal de Turismo (`serie-tiempo-parques-nacionales-mensual.csv` y
+  `visitas-residentes-y-no-residentes.csv`) traen visitas por **región**, no por parque. No hay serie de PN Los Alerces.
+- Según las notas del archivo, Los Alerces no informó en nov-2024 (no es un mes de episodio).
+- **Exploración** (no pre-registrada): Patagonia contra las otras cinco regiones, mismo modelo, con permutación
+  sobre 181 meses.
+
+  | Mes | Efecto | p de permutación |
+  |---|---|---|
+  | feb-2024 | −10,5% | 0,35 |
+  | feb-2025 | +5,3% | 0,57 |
+  | ene-2026 | +16,5% | 0,72 |
+
+  Feb-2025 fue el febrero con menos visitas a parques patagónicos desde 2023 (248 mil). Pero las demás regiones
+  también cayeron, así que respecto de su propio patrón y del resto del país Patagonia no cayó más. Además mezcla
+  muchos parques, con y sin fuego.
+
+**B. CEP: NO ejecutable.**
+- El archivo `puestos_depto_priv_por_clae2.csv` cubre de ene-2014 a **nov-2023**: no llega a ningún episodio.
+- Los códigos INDEC se tomaron de la API Georef: Futaleufú 26035, Cushamen 26014, Los Lagos 58070 y Lácar 58056.
+  No había diccionario en el archivo bajado.
+
+**C. OEDE:** ver la tabla de arriba. Sin efectos significativos con permutación.
+
+**Conclusión:** con las fuentes abiertas accesibles **no aparece una caída detectable** asociada a los episodios. Ninguna
+mide a Los Alerces o a Esquel con el detalle necesario: parques por región, empleo en sectores amplios, CEP
+desactualizado, encuesta hotelera sin Esquel. Coincide con el resultado de Maps: no se detecta efecto y tampoco se
+puede descartar uno.
+
 ## Cambios
 
-_(ninguno)_
+- **07/11/2026:** A y B no se pudieron ejecutar como estaban pre-registrados, por el contenido real de los archivos.
+  Se agregó la exploración regional de parques, marcada como no pre-registrada.

@@ -90,43 +90,42 @@ def oede():
 
 
 def parques():
-    archivos = sorted(glob.glob("data/raw/parques*.csv"))
-    if not archivos:
-        print("A. Parques: falta data/raw/parques*.csv (bajarlo a mano del portal de datos de Turismo).")
+    """El portal publica las visitas por REGIÓN, no por parque (verificado 07/11 con los dos CSV bajados): el análisis
+    pre-registrado de PN Los Alerces no se puede hacer. Queda una exploración: Patagonia contra las demás regiones.
+    Mezcla Nahuel Huapi, Lanín, Los Glaciares, Los Alerces, etc. En feb-2025 hubo fuego en varios parques patagónicos.
+    Los Alerces falta solo en nov-2024 (nota del archivo)."""
+    f = "data/raw/serie-tiempo-parques-nacionales-mensual.csv"
+    if not os.path.exists(f):
+        print("A. Parques: falta data/raw/serie-tiempo-parques-nacionales-mensual.csv")
         return []
-    d = pd.read_csv(archivos[0], sep=None, engine="python", encoding_errors="replace")
-    print(f"A. Parques: {archivos[0]} | columnas: {list(d.columns)}")
-    c_t = next(c for c in d.columns if re.search(r"indice_tiempo|fecha|periodo|mes", c, re.I))
-    c_p = next(c for c in d.columns if re.search(r"parque|area|destino", c, re.I))
-    nums = [c for c in d.columns if c not in (c_t, c_p) and pd.api.types.is_numeric_dtype(d[c])]
-    c_v = next((c for c in nums if re.search(r"total|visita", c, re.I)), None)
-    if c_v is None:  # formato largo (una columna de tipo de residencia + una de visitas)
-        c_v = nums[-1]
-        c_tipo = next((c for c in d.columns if re.search(r"residen|origen|tipo", c, re.I)), None)
-        if c_tipo:
-            d = d.groupby([c_t, c_p], as_index=False)[c_v].sum()
-    d["mes"] = pd.to_datetime(d[c_t].astype(str).str[:10], errors="coerce").dt.strftime("%Y-%m")
-    d["parque"] = d[c_p].astype(str)
-    print("   parques:", sorted(d["parque"].unique())[:40], "| rango:", d["mes"].min(), "→", d["mes"].max())
-    alerces = next(p for p in d["parque"].unique() if re.search(r"alerces", p, re.I))
-    controles_base = [p for p in d["parque"].unique()
-                      if re.search(r"arrayanes|glaciares|tierra del fuego|perito moreno|nahuel", p, re.I)]
+    d = pd.read_csv(f)
+    d["mes"] = pd.to_datetime(d["indice_tiempo"], format="%Y-%m-%d").dt.strftime("%Y-%m")
+    regiones = ["buenos_aires", "cordoba", "cuyo", "litoral", "norte", "patagonia"]
+    largo = d.melt(id_vars="mes", value_vars=[f"{r}_total" for r in regiones], var_name="region", value_name="visitas")
+    largo["region"] = largo["region"].str.replace("_total", "")
+    print(f"A. Parques: solo por región ({', '.join(regiones)}), {d['mes'].min()} → {d['mes'].max()}. "
+          f"El análisis por parque pre-registrado NO es ejecutable.")
     res = []
     for ep, meses in MESES_TRAT.items():
-        ctr = [p for p in controles_base if not (ep == "2025" and re.search(r"nahuel", p, re.I))]
-        sub = d[d["parque"].isin([alerces] + ctr)][["parque", "mes", c_v]]
-        if not set(meses) & set(sub["mes"]):
-            continue
-        tipo = "PRINCIPAL" if ep == "2025" else "secundario"
-        res.append(did_perm(sub, "parque", c_v, alerces, meses, etiqueta=f"A Parques {ep} ({tipo}) vs {ctr}"))
+        res.append(did_perm(largo, "region", "visitas", "patagonia", meses,
+                            etiqueta=f"A' Parques Patagonia vs otras regiones {ep} (EXPLORATORIO)"))
     return res
 
 
 def cep():
     f = "data/raw/puestos_depto_priv_por_clae2.csv"
     dic = "data/raw/diccionario_cod_depto.csv"
-    if not (os.path.exists(f) and os.path.exists(dic)):
-        print("B. CEP: faltan data/raw/puestos_depto_priv_por_clae2.csv y/o data/raw/diccionario_cod_depto.csv.")
+    if not os.path.exists(f):
+        print("B. CEP: falta data/raw/puestos_depto_priv_por_clae2.csv")
+        return []
+    if not os.path.exists(dic):
+        # Códigos INDEC consultados en la API Georef (apis.datos.gob.ar) el 07/11/2026.
+        d = pd.read_csv(f)
+        cod = {"FUTALEUFU": 26035, "CUSHAMEN": 26014, "LOS LAGOS": 58070, "LACAR": 58056}
+        print(f"B. CEP: {f} cubre {d['fecha'].min()} → {d['fecha'].max()} | códigos INDEC (Georef): {cod}")
+        if d["fecha"].max() < "2024-02-01":
+            print("   El archivo termina antes del primer episodio (feb-2024): el análisis B NO es ejecutable.")
+            return [{"analisis": "B CEP CLAE 55/56", "nota": f"no ejecutable: el archivo termina en {d['fecha'].max()}"}]
         return []
     d = pd.read_csv(f, sep=None, engine="python")
     dd = pd.read_csv(dic, sep=None, engine="python", encoding_errors="replace")

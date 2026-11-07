@@ -151,8 +151,8 @@ de un incendio forestal, para que una cámara hotelera pueda reclamar, comunicar
   da −29% (p = 0,025), pero es secundario y no creíble. No se detecta efecto y no se puede descartar uno.
 - **Fuentes abiertas de validación (07/11, `docs/preregistro_fuentes_abiertas.md`, `src/fuentes_abiertas.py`):**
   OEDE empleo mensual por departamento (sin efectos significativos con permutación; Cushamen servicios −9,7%, p = 0,125).
-  Pendientes, bajados a mano: visitas mensuales a Parques Nacionales (portal de Turismo con anti-bots) y CEP XXI
-  CLAE 55/56 por departamento (certificado vencido). La encuesta hotelera del INDEC no cubre Esquel.
+  Parques: el portal publica solo por región (no hay serie de Los Alerces); Patagonia vs otras regiones en
+  feb-2025 +5,3%, p = 0,57. CEP CLAE 55/56 termina en nov-2023 (no ejecutable). La encuesta hotelera no cubre Esquel.
 - FIRMS: se descartan `type` 1/2 (volcán Villarrica en el bbox norte). Crudos nuevos: `firms_crudo_sp_huecos.csv`
   y `firms_crudo_sp_norte.csv`.
 
