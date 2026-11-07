@@ -177,6 +177,15 @@ de un incendio forestal, para que una cámara hotelera pueda reclamar, comunicar
   El tope acumulado de gasto ahora se lee de `TOPE_USD_TOTAL` en `.env`; sin esa variable sigue en USD 10, y ya
   hay USD 9,86 gastados.
 
+### Sensibilidad de Esquel y del umbral (07/11, `src/sensibilidad_esquel.py`, PRELIMINAR; memo §4)
+- En 2025 Esquel está a 14,2 ± 0,9 km del foco: su estado de tratado depende del umbral de 15 km. En 2026 es
+  control (15–40 km), pero el PN Los Alerces estuvo cerrado parte de la temporada. Con 15 km, El Bolsón queda
+  tratado en las dos temporadas.
+- Volumen: base −10% [−53, +71]; sin Esquel −55% [−86, +43]; umbral 10 km −49% [−63, −31]; umbral 12 km −40%
+  [−61, −9]. Los placebos de volumen incluyen 0. Son 12 tratados y 7 variantes probadas: no es un resultado.
+- Propuesta para el grupo: fijar la especificación (umbral 10 km como principal) **antes** de la corrida completa.
+  Borradores de mails a Parques y a la profesora en `docs/borradores_mails.md` (no enviados).
+
 ### Preguntas abiertas para el grupo (no se cambió nada; memo con evidencia: `docs/decisiones_abiertas.md`)
 - Temporada 2025: hubo fuego en Epuyén del 15 al 30/01/2025 (evento 5) y en Esquel/Trevelin en feb-2025, pero
   los meses de fuego 2025 son solo 2025-02. ¿Agregar 2025-01 para Epuyén, o tratar a Chubut 2025 como contaminado?
@@ -235,6 +244,7 @@ python src/did_baseline.py                   # baseline 2x2 + placebo + sin Bari
 python src/fe_preliminar.py                  # FE alojamiento x mes calendario (preliminar)
 python src/analisis_secundario.py            # duración, tipo de viajero y desplazamiento (preliminar)
 python src/potencia.py                       # efecto mínimo detectable según N y costo (≈ 10 min)
+python src/sensibilidad_esquel.py             # Esquel y umbral de distancia, con placebos (preliminar)
 python src/run_booking.py --cuenta 1 ventana-larga --dry-run   # piloto de ventana larga (nov-2023)
 python src/piloto_ventana.py --reviews data/raw/ventana_larga/reviews_desde_2023-11.json
 python src/export_sheets.py

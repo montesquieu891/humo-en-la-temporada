@@ -1,6 +1,6 @@
 # Decisiones abiertas para el grupo (07/11/2026)
 
-Son tres preguntas que no se resolvieron solas porque tocan decisiones de diseño (CLAUDE.md). Cada una tiene
+Son cuatro preguntas que no se resolvieron solas porque tocan decisiones de diseño (CLAUDE.md). Cada una tiene
 las opciones, la evidencia medida con datos reales y una recomendación. Cuando el grupo decida, completar
 **Decisión** y actualizar CLAUDE.md.
 
@@ -155,5 +155,55 @@ python src/piloto_ventana.py --reviews data/raw/ventana_larga/reviews_desde_2023
 2. según lo que dé, correr B con ventana larga.
 
 Con cualquier opción, no pedir más de 30 controles lejanos y no gastar en alojamientos con < 10 reviews.
+
+**Decisión:** ______________________ (fecha, quién)
+
+---
+
+## 4. ¿Cómo tratar a Esquel y qué umbral de "cerca" usar? (07/11)
+
+**Origen:** la propuesta de estudiar el caso del PN Los Alerces. De ella se toma el diagnóstico; las fuentes
+nuevas (ingresos al parque, Google Maps) no entran al modelo. Ver los borradores en `docs/borradores_mails.md`.
+
+**Problema (verificado con `alojamientos.csv`):**
+- En 2025, los alojamientos de Esquel están a **14,2 ± 0,9 km** del foco más cercano (máximo 15,7). Que cuenten
+  como "tratados" depende de que el umbral sea 15 km.
+- En 2026 quedan a 15–40 km (218 de 220), así que son control. Pero el PN Los Alerces, su principal atractivo,
+  estuvo evacuado o cerrado parte de la temporada. Su febrero 2025 se compara contra un febrero 2026 que
+  probablemente también estuvo afectado, y eso achica el efecto.
+- Con umbral de 15 km, El Bolsón queda tratado en las dos temporadas. Con 10 km queda tratado solo en 2025.
+
+**Sensibilidad** (`src/sensibilidad_esquel.py`, mismo modelo FE, 29 alojamientos, `data/processed/sensibilidad_esquel.csv`):
+
+| Variante | Volumen de reviews | Placebo (mes anterior) | Alojamientos tratados |
+|---|---|---|---|
+| Base (15 km) | −10% [−53%, +71%] | −27% [−66%, +53%] | 23 |
+| Sin Esquel ni Trevelin | −55% [−86%, +43%] | −16% [−58%, +68%] | 14 |
+| Esquel tratado en 2026-01/02 (acceso al parque) | −56% [−85%, +30%] | −7% [−45%, +57%] | 25 |
+| Umbral 10 km | **−49% [−63%, −31%]** | −8% [−56%, +95%] | 12 |
+| Umbral 12 km | **−40% [−61%, −9%]** | +80% [−35%, +395%] | 12 |
+| Umbral 18 o 20 km | −10% [−59%, +98%] | — | 24 |
+
+**Lectura (PRELIMINAR):**
+- Todo apunta en la misma dirección: cuando Esquel deja de contar como tratado en 2025, o como control
+  "limpio" en 2026, el efecto pasa de −10% a una caída de 40–56%. Los placebos de volumen incluyen 0, así que
+  ninguna variante falla el chequeo que invalidó el DiD 2×2.
+- **No es un resultado todavía.**
+  - Las variantes con intervalo que excluye 0 se apoyan en 12 alojamientos tratados (11 de El Bolsón). Con tan
+    pocos clusters, el error estándar clusterizado subestima la incertidumbre.
+  - Se probaron 7 variantes: elegir la más favorable después de verla es buscar especificaciones.
+  - En "sin Esquel" y "acceso al parque" el placebo de la **nota** da −1,0 con IC que excluye 0, así que la
+    nota no es creíble en esas variantes.
+- La cronología de cierres del parque (evacuación del 07/01, reapertura de la RN 71 el 14/02/2026) viene de la
+  propuesta y **no está verificada** en este repo. La variante de acceso usa los meses completos de enero y febrero.
+
+**Recomendación:** fijar la especificación **antes** de la corrida completa de reviews, para que no la elijan
+los datos. Propuesta:
+- **Principal:** umbral de 10 km. Saca a Esquel del límite y le da a El Bolsón un febrero de comparación.
+- **Robustez declarada de antemano:** 15 km (la actual), sin Esquel, y Esquel tratado por el acceso al parque.
+- Recalcular la potencia con 10 km (`src/potencia.py` usa los estratos de 15 km). Cambia la composición:
+  El Bolsón deja de estar tratado en las dos temporadas.
+
+Cambiar el umbral es cambiar la **decisión 3** de CLAUDE.md: lo decide el grupo.
 
 **Decisión:** ______________________ (fecha, quién)
