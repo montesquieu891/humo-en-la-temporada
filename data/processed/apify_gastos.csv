@@ -1,0 +1,12 @@
+fecha_utc,cuenta,actor,etiqueta,run_id,status,items,usd_estimado,usd,usage_total_usd,eventos
+2026-11-07 00:10,APIFY_TOKEN,voyager/booking-scraper,listings_el_bolson,z3RaF6EWDekhHM2Ql,SUCCEEDED,103,0.9001,0.5151,0.5101,"{""place-scraped"": 102, ""additional-details-scraped"": 0, ""apify-actor-start"": 2}"
+2026-11-07 00:12,APIFY_TOKEN,voyager/booking-scraper,listings_lago_puelo,jPNY3JKUuZyzDtkmc,SUCCEEDED,41,0.6501,0.2051,0.1751,"{""place-scraped"": 39, ""additional-details-scraped"": 0, ""apify-actor-start"": 2}"
+2026-11-07 00:15,APIFY_TOKEN,voyager/booking-scraper,listings_esquel,m72qvSfjKK88578vY,SUCCEEDED,98,0.6501,0.4901,0.4701,"{""place-scraped"": 97, ""additional-details-scraped"": 0, ""apify-actor-start"": 2}"
+2026-11-07 00:18,APIFY_TOKEN,voyager/booking-scraper,listings_bariloche,fWpc3jQD8k8hLnDdK,SUCCEEDED,120,0.6001,0.6001,0.5701,"{""place-scraped"": 114, ""additional-details-scraped"": 0, ""apify-actor-start"": 2}"
+2026-11-07 00:20,APIFY_TOKEN,voyager/booking-scraper,listings_el_hoyo,8JOlXevepfijFA6P4,SUCCEEDED,23,0.3001,0.1151,0.0601,"{""place-scraped"": 12, ""additional-details-scraped"": 0, ""apify-actor-start"": 2}"
+2026-11-07 00:25,APIFY_TOKEN,voyager/booking-reviews-scraper,reviews_muestra,sBDiRtvyH1XziqqJ6,SUCCEEDED,1101,2.5881,2.2021,2.0181000000000004,"{""review-scraped"": 1009, ""apify-actor-start"": 2}"
+2026-11-07 00:35,APIFY_TOKEN2,voyager/booking-scraper,listings_epuyen,I6Cr5UScuI09oz7dq,SUCCEEDED,6,0.3001,0.0301,0.0201,"{""place-scraped"": 4, ""additional-details-scraped"": 0, ""apify-actor-start"": 2}"
+2026-11-07 00:36,APIFY_TOKEN2,voyager/booking-scraper,listings_cholila,NjCa7LrU2cdBUA6r1,SUCCEEDED,9,0.3001,0.0451,0.0401,"{""place-scraped"": 8, ""additional-details-scraped"": 0, ""apify-actor-start"": 2}"
+2026-11-07 00:38,APIFY_TOKEN2,voyager/booking-scraper,listings_trevelin,3EiWBILb4w0SzZmyH,SUCCEEDED,59,0.6001,0.2951,0.2450999999999999,"{""place-scraped"": 56, ""additional-details-scraped"": 0, ""apify-actor-start"": 2}"
+2026-11-07 00:41,APIFY_TOKEN2,voyager/booking-reviews-scraper,reviews_bariloche,FmkjbYJW3Uw4CoNpd,SUCCEEDED,824,2.5988,1.6481,1.5761,"{""review-scraped"": 788, ""apify-actor-start"": 2}"
+2026-11-07 00:43,APIFY_TOKEN2,voyager/booking-reviews-scraper,reviews_reintento,ZwaWhkdxDRm7dLElj,SUCCEEDED,137,0.9401,0.2741,0.2241,"{""review-scraped"": 112, ""apify-actor-start"": 2}"

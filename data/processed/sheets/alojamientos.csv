@@ -1,0 +1,460 @@
+aloj_id,nombre,tipo,precio_ref,moneda,rating,n_reviews_total,lat,lng,localidad,dist_2025_km,banda_2025,cerca_2025,dist_2026_km,banda_2026,cerca_2026
+https://www.booking.com/hotel/ar/experiencia-con-terraza-centro.es.html,Experiencia con Terraza - Centro,apartment,261.1800000000001,US$,0.0,0,-41.13626,-71.3124,Bariloche,41.6,40-80,0,106.7,>80,0
+https://www.booking.com/hotel/ar/eco-max.es.html,Hotel Eco Max,hotel,408.22,US$,8.0,1028,-41.13318,-71.31429,Bariloche,41.8,40-80,0,107.0,>80,0
+https://www.booking.com/hotel/ar/urbana-apartments-413.es.html,URBANA APARTMENTS 413,apartment,276.0,US$,8.5,756,-41.13382,-71.31452,Bariloche,41.7,40-80,0,106.9,>80,0
+https://www.booking.com/hotel/ar/sol-bariloche-san-carlos-de-bariloche.es.html,Hotel Sol Bariloche,hotel,256.96,US$,7.8,726,-41.13343,-71.30663,Bariloche,42.2,40-80,0,107.1,>80,0
+https://www.booking.com/hotel/ar/nahuel-huapi.es.html,Hotel Nahuel Huapi,hotel,240.0,US$,8.6,1150,-41.135,-71.30657,Bariloche,42.1,40-80,0,106.9,>80,0
+https://www.booking.com/hotel/ar/espana-way.es.html,España Way,apartment,176.052,US$,0.0,0,-41.13337,-71.31434,Bariloche,41.8,40-80,0,107.0,>80,0
+https://www.booking.com/hotel/ar/departamento-en-pleno-centro-san-carlos-de-bariloche1.es.html,Departamento en pleno centro.,apartment,230.0,US$,9.3,88,-41.13648,-71.31218,Bariloche,41.6,40-80,0,106.7,>80,0
+https://www.booking.com/hotel/ar/venezia-san-carlos-de-bariloche2.es.html,Hotel Venezia,hotel,251.42,US$,0.0,0,-41.13619,-71.31006,Bariloche,41.8,40-80,0,106.7,>80,0
+https://www.booking.com/hotel/ar/acogedor-y-luminoso-departamento-en-el-centro.es.html,Acogedor y luminoso departamento en el centro,apartment,170.0,US$,9.6,7,-41.13627,-71.31253,Bariloche,41.6,40-80,0,106.7,>80,0
+https://www.booking.com/hotel/ar/tierra-gaucha-hostel-3.es.html,Hotel Tierra Gaucha,hotel,339.76,US$,7.8,394,-41.13333,-71.3069,Bariloche,42.2,40-80,0,107.1,>80,0
+https://www.booking.com/hotel/ar/casita-suiza.es.html,Hostería Suiza - Ex Casita Suiza,hotel,180.0,US$,8.2,872,-41.13523,-71.30849,Bariloche,42.0,40-80,0,106.9,>80,0
+https://www.booking.com/hotel/ar/mario-i.es.html,Mario I,apartment,240.6690000000001,US$,9.4,34,-41.13573,-71.30887,Bariloche,41.9,40-80,0,106.8,>80,0
+https://www.booking.com/hotel/ar/edelweiss.es.html,NH Bariloche Edelweiss,hotel,321.8100000000001,US$,7.8,842,-41.13434,-71.31325,Bariloche,41.7,40-80,0,106.9,>80,0
+https://www.booking.com/hotel/ar/carlos-v-patagonia.es.html,Carlos V Patagonia,hotel,238.0,US$,8.6,379,-41.13591,-71.31003,Bariloche,41.8,40-80,0,106.8,>80,0
+https://www.booking.com/hotel/ar/tres-reyes.es.html,Hotel Tres Reyes,hotel,405.0,US$,8.4,1592,-41.13275,-71.30782,Bariloche,42.2,40-80,0,107.1,>80,0
+https://www.booking.com/hotel/ar/bariloche.es.html,Hotel Bariloche By Tierra Gaucha,hotel,290.0,US$,7.8,267,-41.13512,-71.30873,Bariloche,42.0,40-80,0,106.9,>80,0
+https://www.booking.com/hotel/ar/tiempos-patagonicos-de-reflexion.es.html,Tiempos patagónicos de reflexión,apartment,140.0,US$,9.7,24,-41.13426,-71.30711,Bariloche,42.1,40-80,0,107.0,>80,0
+https://www.booking.com/hotel/ar/patagonia-jazz-hostel.es.html,Patagonia Jazz Hostel,hostel,98.9400000000001,US$,8.7,1022,-41.13511,-71.31115,Bariloche,41.8,40-80,0,106.8,>80,0
+https://www.booking.com/hotel/ar/colonial-san-carlos-de-bariloche.es.html,Hotel EcoSki by bund,hotel,314.6,US$,8.6,2425,-41.13452,-71.3086,Bariloche,42.0,40-80,0,106.9,>80,0
+https://www.booking.com/hotel/ar/hampton-by-hilton-bariloche.es.html,Hampton By Hilton Bariloche,hotel,320.0,US$,8.6,1111,-41.13394,-71.31231,Bariloche,41.8,40-80,0,107.0,>80,0
+https://www.booking.com/hotel/ar/san-martin-127-apartamento.es.html,Departamento en el centro de Bariloche,apartment,205.0,US$,8.6,167,-41.1343,-71.31193,Bariloche,41.8,40-80,0,106.9,>80,0
+https://www.booking.com/hotel/ar/center-lake-view-2.es.html,center lake view 2,apartment,248.0742000000001,US$,10.0,1,-41.1342,-71.31204,Bariloche,41.8,40-80,0,106.9,>80,0
+https://www.booking.com/hotel/ar/punto-calma.es.html,Punto Calma,apartment,163.48,US$,0.0,0,-41.13421,-71.31205,Bariloche,41.8,40-80,0,106.9,>80,0
+https://www.booking.com/hotel/ar/kenton-palace.es.html,Kenton Palace Bariloche,hotel,442.86,US$,8.0,102,-41.135,-71.30989,Bariloche,41.9,40-80,0,106.9,>80,0
+https://www.booking.com/hotel/ar/departamento-921.es.html,Bariloche Centro Departamento Vista al Lago y Céntro Cívico 921,apartment,192.5,US$,7.0,1,-41.13459,-71.31155,Bariloche,41.8,40-80,0,106.9,>80,0
+https://www.booking.com/hotel/ar/departamento-134.es.html,Bariloche Centro Departamento Vista al Lago y Centro Cívico 134,apartment,203.5,US$,0.0,0,-41.13459,-71.31155,Bariloche,41.8,40-80,0,106.9,>80,0
+https://www.booking.com/hotel/ar/tirol.es.html,Hotel Tirol,hotel,294.5,US$,8.8,852,-41.13344,-71.312,Bariloche,41.9,40-80,0,107.0,>80,0
+https://www.booking.com/hotel/ar/hospedaje-penthouse-1004.es.html,Hospedaje Penthouse 1004,hostel,219.9892000000001,US$,9.7,280,-41.13442,-71.31158,Bariloche,41.8,40-80,0,106.9,>80,0
+https://www.booking.com/hotel/ar/bariloche-home-suites.es.html,Bariloche Home Suites,apartment,262.5,US$,9.7,83,-41.13444,-71.31175,Bariloche,41.8,40-80,0,106.9,>80,0
+https://www.booking.com/hotel/ar/concept-bariloche.es.html,HOTEL CONCEPT BARILOCHE,hotel,324.29,US$,7.7,448,-41.13493,-71.30769,Bariloche,42.0,40-80,0,106.9,>80,0
+https://www.booking.com/hotel/ar/bariloche-studio-al-lago.es.html,Bariloche Studio al Lago,apartment,306.84,US$,9.4,92,-41.13429,-71.3116,Bariloche,41.8,40-80,0,106.9,>80,0
+https://www.booking.com/hotel/ar/centro-civico-a-100-metros-de-distancia.es.html,Centro cívico a 100 metros de distancia,apartment,224.0,US$,9.8,68,-41.13438,-71.31153,Bariloche,41.8,40-80,0,106.9,>80,0
+https://www.booking.com/hotel/ar/monoambiente-con-vista-al-lago-nahuel-huapi.es.html,Monoambiente con Vista al Lago Nahuel Huapi,apartment,355.7400000000001,US$,0.0,0,-41.13424,-71.31158,Bariloche,41.9,40-80,0,106.9,>80,0
+https://www.booking.com/hotel/ar/postal-del-nahuel.es.html,Postal del Nahuel,apartment,280.0,US$,9.7,64,-41.13432,-71.31154,Bariloche,41.8,40-80,0,106.9,>80,0
+https://www.booking.com/hotel/ar/lake-studio-bariloche.es.html,Lake Studio Bariloche,apartment,288.0,US$,10.0,8,-41.13424,-71.31158,Bariloche,41.9,40-80,0,106.9,>80,0
+https://www.booking.com/hotel/ar/mono-ambiente-en-barilo.es.html,Monoambiente Moderno con Vista al Nahuel Huapi y Ubicación Premium,apartment,355.7400000000001,US$,0.0,0,-41.13424,-71.31158,Bariloche,41.9,40-80,0,106.9,>80,0
+https://www.booking.com/hotel/ar/refugio-del-sur.es.html,Refugio del Sur,apartment,275.2000000000001,US$,9.7,7,-41.13424,-71.31158,Bariloche,41.9,40-80,0,106.9,>80,0
+https://www.booking.com/hotel/ar/ruca-center-bariloche.es.html,Ruca Center Bariloche,apartment,217.8000000000001,US$,0.0,0,-41.13409,-71.31158,Bariloche,41.9,40-80,0,107.0,>80,0
+https://www.booking.com/hotel/ar/bog-center-lake-view.es.html,BOG Center Lake view,apartment,285.2696000000001,US$,8.9,6,-41.13409,-71.31158,Bariloche,41.9,40-80,0,107.0,>80,0
+https://www.booking.com/hotel/ar/colorina-bariloche.es.html,Colorina Bariloche en edificio Bariloche Center,apartment,290.4000000000001,US$,0.0,0,-41.13424,-71.31158,Bariloche,41.9,40-80,0,106.9,>80,0
+https://www.booking.com/hotel/ar/studio-del-lago.es.html,Studio del lago,apartment,235.0000000000001,US$,9.4,17,-41.13409,-71.31157,Bariloche,41.9,40-80,0,106.9,>80,0
+https://www.booking.com/hotel/ar/hostel-blue.es.html,Hostel Punto Patagónico Bariloche,hostel,63.5250000000002,US$,8.5,122,-41.13462,-71.31106,Bariloche,41.9,40-80,0,106.9,>80,0
+https://www.booking.com/hotel/ar/departamento-en-el-centro-de-bariloche-ncc.es.html,Departamento en el centro de Bariloche NCC,apartment,215.0200000000001,US$,8.7,157,-41.13384,-71.3115,Bariloche,41.9,40-80,0,107.0,>80,0
+https://www.booking.com/hotel/ar/concorde-san-carlos-de-bariloche.es.html,Hotel Concorde,hotel,299.0,US$,8.2,1456,-41.13343,-71.31142,Bariloche,41.9,40-80,0,107.0,>80,0
+https://www.booking.com/hotel/ar/studio-nothofagus.es.html,Nothofagus Apartments,apartment,200.0,US$,9.1,111,-41.13375,-71.31142,Bariloche,41.9,40-80,0,107.0,>80,0
+https://www.booking.com/hotel/ar/your-place-in-bariloche-comfort-and-premium-location.es.html,"Your place in Bariloche, Comfort and Premium location",apartment,270.0,US$,0.0,0,-41.13336,-71.31136,Bariloche,41.9,40-80,0,107.0,>80,0
+https://www.booking.com/hotel/ar/blackbird-san-martin.es.html,Blackbird San Martin,apartment,190.026,US$,9.5,11,-41.13386,-71.31563,Bariloche,41.6,40-80,0,106.9,>80,0
+https://www.booking.com/hotel/ar/blackbird-bariloche-acojedor-y-comodo.es.html,"Blackbird Civico, a metros del Centro civico",apartment,399.12,US$,0.0,0,-41.13336,-71.31136,Bariloche,41.9,40-80,0,107.0,>80,0
+https://www.booking.com/hotel/ar/bella-vista-bariloche.es.html,Hotel BellaVista,hotel,157.02,US$,8.6,1468,-41.13562,-71.30577,Bariloche,42.1,40-80,0,106.9,>80,0
+https://www.booking.com/hotel/ar/monoambiente-calido-bariloche.es.html,Monoambiente cálido Bariloche,apartment,302.5000000000001,US$,9.6,8,-41.13386,-71.31563,Bariloche,41.6,40-80,0,106.9,>80,0
+https://www.booking.com/hotel/ar/cristal-san-carlos-de-bariloche.es.html,Hotel Cristal,hotel,468.0,US$,8.6,1006,-41.13408,-71.30485,Bariloche,42.3,40-80,0,107.0,>80,0
+https://www.booking.com/hotel/ar/brisa-del-sur-san-carlos-de-bariloche.es.html,Brisa del sur,apartment,171.0,US$,6.6,16,-41.13424,-71.31158,Bariloche,41.9,40-80,0,106.9,>80,0
+https://www.booking.com/hotel/ar/andino-bariloche-san-carlos-de-bariloche1.es.html,AndeSur Bariloche,apartment,204.2400000000002,US$,9.1,6,-41.13392,-71.31536,Bariloche,41.7,40-80,0,106.9,>80,0
+https://www.booking.com/hotel/ar/piso-8-bariloche.es.html,Piso 8 Bariloche,apartment,231.2,US$,9.8,26,-41.13409,-71.31158,Bariloche,41.9,40-80,0,107.0,>80,0
+https://www.booking.com/hotel/ar/view.es.html,View Hotel BRC,hotel,340.0,US$,9.3,200,-41.13503,-71.31488,Bariloche,41.6,40-80,0,106.8,>80,0
+https://www.booking.com/hotel/ar/studio-bariloche.es.html,Studio Bariloche,apartment,193.6,US$,9.4,487,-41.13379,-71.3156,Bariloche,41.7,40-80,0,106.9,>80,0
+https://www.booking.com/hotel/ar/mono-ambiente-con-vista-al-lago.es.html,Mono ambiente con vista al lago,apartment,180.0,US$,9.8,13,-41.13409,-71.31158,Bariloche,41.9,40-80,0,107.0,>80,0
+https://www.booking.com/hotel/ar/patagonia-azul-signature-apartment-in-bariloche.es.html,Patagonia Azul - Signature Apartment in Bariloche,apartment,229.9000000000001,US$,10.0,2,-41.13364,-71.31523,Bariloche,41.7,40-80,0,107.0,>80,0
+https://www.booking.com/hotel/ar/pampa-aparments.es.html,Pampa aparments,apartment,257.1250000000001,US$,8.1,8,-41.13394,-71.31522,Bariloche,41.7,40-80,0,106.9,>80,0
+https://www.booking.com/hotel/ar/nevada.es.html,Hotel Nevada,hotel,342.0,US$,8.9,386,-41.13439,-71.30546,Bariloche,42.2,40-80,0,107.0,>80,0
+https://www.booking.com/hotel/ar/bariloche-440.es.html,Bariloche 440,apartment,200.0,US$,9.6,23,-41.13386,-71.315,Bariloche,41.7,40-80,0,106.9,>80,0
+https://www.booking.com/hotel/ar/perikoa-s-youth-hostel.es.html,Periko´s Youth Hostel,hostel,150.9,US$,8.8,820,-41.13733,-71.31052,Bariloche,41.7,40-80,0,106.6,>80,0
+https://www.booking.com/hotel/ar/bariloche-suites.es.html,Hotel Bariloche Suites,hotel,263.38,US$,7.9,460,-41.13485,-71.30573,Bariloche,42.2,40-80,0,106.9,>80,0
+https://www.booking.com/hotel/ar/mizu-bariloche.es.html,MIZU BARILOCHE SUITES,hotel,209.04,US$,0.0,0,-41.13371,-71.31516,Bariloche,41.7,40-80,0,106.9,>80,0
+https://www.booking.com/hotel/ar/belgrano-decks.es.html,Belgrano Decks,apartment,303.8,US$,9.3,231,-41.13586,-71.31388,Bariloche,41.6,40-80,0,106.7,>80,0
+https://www.booking.com/hotel/ar/el-bonito-apartment.es.html,El Bonito Apartment,apartment,180.0,US$,9.4,76,-41.13384,-71.31508,Bariloche,41.7,40-80,0,106.9,>80,0
+https://www.booking.com/hotel/ar/ayres-de-nahuel.es.html,Hotel Ayres Del Nahuel,hotel,301.98,US$,9.0,1035,-41.13321,-71.30549,Bariloche,42.3,40-80,0,107.1,>80,0
+https://www.booking.com/hotel/ar/kilton.es.html,Hotel Kilton,hotel,150.0,US$,8.2,972,-41.136,-71.30684,Bariloche,42.0,40-80,0,106.8,>80,0
+https://www.booking.com/hotel/ar/premier-bariloche.es.html,NBH Premier Hotel,hotel,254.74,US$,8.2,552,-41.1344,-71.30568,Bariloche,42.2,40-80,0,107.0,>80,0
+https://www.booking.com/hotel/ar/portales-de-la-patagonia.es.html,Portales de la Patagonia Apartments,apartment,198.0,US$,9.5,785,-41.13815,-71.30831,Bariloche,41.7,40-80,0,106.5,>80,0
+https://www.booking.com/hotel/ar/monoambiente-moderno-centrico-san-carlos-de-bariloche.es.html,Monoambiente moderno Céntrico,apartment,283.1400000000001,US$,0.0,0,-41.13403,-71.31472,Bariloche,41.7,40-80,0,106.9,>80,0
+https://www.booking.com/hotel/ar/azul-morada.es.html,Azul Morada Bariloche,apartment,344.6000000000001,US$,9.0,50,-41.13467,-71.31464,Bariloche,41.6,40-80,0,106.8,>80,0
+https://www.booking.com/hotel/ar/hostel-inn.es.html,Hostel Inn Bariloche,hostel,228.34,US$,8.2,728,-41.13415,-71.31657,Bariloche,41.6,40-80,0,106.9,>80,0
+https://www.booking.com/hotel/ar/surprise.es.html,Hotel Surprise Bariloche Centro con Desayuno y Restaurante,inn,475.00200000000007,US$,7.3,279,-41.13682,-71.30835,Bariloche,41.8,40-80,0,106.7,>80,0
+https://www.booking.com/hotel/ar/cottbus.es.html,Hotel Cottbus,hotel,150.0,US$,9.0,2454,-41.13637,-71.30756,Bariloche,41.9,40-80,0,106.7,>80,0
+https://www.booking.com/hotel/ar/trip-bariloche-select-hostel.es.html,Trip Bariloche Select,hotel,180.0,US$,7.4,1518,-41.13647,-71.31228,Bariloche,41.6,40-80,0,106.7,>80,0
+https://www.booking.com/hotel/ar/hosteria-lp-grupo.es.html,Hosteria Lp grupo,inn,180.0,US$,8.8,17,-41.13625,-71.31295,Bariloche,41.6,40-80,0,106.7,>80,0
+https://www.booking.com/hotel/ar/habitacion-familiar-4-personas-privada.es.html,HABITACION FAMILIAR 4 PERSONAS PRIVADa,guest_house,205.7000000000001,US$,7.6,28,-41.13482,-71.30406,Bariloche,42.3,40-80,0,107.0,>80,0
+https://www.booking.com/hotel/ar/marcopolo-inn.es.html,Marcopolo Inn Hostel Bariloche,hostel,231.1,US$,7.5,243,-41.13412,-71.31652,Bariloche,41.6,40-80,0,106.9,>80,0
+https://www.booking.com/hotel/ar/departamento-de-categoria-con-vista-panoramica-al-lago-y-parking.es.html,Departamento de Categoría con Vista Panorámica al Lago y Parking,apartment,445.2800000000001,US$,0.0,0,-41.13515,-71.31602,Bariloche,41.5,40-80,0,106.8,>80,0
+https://www.booking.com/hotel/ar/habitacion-matrimonial-privada.es.html,Habitación Matrimonial Privada,guest_house,121.0000000000001,US$,8.0,46,-41.13482,-71.30406,Bariloche,42.3,40-80,0,107.0,>80,0
+https://www.booking.com/hotel/ar/park-bariloche.es.html,Hotel Park Bariloche,hotel,214.5816000000001,US$,7.3,174,-41.13398,-71.30389,Bariloche,42.3,40-80,0,107.1,>80,0
+https://www.booking.com/hotel/ar/mini-loft-apartments-bariloche.es.html,MINI LOFT Departamentos Bariloche,apartment,245.8,US$,9.3,335,-41.13368,-71.31618,Bariloche,41.6,40-80,0,106.9,>80,0
+https://www.booking.com/hotel/ar/bariloche-flat.es.html,Hotel Suites del Lago,hotel,146.32,US$,6.7,305,-41.13244,-71.31642,Bariloche,41.7,40-80,0,107.1,>80,0
+https://www.booking.com/hotel/ar/depto-en-bariloche-lindo.es.html,"Depto en Bariloche - Para 3 Personas, Zona Tranquila y Estacionamiento",apartment,445.2800000000001,US$,0.0,0,-41.13515,-71.31602,Bariloche,41.5,40-80,0,106.8,>80,0
+https://www.booking.com/hotel/ar/alt-interlaken.es.html,Hotel Alt Interlaken,hotel,238.0,US$,7.2,703,-41.13307,-71.30425,Bariloche,42.4,40-80,0,107.2,>80,0
+https://www.booking.com/hotel/ar/monte-claro.es.html,Monte Claro,hotel,307.48,US$,8.6,354,-41.13519,-71.3047,Bariloche,42.2,40-80,0,106.9,>80,0
+https://www.booking.com/hotel/ar/habitacion-familiar-6p-bariloche.es.html,Habitación Familiar 5P Bariloche,hostel,237.1600000000001,US$,8.4,11,-41.13482,-71.30406,Bariloche,42.3,40-80,0,107.0,>80,0
+https://www.booking.com/hotel/ar/patagonia-sur.es.html,Patagonia Sur Hotel,hotel,235.32,US$,8.1,81,-41.13623,-71.30546,Bariloche,42.1,40-80,0,106.8,>80,0
+https://www.booking.com/hotel/ar/departamento-en-el-centro-de-bariloche-con-hermosa-vista.es.html,Departamento en el Centro de Bariloche con Hermosa Vista solo con abono de SEÑA,apartment,216.0000000000001,US$,8.6,21,-41.13464,-71.31589,Bariloche,41.6,40-80,0,106.8,>80,0
+https://www.booking.com/hotel/ar/bariloche-city.es.html,HOTEL BARILOCHE CITY,hotel,222.82,US$,7.5,621,-41.13342,-71.31605,Bariloche,41.7,40-80,0,107.0,>80,0
+https://www.booking.com/hotel/ar/patagonia-signature-by-nordic.es.html,Hotel Patagonia Signature,bed_and_breakfast,338.56,US$,7.8,271,-41.13411,-71.31601,Bariloche,41.6,40-80,0,106.9,>80,0
+https://www.booking.com/hotel/ar/departamento-vista-huapi.es.html,Departamento Vista Huapi,apartment,300.0,US$,9.3,75,-41.13311,-71.30423,Bariloche,42.4,40-80,0,107.1,>80,0
+https://www.booking.com/hotel/ar/residencial-eluney-san-carlos-de-bariloche.es.html,Luma Boutique Hotel,inn,216.0,US$,7.7,443,-41.1371,-71.30684,Bariloche,41.9,40-80,0,106.7,>80,0
+https://www.booking.com/hotel/ar/tivoli.es.html,M383 Hotel Bariloche,hotel,300.0,US$,7.8,511,-41.13411,-71.30443,Bariloche,42.3,40-80,0,107.0,>80,0
+https://www.booking.com/hotel/ar/mirando-a-los-cerros-san-carlos-de-bariloche.es.html,mirando a los cerros,apartment,170.0,US$,9.9,13,-41.13896,-71.30761,Bariloche,41.7,40-80,0,106.5,>80,0
+https://www.booking.com/hotel/ar/rolando-suite.es.html,Rolando Suite,apartment,220.0,US$,9.3,47,-41.13866,-71.30664,Bariloche,41.8,40-80,0,106.5,>80,0
+https://www.booking.com/hotel/ar/aguas-del-sur.es.html,Aguas Del Sur,hotel,261.46,US$,8.1,68,-41.13518,-71.30498,Bariloche,42.2,40-80,0,106.9,>80,0
+https://www.booking.com/hotel/ar/o-connor-369.es.html,O CONNOR 369,apartment,299.2814000000001,US$,8.7,8,-41.13306,-71.30446,Bariloche,42.4,40-80,0,107.1,>80,0
+https://www.booking.com/hotel/ar/blackbird-guemes-3.es.html,Blackbird Guemes 3,apartment,188.0,US$,0.0,0,-41.13656,-71.31415,Bariloche,41.5,40-80,0,106.6,>80,0
+https://www.booking.com/hotel/ar/increible-alojamiento-centrico.es.html,Increíble Alojamiento Céntrico,apartment,246.2,US$,10.0,8,-41.13515,-71.31528,Bariloche,41.6,40-80,0,106.8,>80,0
+https://www.booking.com/hotel/ar/antartida.es.html,M382 Hotel Bariloche,hotel,270.0,US$,7.9,437,-41.13413,-71.30453,Bariloche,42.3,40-80,0,107.0,>80,0
+https://www.booking.com/hotel/ar/casa-para-4-6-personas-a-pocas-cuadras-del-centro-de-bariloche.es.html,CASA a pocas cuadras del Centro de Bariloche,holiday_home,210.0,US$,9.2,12,-41.13799,-71.31479,Bariloche,41.4,40-80,0,106.5,>80,0
+https://www.booking.com/hotel/ar/hosteria-sur.es.html,Hostería Sur,inn,130.0,US$,8.7,553,-41.13326,-71.30268,Bariloche,42.5,40-80,0,107.2,>80,0
+https://www.booking.com/hotel/ar/s-amp-m-departamento-7.es.html,S&M Departamento 7,apartment,257.6,US$,9.7,16,-41.13639,-71.31685,Bariloche,41.4,40-80,0,106.6,>80,0
+https://www.booking.com/hotel/ar/departamento-centrico-en-bariloche-san-carlos-de-bariloche7.es.html,Departamento Centrico en Bariloche,apartment,305.7670000000001,US$,0.0,0,-41.13805,-71.30592,Bariloche,41.9,40-80,0,106.6,>80,0
+https://www.booking.com/hotel/ar/piuka-c.es.html,Piuké,inn,200.0,US$,8.7,487,-41.13357,-71.3025,Bariloche,42.4,40-80,0,107.1,>80,0
+https://www.booking.com/hotel/ar/mm-san-carlos-de-bariloche.es.html,MM,homestay,193.3580000000001,US$,8.4,73,-41.139,-71.31032,Bariloche,41.6,40-80,0,106.4,>80,0
+https://www.booking.com/hotel/ar/blackbird-guemes-con-estacionamiento-disponible.es.html,Blackbird Güemes con estacionamiento disponible,apartment,182.162,US$,0.0,0,-41.13797,-71.31455,Bariloche,41.4,40-80,0,106.5,>80,0
+https://www.booking.com/hotel/ar/tangoinn-downtown.es.html,Tangoinn Hostel Downtown,hostel,145.5,US$,8.2,354,-41.13383,-71.31778,Bariloche,41.5,40-80,0,106.9,>80,0
+https://www.booking.com/hotel/ar/dpto-2-3-personas-a-pocas-cuadras-del-centro-de-bariloche.es.html,Departamentos en el Centro de Bariloche,apartment,150.0400000000001,US$,5.3,3,-41.13798,-71.31481,Bariloche,41.4,40-80,0,106.5,>80,0
+https://www.booking.com/hotel/ar/loft.es.html,460 LOFT Apartments,apartment,190.4,US$,9.2,106,-41.13334,-71.31741,Bariloche,41.6,40-80,0,107.0,>80,0
+https://www.booking.com/hotel/ar/olly-hosteria.es.html,Olly Patagonia Suites,guest_house,117.0,US$,8.2,58,-41.13465,-71.31752,Bariloche,41.5,40-80,0,106.8,>80,0
+https://www.booking.com/hotel/ar/nina-jazz-hostel.es.html,Nina Hostel,hostel,327.62,US$,8.4,771,-41.13826,-71.30699,Bariloche,41.8,40-80,0,106.5,>80,0
+https://www.booking.com/hotel/ar/panamericano-bariloche.es.html,Sheraton Bariloche Resort,hotel,408.9800000000001,US$,7.9,494,-41.13358,-71.31679,Bariloche,41.6,40-80,0,106.9,>80,0
+https://www.booking.com/hotel/ar/huella-andina.es.html,Huella Andina,hotel,254.04,US$,8.0,514,-41.13845,-71.3092,Bariloche,41.7,40-80,0,106.5,>80,0
+https://www.booking.com/hotel/ar/belgrano-decks-ii.es.html,Belgrano Decks II,apartment,238.7,US$,8.7,139,-41.13399,-71.31715,Bariloche,41.5,40-80,0,106.9,>80,0
+https://www.booking.com/hotel/ar/plaza-san-carlos-de-bariloche.es.html,Hotel Plaza Bariloche,hotel,466.0,US$,8.1,421,-41.13312,-71.30365,Bariloche,42.4,40-80,0,107.2,>80,0
+https://www.booking.com/hotel/ar/moving-hostel-travel-bar.es.html,Moving Hostel Travel Bar,hostel,177.60000000000008,US$,8.8,616,-41.13402,-71.31703,Bariloche,41.6,40-80,0,106.9,>80,0
+https://www.booking.com/hotel/ar/aura-del-lago.es.html,Aura del Lago,apartment,228.6,US$,5.5,2,-41.13236,-71.31714,Bariloche,41.7,40-80,0,107.1,>80,0
+https://www.booking.com/hotel/ar/tito-fly.es.html,Tito Fly Cabaña,apartment,176.0000000000001,US$,8.7,3,-42.50942,-71.49245,Cholila,24.0,15-40,0,4.0,0-15,1
+https://www.booking.com/hotel/ar/piuke-mapu-patagonia-hostel.es.html,Piuke Mapu Patagonia Hostel,hostel,80.0000000000001,US$,9.4,34,-42.51422,-71.43499,Cholila,24.2,15-40,0,3.1,0-15,1
+https://www.booking.com/hotel/ar/cabanas-los-manzanos-cholila2.es.html,Cabañas Los Manzanos,chalet,232.3200000000001,US$,9.5,2,-42.51442,-71.42263,Cholila,24.2,15-40,0,3.5,0-15,1
+https://www.booking.com/hotel/ar/departamento-rio-blanco.es.html,Departamento en Cholila - Cerca del Lago Lezana,apartment,142.5600000000001,US$,8.8,4,-42.44925,-71.44193,Cholila,16.9,15-40,0,6.2,0-15,1
+https://www.booking.com/hotel/ar/casa-los-tres-picos.es.html,CASA Los Tres Picos,holiday_home,132.0000000000001,US$,0.0,0,-42.51401,-71.43472,Cholila,24.1,15-40,0,3.2,0-15,1
+https://www.booking.com/hotel/ar/cabana-san-francisco-cholila1.es.html,Cabaña San Francisco,apartment,62.8800000000003,US$,0.0,0,-42.51305,-71.42736,Cholila,24.1,15-40,0,3.4,0-15,1
+https://www.booking.com/hotel/ar/cabana-con-vista-al-lago.es.html,Domos Ollagua Cholila,chalet,343.2000000000001,US$,9.4,19,-42.50452,-71.40088,Cholila,23.3,15-40,0,5.4,0-15,1
+https://www.booking.com/hotel/ar/lares-de-yaima-cholila.es.html,Lares de Yaima Cholila Chubut,chalet,297.0000000000001,US$,9.7,18,-42.50522,-71.40082,Cholila,23.4,15-40,0,5.3,0-15,1
+https://www.booking.com/hotel/ar/la-momia.es.html,La Momia,bed_and_breakfast,99.00000000000018,US$,9.6,10,-42.51049,-71.42587,Cholila,23.8,15-40,0,3.8,0-15,1
+https://www.booking.com/hotel/ar/big-hostel.es.html,Big Hostel,hostel,40.0000000000001,US$,5.2,54,-41.9626,-71.54322,El Bolsón,4.2,0-15,1,13.9,0-15,1
+https://www.booking.com/hotel/ar/seho-departamentos-el-bolson.es.html,SEHO Departamentos,apartment,,,10.0,1,-41.97441,-71.53048,El Bolsón,5.8,0-15,1,12.5,0-15,1
+https://www.booking.com/hotel/ar/jardin-del-piltri.es.html,Jardín del Piltri,holiday_home,229.9000000000001,US$,9.9,35,-41.97426,-71.53575,El Bolsón,5.6,0-15,1,12.5,0-15,1
+https://www.booking.com/hotel/ar/emilu.es.html,EmiLu,apartment,200.0,US$,0.0,0,-41.95551,-71.5326,El Bolsón,3.7,0-15,1,14.6,0-15,1
+https://www.booking.com/hotel/ar/rincon-del-sur-el-bolson3.es.html,Cabañas Rincon del Sur,apartment,120.54,US$,9.0,73,-41.97361,-71.53239,El Bolsón,5.6,0-15,1,12.6,0-15,1
+https://www.booking.com/hotel/ar/cabana-1-aldea.es.html,Aldea Bolsón,chalet,190.0,US$,9.2,25,-41.97384,-71.52721,El Bolsón,5.8,0-15,1,12.5,0-15,1
+https://www.booking.com/hotel/ar/departamentos-emilu.es.html,Departamentos EmiLu,apartment,319.4400000000001,US$,0.0,0,-41.95542,-71.53258,El Bolsón,3.7,0-15,1,14.6,0-15,1
+https://www.booking.com/hotel/ar/hostel-quot-la-casita-naranja-quot-el-bolson123.es.html,"Hostel ""La Casita Naranja""",guest_house,52.3400000000001,US$,9.3,154,-41.9563,-71.53506,El Bolsón,3.7,0-15,1,14.5,0-15,1
+https://www.booking.com/hotel/ar/departamentos-lina.es.html,Departamentos Lina,apartment,86.0000000000001,US$,7.1,58,-41.95522,-71.53566,El Bolsón,3.6,0-15,1,14.6,0-15,1
+https://www.booking.com/hotel/ar/departamento-mallin-azul.es.html,Departamento Mallin Azul,apartment,182.0,US$,9.6,41,-41.95533,-71.53301,El Bolsón,3.7,0-15,1,14.6,0-15,1
+https://www.booking.com/hotel/ar/hostel-ankatu.es.html,Ankatu Hostel,guest_house,40.0000000000001,US$,9.1,150,-41.95662,-71.53129,El Bolsón,3.9,0-15,1,14.5,0-15,1
+https://www.booking.com/hotel/ar/el-caseron.es.html,El Caserón,holiday_home,281.9300000000001,US$,10.0,3,-41.97212,-71.53145,El Bolsón,5.5,0-15,1,12.7,0-15,1
+https://www.booking.com/hotel/ar/duplex-lo-de-aaron.es.html,Duplex lo de Aaron,holiday_home,159.72000000000008,US$,9.7,4,-41.97179,-71.53191,El Bolsón,5.5,0-15,1,12.8,0-15,1
+https://www.booking.com/hotel/ar/buena-vista-el-bolson.es.html,Buena vibra,chalet,214.2,US$,9.5,37,-41.9581,-71.52832,El Bolsón,4.1,0-15,1,14.3,0-15,1
+https://www.booking.com/hotel/ar/cabana-en-pleno-centro-de-bolson.es.html,Cabaña familiar en pleno centro de Bolsón para 5-6 personas,holiday_home,190.0,US$,0.0,0,-41.96968,-71.53809,El Bolsón,5.1,0-15,1,13.0,0-15,1
+https://www.booking.com/hotel/ar/refugio-centro.es.html,Refugio Centro,apartment,152.4600000000001,US$,6.5,2,-41.95912,-71.53398,El Bolsón,4.1,0-15,1,14.2,0-15,1
+https://www.booking.com/hotel/ar/departamentos-flamingo-flats-el-bolson.es.html,Departamentos Flamingo Flats 2,apartment,160.0,US$,9.2,4,-41.96039,-71.52625,El Bolsón,4.4,0-15,1,14.0,0-15,1
+https://www.booking.com/hotel/ar/suites-piltri.es.html,Suites Piltri,inn,133.1000000000001,US$,4.4,5,-41.95697,-71.53177,El Bolsón,3.9,0-15,1,14.4,0-15,1
+https://www.booking.com/hotel/ar/cordillera-el-bolson.es.html,Hotel Cordillera,hotel,330.4026000000001,US$,9.0,167,-41.95996,-71.53492,El Bolsón,4.1,0-15,1,14.1,0-15,1
+https://www.booking.com/hotel/ar/bungalow-montes-el-bolson.es.html,Bungalow Montes,apartment,140.0,US$,9.1,97,-41.96146,-71.53853,El Bolsón,4.2,0-15,1,13.9,0-15,1
+https://www.booking.com/hotel/ar/cosmosur-el-bolson-centro.es.html,CosmoSur - Centro El Bolson,holiday_home,232.0,US$,9.8,17,-41.95797,-71.5321,El Bolsón,4.0,0-15,1,14.3,0-15,1
+https://www.booking.com/hotel/ar/kremen.es.html,ChacraKremen,farm_holiday,130.0,US$,8.6,56,-41.97808,-71.50752,El Bolsón,6.9,0-15,1,12.0,0-15,1
+https://www.booking.com/hotel/ar/kume.es.html,küme,apartment,169.4000000000001,US$,10.0,2,-41.97104,-71.53722,El Bolsón,5.2,0-15,1,12.9,0-15,1
+https://www.booking.com/hotel/ar/la-alborada-casa-de-campo.es.html,Habitación en Casa de Campo La Alborada,lodge,157.3000000000001,US$,7.7,7,-41.97616,-71.51477,El Bolsón,6.4,0-15,1,12.3,0-15,1
+https://www.booking.com/hotel/ar/casa-en-entorno-tranquilo-camino-de-los-nogales.es.html,Casita de Amaru,holiday_home,160.0,US$,9.6,10,-41.94649,-71.52642,El Bolsón,3.1,0-15,1,15.6,15-40,0
+https://www.booking.com/hotel/ar/departamentos-aagaard-el-bolson.es.html,Departamentos Aagaard,apartment,133.1000000000001,US$,8.7,3,-41.98461,-71.52829,El Bolsón,6.9,0-15,1,11.3,0-15,1
+https://www.booking.com/hotel/ar/tierra-patagonica-departamentos.es.html,Tierra Patagonica Departamentos,apartment,157.3000000000001,US$,9.3,11,-41.94809,-71.53869,El Bolsón,2.8,0-15,1,15.4,15-40,0
+https://www.booking.com/hotel/ar/encanto-patagonico.es.html,Encanto Patagónico,apartment,162.0,US$,9.1,39,-41.94352,-71.52592,El Bolsón,2.8,0-15,1,15.9,15-40,0
+https://www.booking.com/hotel/ar/andes-departamentos.es.html,Andes Departamentos,apartment,227.92,US$,9.3,76,-41.96767,-71.53718,El Bolsón,4.9,0-15,1,13.3,0-15,1
+https://www.booking.com/hotel/ar/casa-arrayanes-el-bolson1.es.html,Casa con vista al Piltri,holiday_home,220.0,US$,9.7,98,-41.94802,-71.52898,El Bolsón,3.1,0-15,1,15.4,15-40,0
+https://www.booking.com/hotel/ar/lugar-sonado-el-bolson1.es.html,Lugar soñado,holiday_home,108.9000000000002,US$,9.5,13,-41.97983,-71.52954,El Bolsón,6.4,0-15,1,11.9,0-15,1
+https://www.booking.com/hotel/ar/habia-una-vez-un-vagon-el-bolson1.es.html,Habia una vez un vagon,apartment,164.0,US$,10.0,6,-41.97783,-71.52584,El Bolsón,6.2,0-15,1,12.1,0-15,1
+https://www.booking.com/hotel/ar/una-morada-en-la-montana.es.html,Una Morada en la Montaña,holiday_home,270.0,US$,9.5,18,-41.96612,-71.51171,El Bolsón,5.5,0-15,1,13.4,0-15,1
+https://www.booking.com/hotel/ar/casa-arrayanes-el-bolson2.es.html,Casa El Maiten,holiday_home,184.2,US$,9.6,10,-41.94866,-71.53018,El Bolsón,3.1,0-15,1,15.3,15-40,0
+https://www.booking.com/hotel/ar/habitacion-con-bano-privado-el-bolson.es.html,Habitación con baño privado,motel,113.2560000000002,US$,10.0,1,-41.94984,-71.5372,El Bolsón,3.0,0-15,1,15.2,15-40,0
+https://www.booking.com/hotel/ar/casa-maiten-el-bolson.es.html,Casa Maitén,apartment,100.0,US$,9.5,13,-41.9796,-71.53964,El Bolsón,6.1,0-15,1,11.9,0-15,1
+https://www.booking.com/hotel/ar/la-aguada-el-bolson.es.html,La Aguada,bed_and_breakfast,280.0001000000001,US$,9.7,48,-41.97222,-71.521,El Bolsón,5.8,0-15,1,12.7,0-15,1
+https://www.booking.com/hotel/ar/al-pie-del-piltri.es.html,Al Pie del Piltri,apartment,187.6,US$,0.0,0,-41.97658,-71.52948,El Bolsón,6.0,0-15,1,12.2,0-15,1
+https://www.booking.com/hotel/ar/nuestro-lugar-el-bolson4.es.html,Nuestro Lugar,apartment,180.0,US$,0.0,0,-41.95372,-71.54499,El Bolsón,3.2,0-15,1,14.9,0-15,1
+https://www.booking.com/hotel/ar/nuestro-lugar-el-bolson1.es.html,Nuestro Lugar,apartment,185.1300000000001,US$,0.0,0,-41.95372,-71.54499,El Bolsón,3.2,0-15,1,14.9,0-15,1
+https://www.booking.com/hotel/ar/nuestro-lugar-el-bolson5.es.html,Nuestro Lugar,apartment,217.8000000000001,US$,0.0,0,-41.95372,-71.54499,El Bolsón,3.2,0-15,1,14.9,0-15,1
+https://www.booking.com/hotel/ar/cautiva-del-sur-el-bolson.es.html,Cautiva del sur,bed_and_breakfast,40.0000000000001,US$,0.0,0,-41.97916,-71.52409,El Bolsón,6.4,0-15,1,11.9,0-15,1
+https://www.booking.com/hotel/ar/bolson-low-cost-departamentos.es.html,El Bolson Low Cost Departamentos,inn,239.5800000000001,US$,0.0,0,-41.9591,-71.53886,El Bolsón,4.0,0-15,1,14.2,0-15,1
+https://www.booking.com/hotel/ar/brisas-del-sur-el-bolson1.es.html,Brisas del Sur,holiday_home,287.3750000000001,US$,8.4,5,-41.97576,-71.52986,El Bolsón,5.9,0-15,1,12.3,0-15,1
+https://www.booking.com/hotel/ar/el-bolson-hermoso-departamento.es.html,el Bolsón hermoso departamento,apartment,266.2000000000001,US$,0.0,0,-41.96773,-71.53708,El Bolsón,4.9,0-15,1,13.2,0-15,1
+https://www.booking.com/hotel/ar/un-lugar-en-el-mundo-el-bolson2.es.html,Un lugar en el Mundo,holiday_home,211.2,US$,10.0,1,-41.9738,-71.54076,El Bolsón,5.4,0-15,1,12.6,0-15,1
+https://www.booking.com/hotel/ar/entre-jardines.es.html,Entre Jardines,apartment,130.0,US$,8.5,35,-41.95442,-71.53858,El Bolsón,3.5,0-15,1,14.7,0-15,1
+https://www.booking.com/hotel/ar/cabanas-tierra-verde.es.html,Cabañas Tierra Verde,holiday_home,356.6,US$,9.0,55,-41.96952,-71.52052,El Bolsón,5.5,0-15,1,13.0,0-15,1
+https://www.booking.com/hotel/ar/la-aguada-full-villa-experience.es.html,La Aguada Luxus Villa Experience,villa,2200.0,US$,0.0,0,-41.9721,-71.52102,El Bolsón,5.8,0-15,1,12.7,0-15,1
+https://www.booking.com/hotel/ar/patagonia-villa-and-chalet-experience.es.html,Patagonia Villa and Chalet Experience,villa,4353.58,US$,0.0,0,-41.97213,-71.52102,El Bolsón,5.8,0-15,1,12.7,0-15,1
+https://www.booking.com/hotel/ar/departamento-centrico-en-el-bolson.es.html,Departamento céntrico Vibra Sur,apartment,162.1400000000001,US$,9.1,22,-41.9601,-71.53114,El Bolsón,4.2,0-15,1,14.1,0-15,1
+https://www.booking.com/hotel/ar/bolson-departamento-centrico.es.html,Bolsón Departamento céntrico,apartment,266.2000000000001,US$,0.0,0,-41.96769,-71.53713,El Bolsón,4.9,0-15,1,13.3,0-15,1
+https://www.booking.com/hotel/ar/cabana-biko.es.html,Cabaña BIKO,apartment,130.0,US$,9.6,51,-41.96016,-71.53098,El Bolsón,4.2,0-15,1,14.1,0-15,1
+https://www.booking.com/hotel/ar/travesia-sur.es.html,Travesia Sur Hostel,hostel,101.9,US$,8.9,164,-41.96274,-71.53792,El Bolsón,4.4,0-15,1,13.8,0-15,1
+https://www.booking.com/hotel/ar/4-estaciones-el-bolson.es.html,4 Estaciones,apartment,210.0,US$,9.7,37,-41.96052,-71.53323,El Bolsón,4.2,0-15,1,14.0,0-15,1
+https://www.booking.com/hotel/ar/la-chela-mountain-shelter.es.html,La Chela - Mountain Shelter,chalet,96.0000000000001,US$,0.0,0,-41.96732,-71.53614,El Bolsón,4.9,0-15,1,13.3,0-15,1
+https://www.booking.com/hotel/ar/la-perla-el-bolson.es.html,La Perla - Centro de El Bolsón.,holiday_home,163.0,US$,9.3,24,-41.96125,-71.53075,El Bolsón,4.4,0-15,1,13.9,0-15,1
+https://www.booking.com/hotel/ar/sublime.es.html,Cabañas Sublime Bolson,apartment,256.3,US$,9.5,93,-41.96129,-71.53105,El Bolsón,4.4,0-15,1,13.9,0-15,1
+https://www.booking.com/hotel/ar/apartamentos-chill.es.html,Alojamiento Chill,apartment,200.0,US$,9.0,106,-41.96134,-71.53038,El Bolsón,4.4,0-15,1,13.9,0-15,1
+https://www.booking.com/hotel/ar/copos-de-nieve.es.html,Copos de Nieve,apartment,222.0000000000001,US$,9.4,77,-41.96142,-71.53079,El Bolsón,4.4,0-15,1,13.9,0-15,1
+https://www.booking.com/hotel/ar/la-aguada-villa.es.html,Delux villa el Bolson,villa,2591.82,US$,0.0,0,-41.96732,-71.53171,El Bolsón,5.0,0-15,1,13.3,0-15,1
+https://www.booking.com/hotel/ar/la-chela-refugio-de-montana.es.html,La Chela - Refugio de Montaña,chalet,104.0,US$,0.0,0,-41.96732,-71.53171,El Bolsón,5.0,0-15,1,13.3,0-15,1
+https://www.booking.com/hotel/ar/cabanas-tunquelen.es.html,Cabañas Tunquelen,apartment,189.0,US$,9.1,155,-41.96577,-71.52995,El Bolsón,4.9,0-15,1,13.4,0-15,1
+https://www.booking.com/hotel/ar/hostel-otto-tipp-el-bolson.es.html,Hostel Otto Tipp,hostel,58.0800000000002,US$,9.1,42,-41.96464,-71.52951,El Bolsón,4.8,0-15,1,13.6,0-15,1
+https://www.booking.com/hotel/ar/cabana-low-cost.es.html,Cabaña LOW COST,apartment,199.5,US$,9.4,64,-41.9656,-71.52996,El Bolsón,4.8,0-15,1,13.5,0-15,1
+https://www.booking.com/hotel/ar/rayentray-el-bolson.es.html,Rayentray,apartment,124.0,US$,9.0,77,-41.96259,-71.53019,El Bolsón,4.5,0-15,1,13.8,0-15,1
+https://www.booking.com/hotel/ar/hostel-el-duende-errante.es.html,Hostel El Duende Errante,hostel,45.98000000000019,US$,9.4,22,-41.96653,-71.53127,El Bolsón,4.9,0-15,1,13.4,0-15,1
+https://www.booking.com/hotel/ar/apartamento-bosque-verde-el-bolson.es.html,Apartamento Bosque Verde,apartment,200.0001000000001,US$,9.2,16,-41.96566,-71.53011,El Bolsón,4.9,0-15,1,13.4,0-15,1
+https://www.booking.com/hotel/ar/hostel-360-patagonia.es.html,Hostel 360 Patagonia,guest_house,130.0,US$,8.6,29,-41.96264,-71.53652,El Bolsón,4.4,0-15,1,13.8,0-15,1
+https://www.booking.com/hotel/ar/roca-azul-el-bolson.es.html,ROCA AZUL,apartment,169.4000000000001,US$,9.2,84,-41.96332,-71.53069,El Bolsón,4.6,0-15,1,13.7,0-15,1
+https://www.booking.com/hotel/ar/departamento-centrico-4.es.html,Departamento Céntrico 4,apartment,146.0,US$,6.7,17,-41.96245,-71.53332,El Bolsón,4.4,0-15,1,13.8,0-15,1
+https://www.booking.com/hotel/ar/la-fragua-suites-saavedra.es.html,La Fragua Suites Saavedra,apartment,310.3650000000001,US$,9.6,6,-41.96493,-71.53174,El Bolsón,4.7,0-15,1,13.5,0-15,1
+https://www.booking.com/hotel/ar/hostel-cosmo.es.html,Hostel Cosmo,guest_house,160.34,US$,9.3,230,-41.9627,-71.53343,El Bolsón,4.5,0-15,1,13.8,0-15,1
+https://www.booking.com/hotel/ar/las-tejuelas.es.html,Las Tejuelas - B&B Patagónico,hotel,314.6000000000001,US$,9.2,101,-41.96492,-71.53534,El Bolsón,4.7,0-15,1,13.5,0-15,1
+https://www.booking.com/hotel/ar/abuela-pastora.es.html,Abuela Pastora,villa,435.6000000000001,US$,10.0,1,-41.86845,-71.48319,El Bolsón,6.0,0-15,1,24.2,15-40,0
+https://www.booking.com/hotel/ar/casa-surena.es.html,Casa Sureña,holiday_home,206.0,US$,10.0,5,-41.8966,-71.52072,El Bolsón,2.1,0-15,1,21.1,15-40,0
+https://www.booking.com/hotel/ar/cabanas-ailin-co.es.html,CABAÑAS AILIN-CO,chalet,230.0,US$,9.7,21,-41.91269,-71.51509,El Bolsón,2.6,0-15,1,19.3,15-40,0
+https://www.booking.com/hotel/ar/complejo-del-bosque-el-bolson4.es.html,Complejo Del Bosque,apartment,169.4000000000001,US$,0.0,0,-41.91251,-71.51854,El Bolsón,2.3,0-15,1,19.4,15-40,0
+https://www.booking.com/hotel/ar/casa-de-montana-camino-a-warton.es.html,Casa de montaña camino a Warton,homestay,70.0000000000001,US$,0.0,0,-41.87097,-71.54796,El Bolsón,0.6,0-15,1,24.0,15-40,0
+https://www.booking.com/hotel/ar/ngen-mawida-ecocamping.es.html,Ngen Mawida Ecocamping,camping,56.0000000000001,US$,10.0,1,-41.91763,-71.51744,El Bolsón,2.6,0-15,1,18.8,15-40,0
+https://www.booking.com/hotel/ar/cabanas-surenya.es.html,Cabañas SurEnya,chalet,195.4150000000001,US$,9.7,20,-41.92231,-71.52471,El Bolsón,1.9,0-15,1,18.3,15-40,0
+https://www.booking.com/hotel/ar/hostal-del-rio-el-bolson1.es.html,Hostal del río,guest_house,100.0,US$,9.4,78,-41.92235,-71.52588,El Bolsón,1.8,0-15,1,18.3,15-40,0
+https://www.booking.com/hotel/ar/la-casona-de-odile.es.html,La Casona De Odile,hostel,50.000000000000185,US$,9.5,61,-41.91979,-71.52203,El Bolsón,2.2,0-15,1,18.5,15-40,0
+https://www.booking.com/hotel/ar/la-morenita-el-bolson1.es.html,La Morenita,apartment,174.2400000000001,US$,0.0,0,-41.91211,-71.5134,El Bolsón,2.7,0-15,1,19.4,15-40,0
+https://www.booking.com/hotel/ar/origenes-ecolodge-de-montana.es.html,Origenes Ecolodge de Montaña,lodge,605.0,US$,10.0,6,-41.98515,-71.57684,El Bolsón,6.6,0-15,1,12.0,0-15,1
+https://www.booking.com/hotel/ar/la-herradura-el-bolson.es.html,Cabañas Chacra La Herradura.,holiday_home,220.0,US$,9.6,6,-42.00392,-71.51688,El Bolsón,9.2,0-15,1,9.2,0-15,1
+https://www.booking.com/hotel/ar/casa-de-montana-el-bolson.es.html,Casa de montaña,apartment,484.0000000000001,US$,0.0,0,-41.91849,-71.50495,El Bolsón,3.6,0-15,1,18.6,15-40,0
+https://www.booking.com/hotel/ar/complejo-1919-el-bolson2.es.html,Complejo 1919,holiday_home,164.56000000000012,US$,10.0,4,-41.93305,-71.53741,El Bolsón,1.3,0-15,1,17.1,15-40,0
+https://www.booking.com/hotel/ar/el-pueblito.es.html,El Pueblito EcoHostel,hostel,94.0000000000001,US$,8.9,67,-41.92611,-71.52814,El Bolsón,1.6,0-15,1,17.8,15-40,0
+https://www.booking.com/hotel/ar/cabanas-terraza-sur.es.html,Cabañas Terraza Sur,apartment,156.0,US$,8.7,11,-41.99024,-71.52221,El Bolsón,7.7,0-15,1,10.7,0-15,1
+https://www.booking.com/hotel/ar/hosteria-villa-turismo-el-bolson.es.html,Hosteria Villa Turismo,inn,90.0000000000001,US$,8.8,33,-41.99081,-71.52216,El Bolsón,7.7,0-15,1,10.7,0-15,1
+https://www.booking.com/hotel/ar/las-nalcas-mountain-resort.es.html,Las Nalcas Boutique Hotel & Mountain Spa,hotel,270.0,US$,7.8,72,-41.9907,-71.50824,El Bolsón,8.1,0-15,1,10.6,0-15,1
+https://www.booking.com/hotel/ar/buena-vida-social-club.es.html,Buena Vida Social Club,inn,380.0,US$,9.2,63,-41.97863,-71.50597,El Bolsón,7.0,0-15,1,11.9,0-15,1
+https://www.booking.com/hotel/ar/cabanas-teo-el-bolson.es.html,Cabañas del Prado,apartment,180.0,US$,9.7,25,-41.96097,-71.52765,El Bolsón,4.4,0-15,1,14.0,0-15,1
+https://www.booking.com/hotel/ar/cabanas-piltri-hue-el-bolson.es.html,Cabañas Piltri-Hué,chalet,136.0,US$,9.0,2,-41.98569,-71.51891,El Bolsón,7.3,0-15,1,11.2,0-15,1
+https://www.booking.com/hotel/ar/rustik-palace.es.html,Rustik Palace,chalet,148.8,US$,10.0,28,-41.99323,-71.52131,El Bolsón,8.0,0-15,1,10.4,0-15,1
+https://www.booking.com/hotel/ar/cabana-los-lupulos-2.es.html,Cabañas Los Lúpulos,lodge,117.99990000000032,US$,9.8,93,-41.98918,-71.53931,El Bolsón,7.1,0-15,1,10.9,0-15,1
+https://www.booking.com/hotel/ar/las-morillas-el-bolson.es.html,Las Morillas,chalet,152.0,US$,10.0,4,-41.80865,-71.53741,El Bolsón,5.2,0-15,1,30.9,15-40,0
+https://www.booking.com/hotel/ar/los-chacay-el-bolson.es.html,Los Chacay,apartment,140.0,US$,0.0,0,-41.78871,-71.46364,El Bolsón,10.7,0-15,1,33.2,15-40,0
+https://www.booking.com/hotel/ar/hostel-el-mirador-el-bolson2.es.html,Hostel El Mirador,hostel,69.27887768595059,US$,9.3,146,-41.98443,-71.50607,El Bolsón,7.5,0-15,1,11.3,0-15,1
+https://www.booking.com/hotel/ar/casa-mallin-azul.es.html,Casa Mallin Azul,chalet,180.0,US$,9.6,31,-41.84933,-71.5478,El Bolsón,1.2,0-15,1,26.4,15-40,0
+https://www.booking.com/hotel/ar/casa-en-la-montana-casa-chucao.es.html,"Casa en la Montaña, Casa Chucao",chalet,214.0,US$,10.0,38,-41.97828,-71.50591,El Bolsón,7.0,0-15,1,12.0,0-15,1
+https://www.booking.com/hotel/ar/el-cielo-el-bolson.es.html,El Cielo,country_house,228.6900000000001,US$,0.0,0,-41.9774,-71.50565,El Bolsón,6.9,0-15,1,12.1,0-15,1
+https://www.booking.com/hotel/ar/complejo-palo-quemado.es.html,Complejo Palo Quemado,lodge,68.0000000000001,US$,0.0,0,-42.14996,-71.5252,El Hoyo,9.7,0-15,1,0.1,0-15,1
+https://www.booking.com/hotel/ar/complejo-ladera-sur.es.html,Complejo Ladera Sur,apartment,240.0,US$,0.0,0,-42.0542,-71.50356,El Hoyo,14.9,0-15,1,3.6,0-15,1
+https://www.booking.com/hotel/ar/criollo-lodge.es.html,Criollo Lodge,lodge,272.0,US$,10.0,7,-42.09881,-71.51754,El Hoyo,14.3,0-15,1,0.1,0-15,1
+https://www.booking.com/hotel/ar/aldea-los-huemules.es.html,Cabañas y Hosteria Aldea Los Huemules,lodge,105.1,US$,9.4,36,-42.09686,-71.46031,El Hoyo,12.9,0-15,1,0.7,0-15,1
+https://www.booking.com/hotel/ar/hostel-chacra-la-templanza.es.html,Hostel Chacra La Templanza,guest_house,87.1200000000002,US$,9.5,48,-42.08275,-71.49416,El Hoyo,15.1,15-40,0,0.4,0-15,1
+https://www.booking.com/hotel/ar/glamping-del-pirque.es.html,Glamping del Pirque,camping,80.0000000000001,US$,0.0,0,-42.09604,-71.51669,El Hoyo,14.6,0-15,1,0.2,0-15,1
+https://www.booking.com/hotel/ar/cabana-con-vistas-al-cerro-piltriquiltron.es.html,Chalet con vistas a las montañas,holiday_home,120.0,US$,10.0,5,-42.05356,-71.52868,El Hoyo,14.3,0-15,1,3.7,0-15,1
+https://www.booking.com/hotel/ar/tiny-house-el-barco.es.html,Tiny House El Barco,holiday_home,110.0,US$,9.1,16,-42.04174,-71.55261,El Hoyo,12.7,0-15,1,5.4,0-15,1
+https://www.booking.com/hotel/ar/camping-el-paraiso.es.html,Camping El Paraíso,apartment,159.72,US$,9.0,2,-42.08924,-71.53436,El Hoyo,15.9,15-40,0,0.2,0-15,1
+https://www.booking.com/hotel/ar/hosteria-de-montana-las-pataguas-chubut.es.html,Hostería de Montaña Las Pataguas,inn,127.6,US$,9.8,11,-42.1393,-71.41768,Epuyén,7.9,0-15,1,0.2,0-15,1
+https://www.booking.com/hotel/ar/la-iluminada.es.html,La Iluminada,holiday_home,121.0000000000001,US$,0.0,0,-42.06866,-71.52556,El Hoyo,16.0,15-40,0,2.0,0-15,1
+https://www.booking.com/hotel/ar/cabana-linna.es.html,Cabaña Linna,apartment,152.5,US$,10.0,2,-42.05783,-71.51534,El Hoyo,15.0,0-15,1,3.3,0-15,1
+https://www.booking.com/hotel/ar/cabana-luces.es.html,Cabañas LuCes del Pirque,chalet,222.22,US$,9.3,47,-42.07285,-71.52091,El Hoyo,16.5,15-40,0,1.6,0-15,1
+https://www.booking.com/hotel/ar/cabanas-luces-del-pirque-2.es.html,Cabañas LuCes del Pirque 2,chalet,193.8,US$,9.7,50,-42.07283,-71.52099,El Hoyo,16.5,15-40,0,1.6,0-15,1
+https://www.booking.com/hotel/ar/studio-monoambiente-2-pax.es.html,departamentos privados de 2 a 8 pax equipados,apartment,90.0000000000001,US$,8.2,104,-42.06683,-71.51344,El Hoyo,16.0,15-40,0,2.4,0-15,1
+https://www.booking.com/hotel/ar/hosteria-el-hoyo.es.html,Hosteria El Hoyo,inn,170.0,US$,9.4,89,-42.07473,-71.51607,El Hoyo,16.7,15-40,0,1.5,0-15,1
+https://www.booking.com/hotel/ar/cabanas-koda.es.html,Cabañas Koda,holiday_home,172.8,US$,0.0,0,-42.06769,-71.51661,El Hoyo,16.0,15-40,0,2.2,0-15,1
+https://www.booking.com/hotel/ar/departamento-anita-el-hoyo-chubut.es.html,Departamento Anita,apartment,170.0,US$,9.8,7,-42.06098,-71.52011,El Hoyo,15.2,15-40,0,2.9,0-15,1
+https://www.booking.com/hotel/ar/cabanas-apart-del-sauce.es.html,Cabañas & Apart Del Sauce,country_house,146.0,US$,8.8,32,-42.06895,-71.51831,El Hoyo,16.1,15-40,0,2.1,0-15,1
+https://www.booking.com/hotel/ar/complejo-los-saucos-ii.es.html,Complejo Los Saucos II,apartment,203.2800000000001,US$,0.0,0,-42.06271,-71.51794,El Hoyo,15.5,15-40,0,2.7,0-15,1
+https://www.booking.com/hotel/ar/trayken.es.html,Casa Grande Trayken,apartment,120.0,US$,9.6,110,-42.05832,-71.51921,El Hoyo,15.0,0-15,1,3.2,0-15,1
+https://www.booking.com/hotel/ar/rio-epuyen-aparts.es.html,Río Epuyén Aparts,aparthotel,150.7660000000001,US$,9.3,4,-42.0764,-71.51697,El Hoyo,16.5,15-40,0,1.3,0-15,1
+https://www.booking.com/hotel/ar/los-saucos.es.html,Los Saucos,apartment,167.2,US$,9.3,19,-42.06266,-71.51819,El Hoyo,15.4,15-40,0,2.7,0-15,1
+https://www.booking.com/hotel/ar/cabana-aida-epuyen.es.html,Cabaña Aida Epuyén,chalet,228.0,US$,7.0,3,-42.22494,-71.35027,Epuyén,3.6,0-15,1,0.9,0-15,1
+https://www.booking.com/hotel/ar/valle-de-epuyen.es.html,Valle de Epuyen,chalet,60.0000000000001,US$,9.6,110,-42.20497,-71.39126,Epuyén,1.4,0-15,1,0.2,0-15,1
+https://www.booking.com/hotel/ar/cabana-de-barro-con-bosque-rio-arte-y-apicultura.es.html,"Cabaña de barro con Bosque, rio, arte y apicultura",chalet,363.0000000000001,US$,0.0,0,-42.16774,-71.40266,Epuyén,4.9,0-15,1,0.1,0-15,1
+https://www.booking.com/hotel/ar/carelhue-cushamen.es.html,Carelhue,guest_house,88.0000000000001,US$,9.3,37,-42.21737,-71.41895,Epuyén,0.1,0-15,1,0.2,0-15,1
+https://www.booking.com/hotel/ar/luna-de-epuyen-epuyen16.es.html,Luna de Epuyén,holiday_home,100.0,US$,8.2,8,-42.22977,-71.35927,Epuyén,2.7,0-15,1,1.9,0-15,1
+https://www.booking.com/hotel/ar/fh-alojamiento-escalante.es.html,Fh alojamiento,apartment,110.5,US$,0.0,0,-42.20963,-71.39081,Epuyén,1.0,0-15,1,0.3,0-15,1
+https://www.booking.com/hotel/ar/rukaymi.es.html,Rukaymi,bed_and_breakfast,41.8000000000001,US$,9.6,7,-42.91099,-71.32918,Esquel,14.7,0-15,1,24.7,15-40,0
+https://www.booking.com/hotel/ar/casita-bequi.es.html,Casita Bequi,apartment,200.0,US$,9.7,19,-42.91173,-71.31481,Esquel,14.1,0-15,1,24.9,15-40,0
+https://www.booking.com/hotel/ar/ventanas-de-la-patagonia.es.html,Ventanas de la Patagonia,holiday_home,189.0,US$,9.6,29,-42.9107,-71.32669,Esquel,14.6,0-15,1,24.6,15-40,0
+https://www.booking.com/hotel/ar/comodo-departamento-a-pasitos-del-centro.es.html,Comodo departamento a pasitos del centro,apartment,99.4600000000001,US$,5.8,5,-42.91912,-71.33223,Esquel,14.1,0-15,1,25.5,15-40,0
+https://www.booking.com/hotel/ar/patagonia-encantada-esquel.es.html,Patagonia Encantada,aparthotel,258.58,US$,0.0,0,-42.91133,-71.32971,Esquel,14.7,0-15,1,24.7,15-40,0
+https://www.booking.com/hotel/ar/patagonia-encantada.es.html,Patagonia Encantada,lodge,370.08,US$,7.7,16,-42.91144,-71.32958,Esquel,14.7,0-15,1,24.7,15-40,0
+https://www.booking.com/hotel/ar/depart-lt-amentos-lizkar.es.html,Lizkar Alojamientos,apartment,140.0,US$,8.6,97,-42.91907,-71.33235,Esquel,14.1,0-15,1,25.5,15-40,0
+https://www.booking.com/hotel/ar/rosa-mosqueta-esquel.es.html,Rosa Mosqueta Esquel,apartment,217.8000000000001,US$,9.8,12,-42.91083,-71.31618,Esquel,14.2,0-15,1,24.8,15-40,0
+https://www.booking.com/hotel/ar/patagonia-tempo-esquel.es.html,Patagonia Tempo,apartment,267.4100000000001,US$,10.0,1,-42.91001,-71.3182,Esquel,14.4,0-15,1,24.7,15-40,0
+https://www.booking.com/hotel/ar/mirbel-esquel.es.html,Esquel te Espera,apartment,145.2000000000001,US$,9.0,10,-42.91342,-71.33016,Esquel,14.5,0-15,1,24.9,15-40,0
+https://www.booking.com/hotel/ar/departamento-mama-ines.es.html,Departamento Mamá Inés,apartment,170.0,US$,9.6,22,-42.91934,-71.33114,Esquel,14.0,0-15,1,25.6,15-40,0
+https://www.booking.com/hotel/ar/taid.es.html,TAID,apartment,106.0,US$,9.6,29,-42.91096,-71.32497,Esquel,14.6,0-15,1,24.7,15-40,0
+https://www.booking.com/hotel/ar/esquel-home.es.html,Esquel Home,apartment,196.0200000000001,US$,9.8,69,-42.9116,-71.31681,Esquel,14.2,0-15,1,24.8,15-40,0
+https://www.booking.com/hotel/ar/vientos-del-sur-esquel.es.html,Vientos del Sur Esquel,holiday_home,216.0,US$,9.9,13,-42.91841,-71.33145,Esquel,14.1,0-15,1,25.5,15-40,0
+https://www.booking.com/hotel/ar/carmelita.es.html,La Carmela,apartment,136.0,US$,9.6,42,-42.91945,-71.33081,Esquel,14.0,0-15,1,25.6,15-40,0
+https://www.booking.com/hotel/ar/1028-chacabuco.es.html,Mi depa en Esquel,apartment,99.0000000000001,US$,8.3,61,-42.91372,-71.31354,Esquel,13.8,0-15,1,25.1,15-40,0
+https://www.booking.com/hotel/ar/sauce-tempo.es.html,Sauce Tempo,apartment,232.3200000000001,US$,9.5,10,-42.91076,-71.31629,Esquel,14.2,0-15,1,24.8,15-40,0
+https://www.booking.com/hotel/ar/hena-apart-depto-3.es.html,hena apart 3,apartment,150.0,US$,8.3,10,-42.91151,-71.32062,Esquel,14.3,0-15,1,24.8,15-40,0
+https://www.booking.com/hotel/ar/yireh.es.html,Jireh,apartment,92.0000000000001,US$,9.6,129,-42.92293,-71.326,Esquel,13.4,0-15,1,26.0,15-40,0
+https://www.booking.com/hotel/ar/departamento-centrico-con-vista-panoramica.es.html,La Bonaerense-Duplex planta alta con vista panorámica,apartment,81.4000000000001,US$,9.4,27,-42.9147,-71.32788,Esquel,14.3,0-15,1,25.1,15-40,0
+https://www.booking.com/hotel/ar/departamento-arbol-grande.es.html,Departamento Árbol Grande,apartment,110.0,US$,9.9,46,-42.91327,-71.31303,Esquel,13.9,0-15,1,25.1,15-40,0
+https://www.booking.com/hotel/ar/la-isabel-esquel.es.html,La Isabel,aparthotel,135.0,US$,9.4,64,-42.91216,-71.31846,Esquel,14.2,0-15,1,24.9,15-40,0
+https://www.booking.com/hotel/ar/los-colibries-esquel.es.html,Los Colibries,apartment,120.0,US$,10.0,3,-42.92148,-71.32533,Esquel,13.6,0-15,1,25.9,15-40,0
+https://www.booking.com/hotel/ar/teguyn.es.html,Teguyn,apartment,144.0,US$,9.7,17,-42.91407,-71.32854,Esquel,14.4,0-15,1,25.0,15-40,0
+https://www.booking.com/hotel/ar/hospedaje-amilcar.es.html,Hospedaje Amilcar,guest_house,104.5440000000002,US$,8.8,180,-42.91549,-71.32852,Esquel,14.3,0-15,1,25.2,15-40,0
+https://www.booking.com/hotel/ar/sol-del-sur.es.html,Hotel Sol del Sur,hotel,193.58,US$,8.5,576,-42.91279,-71.32091,Esquel,14.2,0-15,1,24.9,15-40,0
+https://www.booking.com/hotel/ar/alvear-suites-esquel.es.html,Alvear Suites,apartment,260.0,US$,9.0,2,-42.91338,-71.32296,Esquel,14.2,0-15,1,25.0,15-40,0
+https://www.booking.com/hotel/ar/dormis-aca.es.html,Dormís Acá,hotel,144.0868000000001,US$,9.2,543,-42.9174,-71.31673,Esquel,13.6,0-15,1,25.5,15-40,0
+https://www.booking.com/hotel/ar/departamentos-ailen.es.html,Departamentos Ailen,aparthotel,120.0,US$,9.3,58,-42.91562,-71.31599,Esquel,13.7,0-15,1,25.3,15-40,0
+https://www.booking.com/hotel/ar/olivo-tempo-2.es.html,Maiten Tempo 2,apartment,144.5,US$,8.4,6,-42.91665,-71.31491,Esquel,13.6,0-15,1,25.4,15-40,0
+https://www.booking.com/hotel/ar/las-bayas.es.html,Las Bayas Home Suites,hotel,375.26,US$,9.4,93,-42.91287,-71.32271,Esquel,14.3,0-15,1,24.9,15-40,0
+https://www.booking.com/hotel/ar/departamentos-san-fermin-esquel.es.html,Departamentos San Fermin,apartment,108.0,US$,10.0,4,-42.91389,-71.31919,Esquel,14.0,0-15,1,25.1,15-40,0
+https://www.booking.com/hotel/ar/huella-patagonica-esquel.es.html,Hostel Huella Patagonica,hostel,60.5000000000002,US$,3.0,3,-42.91268,-71.32099,Esquel,14.2,0-15,1,24.9,15-40,0
+https://www.booking.com/hotel/ar/sunset-esquel.es.html,Sunset Esquel,apartment,135.0,US$,9.8,102,-42.91403,-71.32289,Esquel,14.2,0-15,1,25.1,15-40,0
+https://www.booking.com/hotel/ar/central-and-cozy-duplex-in-esquel.es.html,Departamento céntrico Esquel,apartment,240.0,US$,0.0,0,-42.91764,-71.31705,Esquel,13.6,0-15,1,25.5,15-40,0
+https://www.booking.com/hotel/ar/hena-apart-esquel.es.html,hena apart 1,apartment,142.0,US$,9.5,18,-42.91529,-71.32421,Esquel,14.1,0-15,1,25.2,15-40,0
+https://www.booking.com/hotel/ar/la-querencia-esquel.es.html,La Querencia Esquel,apartment,203.2800000000001,US$,9.4,6,-42.91769,-71.32632,Esquel,14.0,0-15,1,25.4,15-40,0
+https://www.booking.com/hotel/ar/hena-apart-depto-2.es.html,hena apart 2,apartment,312.1800000000001,US$,8.9,10,-42.91526,-71.32412,Esquel,14.1,0-15,1,25.2,15-40,0
+https://www.booking.com/hotel/ar/corazon-de-esquel.es.html,Corazón de Esquel,apartment,133.1000000000001,US$,9.6,13,-42.91523,-71.31946,Esquel,13.9,0-15,1,25.2,15-40,0
+https://www.booking.com/hotel/ar/la-noemi.es.html,La Noemi,apartment,245.0250000000001,US$,9.5,44,-42.9147,-71.32142,Esquel,14.0,0-15,1,25.1,15-40,0
+https://www.booking.com/hotel/ar/los-alerces-patagonia-apart.es.html,Los Alerces Patagonia Apart,apartment,170.0,US$,9.1,154,-42.91503,-71.32205,Esquel,14.0,0-15,1,25.2,15-40,0
+https://www.booking.com/hotel/ar/departamento-para-3.es.html,Departamento para 3,apartment,137.2140000000001,US$,9.0,29,-42.9164,-71.31711,Esquel,13.7,0-15,1,25.4,15-40,0
+https://www.booking.com/hotel/ar/nahuel-apart.es.html,Nahuel Apart,apartment,158.20000000000022,US$,9.6,44,-42.91941,-71.32257,Esquel,13.6,0-15,1,25.6,15-40,0
+https://www.booking.com/hotel/ar/patagonia-apart-esquel1.es.html,Patagonia Apart,apartment,320.0,US$,9.5,16,-42.91627,-71.32436,Esquel,14.0,0-15,1,25.3,15-40,0
+https://www.booking.com/hotel/ar/hermoso-departamento-centrico-esquel.es.html,Emilia I,apartment,101.2,US$,9.0,22,-42.91976,-71.31892,Esquel,13.5,0-15,1,25.7,15-40,0
+https://www.booking.com/hotel/ar/bistro-manquehue.es.html,Hotel Manquehue,hotel,228.6900000000001,US$,8.7,16,-42.9163,-71.32133,Esquel,13.9,0-15,1,25.3,15-40,0
+https://www.booking.com/hotel/ar/my-pod-house.es.html,My Pod House,hotel,152.4600000000001,US$,9.3,224,-42.91601,-71.32111,Esquel,13.9,0-15,1,25.3,15-40,0
+https://www.booking.com/hotel/ar/el-cabure-esquel.es.html,el cabure casa de campo,villa,400.0,US$,7.7,4,-42.90976,-71.34478,Esquel,15.5,15-40,0,24.4,15-40,0
+https://www.booking.com/hotel/ar/aires-de-montana-sur.es.html,Aires de montaña sur,apartment,139.3920000000001,US$,6.7,3,-42.91551,-71.29781,Esquel,13.1,0-15,1,25.5,15-40,0
+https://www.booking.com/hotel/ar/las-cuatro-estaciones-esquel.es.html,Las Cuatro Estaciones,apartment,201.26,US$,8.7,56,-42.90295,-71.30511,Esquel,14.7,0-15,1,24.0,15-40,0
+https://www.booking.com/hotel/ar/esquel-house.es.html,Esquel House,apartment,120.0,US$,9.4,50,-42.91547,-71.32112,Esquel,14.0,0-15,1,25.2,15-40,0
+https://www.booking.com/hotel/ar/casa-jardin-adesmia-esquel5.es.html,Casa Jardin Adesmia con Hot Tube,holiday_home,138.0,US$,9.4,18,-42.91884,-71.32289,Esquel,13.7,0-15,1,25.6,15-40,0
+https://www.booking.com/hotel/ar/la-juana-esquel.es.html,La Juana,apartment,105.4,US$,9.3,123,-42.9025,-71.31017,Esquel,14.9,0-15,1,23.9,15-40,0
+https://www.booking.com/hotel/ar/esquel-apart.es.html,Esquel Apart Loft,resort,154.38,US$,9.3,52,-42.90701,-71.30233,Esquel,14.2,0-15,1,24.5,15-40,0
+https://www.booking.com/hotel/ar/casa-quincho-esquel.es.html,Casa Quincho,apartment,90.0000000000001,US$,9.4,24,-42.90609,-71.30251,Esquel,14.3,0-15,1,24.4,15-40,0
+https://www.booking.com/hotel/ar/hol-gok-patagonia-b.es.html,Hol Gok Patagonia,apartment,144.0,US$,9.1,166,-42.91888,-71.31984,Esquel,13.6,0-15,1,25.6,15-40,0
+https://www.booking.com/hotel/ar/laderas-verdes.es.html,Laderas Verdes,holiday_home,260.0,US$,9.6,7,-42.92125,-71.3473,Esquel,14.6,0-15,1,25.4,15-40,0
+https://www.booking.com/hotel/ar/hosteraa-el-coira3n.es.html,Hostería El Coirón,inn,456.26,US$,9.0,242,-42.90887,-71.30876,Esquel,14.2,0-15,1,24.6,15-40,0
+https://www.booking.com/hotel/ar/la-pilarita-tempo.es.html,La Pilarita Tempo,holiday_home,170.0,US$,9.0,2,-42.90553,-71.32685,Esquel,15.2,15-40,0,24.1,15-40,0
+https://www.booking.com/hotel/ar/destino-patagonia-esquel.es.html,Destino Patagonia,holiday_home,126.0,US$,10.0,6,-42.90618,-71.31048,Esquel,14.5,0-15,1,24.3,15-40,0
+https://www.booking.com/hotel/ar/casa-del-alto-a-estrenar.es.html,"Casa del Alto, impecable, 3 dormitorios, 2 baños",villa,290.4000000000001,US$,9.7,31,-42.91103,-71.33968,Esquel,15.2,15-40,0,24.6,15-40,0
+https://www.booking.com/hotel/ar/alojamiento-el-condor.es.html,Alojamiento El Cóndor,apartment,140.0,US$,9.6,50,-42.90498,-71.31714,Esquel,14.8,0-15,1,24.1,15-40,0
+https://www.booking.com/hotel/ar/el-amparo-esquel.es.html,El Amparo,apartment,120.0,US$,9.4,57,-42.90974,-71.30486,Esquel,13.9,0-15,1,24.8,15-40,0
+https://www.booking.com/hotel/ar/mama-rancha.es.html,Refugio Mama Rancha,guest_house,134.0,US$,9.6,11,-42.91173,-71.30211,Esquel,13.7,0-15,1,25.1,15-40,0
+https://www.booking.com/hotel/ar/duplex-esquel-apart.es.html,Esquel Apart Dúplex,apartment,197.4478000000001,US$,9.6,18,-42.90918,-71.3328,Esquel,15.0,15-40,0,24.4,15-40,0
+https://www.booking.com/hotel/ar/amplia-casa-con-estacionamiento.es.html,Amplia casa con estacionamiento,holiday_home,117.5,US$,9.8,28,-42.91481,-71.33474,Esquel,14.6,0-15,1,25.0,15-40,0
+https://www.booking.com/hotel/ar/cabana-amadeus-esquel.es.html,Cabaña AMADEUS,holiday_home,145.8,US$,9.8,6,-42.91059,-71.33037,Esquel,14.8,0-15,1,24.6,15-40,0
+https://www.booking.com/hotel/ar/la-esquina-esquel.es.html,La Esquina,apartment,82.8000000000001,US$,9.1,9,-42.91521,-71.33665,Esquel,14.6,0-15,1,25.1,15-40,0
+https://www.booking.com/hotel/ar/percy-rent-esquel.es.html,Percy rent,apartment,120.0,US$,9.6,77,-42.91286,-71.30786,Esquel,13.7,0-15,1,25.1,15-40,0
+https://www.booking.com/hotel/ar/habitat-268.es.html,Hábitat 268,apartment,127.5,US$,9.8,128,-42.92345,-71.33287,Esquel,13.7,0-15,1,26.0,15-40,0
+https://www.booking.com/hotel/ar/apartamento-de-las-araucarias.es.html,Apartamento de las Araucarias,apartment,119.7900000000002,US$,9.3,43,-42.91307,-71.31086,Esquel,13.8,0-15,1,25.1,15-40,0
+https://www.booking.com/hotel/ar/casa-del-cipres.es.html,Casa del Ciprés,apartment,165.5280000000001,US$,8.8,36,-42.91307,-71.31086,Esquel,13.8,0-15,1,25.1,15-40,0
+https://www.booking.com/hotel/ar/el-aura-lodge.es.html,El Aura Lodge - Parque Nacional Los Alerces,lodge,536.0,US$,9.2,7,-42.71823,-71.72863,Cholila,20.9,15-40,0,0.4,0-15,1
+https://www.booking.com/hotel/ar/casa-mirador-esquel.es.html,Casa Mirador Esquel,holiday_home,224.4000000000001,US$,10.0,1,-42.94262,-71.24061,Esquel,9.1,0-15,1,29.5,15-40,0
+https://www.booking.com/hotel/ar/hosteria-la-chacra-esquel.es.html,Hosteria La Chacra Moto Friendly,inn,160.0,US$,9.4,27,-42.93801,-71.37434,Esquel,14.8,0-15,1,24.7,15-40,0
+https://www.booking.com/hotel/ar/cabana-en-parque-nacional-los-alerces.es.html,Cabaña en Parque Nacional Los Alerces,apartment,440.0,US$,7.0,1,-42.82378,-71.6139,Esquel,8.2,0-15,1,2.5,0-15,1
+https://www.booking.com/hotel/ar/lejana-patagonia.es.html,Lejana Patagonia,apartment,93.5000000000001,US$,9.6,46,-42.9087,-71.32102,Esquel,14.6,0-15,1,24.5,15-40,0
+https://www.booking.com/hotel/ar/cabana-rodeada-de-montanas-y-tranquilidad.es.html,Cabaña rodeada de montañas y tranquilidad,apartment,121.0000000000001,US$,0.0,0,-42.94,-71.24547,Esquel,9.4,0-15,1,29.1,15-40,0
+https://www.booking.com/hotel/ar/quincho-los-coihues-esquel.es.html,Quincho Coihues,apartment,176.0,US$,10.0,5,-42.92389,-71.35413,Esquel,14.7,0-15,1,25.1,15-40,0
+https://www.booking.com/hotel/ar/el-coiron-aparts.es.html,El Coiron Aparts,aparthotel,467.9447000000001,US$,9.2,118,-42.89809,-71.30248,Esquel,15.1,15-40,0,23.6,15-40,0
+https://www.booking.com/hotel/ar/comfy-house.es.html,Comfy House,apartment,153.0,US$,8.8,6,-42.89621,-71.30701,Esquel,15.4,15-40,0,23.3,15-40,0
+https://www.booking.com/hotel/ar/leo-tours.es.html,Leo Tours,aparthotel,180.0,US$,10.0,4,-42.92492,-71.35247,Esquel,14.5,0-15,1,25.3,15-40,0
+https://www.booking.com/hotel/ar/altos-de-ayelen.es.html,Altos de Ayelen,apartment,192.0,US$,8.9,16,-42.9208,-71.35325,Esquel,14.9,0-15,1,25.0,15-40,0
+https://www.booking.com/hotel/ar/casa-2-dormitorios-esquel.es.html,La casita 2 dormitorios,apartment,144.0,US$,9.4,9,-42.89889,-71.30242,Esquel,15.0,0-15,1,23.6,15-40,0
+https://www.booking.com/hotel/ar/cabanas-las-lumas-esquel.es.html,Cabañas Las Lumas Esquel,chalet,180.0,US$,10.0,2,-42.92219,-71.35019,Esquel,14.7,0-15,1,25.3,15-40,0
+https://www.booking.com/hotel/ar/ayelen-andina.es.html,Ayelen Andina,lodge,340.0,US$,8.9,77,-42.92413,-71.34975,Esquel,14.5,0-15,1,25.4,15-40,0
+https://www.booking.com/hotel/ar/complejo-la-cautiva.es.html,Complejo La Cautiva,chalet,107.0,US$,8.5,48,-42.92015,-71.35071,Esquel,14.9,0-15,1,25.1,15-40,0
+https://www.booking.com/hotel/ar/departamentos-lahuan.es.html,Complejo de Departamentos Lahuan,apartment,197.7976000000002,US$,9.8,124,-42.90084,-71.30262,Esquel,14.8,0-15,1,23.9,15-40,0
+https://www.booking.com/hotel/ar/las-lauras.es.html,Las Lauras,guest_house,98.0100000000002,US$,9.3,94,-42.91989,-71.35114,Esquel,14.9,0-15,1,25.1,15-40,0
+https://www.booking.com/hotel/ar/cabanas-pailalen.es.html,Cabañas Pailalen-Planta alta,holiday_home,110.0,US$,9.1,13,-42.90194,-71.30127,Esquel,14.6,0-15,1,24.0,15-40,0
+https://www.booking.com/hotel/ar/cabana-individual-ayelen-andina-2-habitaciones-con-pileta.es.html,Cabaña individual Ayelen Andina 2 habitaciones con pileta,holiday_park,280.0,US$,9.0,1,-42.92501,-71.34874,Esquel,14.3,0-15,1,25.6,15-40,0
+https://www.booking.com/hotel/ar/ayelen-andina-esquel-5.es.html,Ayelen Andina Esquel 5,apartment,204.0,US$,0.0,0,-42.92501,-71.34874,Esquel,14.3,0-15,1,25.6,15-40,0
+https://www.booking.com/hotel/ar/hosteria-mari-mari.es.html,Hosteria Andina,hotel,200.0,US$,8.4,69,-42.92512,-71.34848,Esquel,14.3,0-15,1,25.6,15-40,0
+https://www.booking.com/hotel/ar/complejo-villa-azul-esquel.es.html,Complejo Villa Azul,apartment,89.1000000000001,US$,9.1,13,-42.92454,-71.34795,Esquel,14.3,0-15,1,25.6,15-40,0
+https://www.booking.com/hotel/ar/departamento-turistico-esquel.es.html,FLAMENCOS Apart,apartment,146.0,US$,9.7,79,-42.9131,-71.29435,Esquel,13.3,0-15,1,25.3,15-40,0
+https://www.booking.com/hotel/ar/casa-alpina-las-lavandas.es.html,Casa Alpina Las Lavandas,holiday_home,178.0,US$,9.4,7,-42.90178,-71.30768,Esquel,14.9,0-15,1,23.9,15-40,0
+https://www.booking.com/hotel/ar/andino-tempo.es.html,Andino Tempo,apartment,160.0,US$,9.6,5,-42.91382,-71.30895,Esquel,13.7,0-15,1,25.2,15-40,0
+https://www.booking.com/hotel/ar/serenidad-esquel.es.html,Serenidad,apartment,100.0,US$,9.0,4,-42.89975,-71.30985,Esquel,15.1,15-40,0,23.6,15-40,0
+https://www.booking.com/hotel/ar/casa-privada-amplia-y-tranquila-rodeada-de-naturaleza-lago-puelo.es.html,"Casa privada amplia y tranquila, rodeada de naturaleza.",holiday_home,1089.0,US$,0.0,0,-41.9955,-71.52415,El Bolsón,8.2,0-15,1,10.1,0-15,1
+https://www.booking.com/hotel/ar/anido-cabanas-y-monoambientes.es.html,ANIDO Cabañas y Monoambientes,holiday_home,130.0,US$,9.7,95,-42.02961,-71.56638,Lago Puelo,11.4,0-15,1,7.2,0-15,1
+https://www.booking.com/hotel/ar/riberas-del-azul.es.html,Riberas del Azul,chalet,230.0,US$,9.4,43,-42.00191,-71.58188,El Bolsón,8.5,0-15,1,10.5,0-15,1
+https://www.booking.com/hotel/ar/chacra-hunhuemechu-lago-puelo.es.html,Chacra Turistica HUNHUEMECHU,holiday_home,246.8400000000001,US$,9.4,8,-42.04144,-71.55312,El Hoyo,12.7,0-15,1,5.5,0-15,1
+https://www.booking.com/hotel/ar/postal-del-piltri.es.html,Postal del piltri,holiday_home,260.0,US$,0.0,0,-42.01217,-71.58712,Lago Puelo,9.7,0-15,1,9.7,0-15,1
+https://www.booking.com/hotel/ar/cabanas-el-refugio-del-puelo.es.html,Cabañas El Refugio de Puelo,lodge,320.0,US$,9.5,20,-42.02975,-71.54562,El Hoyo,11.4,0-15,1,6.5,0-15,1
+https://www.booking.com/hotel/ar/la-casa-de-los-cuadros-lago-puelo.es.html,La Casa de los Cuadros,bed_and_breakfast,90.0000000000001,US$,9.6,16,-42.01354,-71.52891,El Bolsón,9.9,0-15,1,8.1,0-15,1
+https://www.booking.com/hotel/ar/cabanas-cuatro-estaciones.es.html,Cabañas Cuatro Estaciones,lodge,260.0,US$,0.0,0,-42.03447,-71.5316,El Hoyo,12.1,0-15,1,5.8,0-15,1
+https://www.booking.com/hotel/ar/san-valentin-zorzal.es.html,"San Valentin - Zorzal, Vista a la montaña",chalet,178.0,US$,0.0,0,-42.02798,-71.54582,El Hoyo,11.3,0-15,1,6.7,0-15,1
+https://www.booking.com/hotel/ar/bella-vista-lago-puelo.es.html,Bella Vista Casa de Campo,holiday_home,432.4,US$,0.0,0,-42.04194,-71.51781,El Hoyo,13.2,0-15,1,5.0,0-15,1
+https://www.booking.com/hotel/ar/camping-delta-del-azul.es.html,Camping Delta del Azul,camping,37.02600000000019,US$,8.0,1,-42.09721,-71.62201,Lago Puelo,19.4,15-40,0,4.9,0-15,1
+https://www.booking.com/hotel/ar/cabanas-alegria-del-lago.es.html,Cabañas Alegría del Lago,apartment,240.0,US$,9.7,3,-42.08657,-71.61387,Lago Puelo,18.2,15-40,0,4.9,0-15,1
+https://www.booking.com/hotel/ar/cabana-para-6-personas-lago-puelo.es.html,Cabaña para 6 personas Lago Puelo,apartment,166.6,US$,0.0,0,-42.03344,-71.59233,Lago Puelo,12.1,0-15,1,8.0,0-15,1
+https://www.booking.com/hotel/ar/puelo-endomos.es.html,Puelo EnDomos,aparthotel,92.0000000000001,US$,9.4,48,-42.08133,-71.61319,Lago Puelo,17.7,15-40,0,5.2,0-15,1
+https://www.booking.com/hotel/ar/ecopuelo-departamentos.es.html,Ecopuelo Departamentos,apartment,154.1,US$,9.6,11,-42.02741,-71.59333,Lago Puelo,11.4,0-15,1,8.6,0-15,1
+https://www.booking.com/hotel/ar/departamento-con-vista-a-la-montana-cushamen.es.html,Departamento a metros del lago y con vista a las montañas - Lago Pueblo,apartment,164.0,US$,0.0,0,-42.08434,-71.61342,Lago Puelo,18.0,15-40,0,5.0,0-15,1
+https://www.booking.com/hotel/ar/mirador-del-valle-lago-puelo.es.html,Mirador del Valle,holiday_home,140.0,US$,9.5,20,-42.00677,-71.55604,El Bolsón,8.8,0-15,1,9.2,0-15,1
+https://www.booking.com/hotel/ar/huala-hostel.es.html,Huala Hosteria,hostel,144.0,US$,9.5,52,-42.08017,-71.61105,Lago Puelo,17.5,15-40,0,5.1,0-15,1
+https://www.booking.com/hotel/ar/cabana-monoambiente-la-generosa.es.html,Cabañas monoambiente La Generosa LP,chalet,171.0,US$,9.4,16,-42.0802,-71.60161,Lago Puelo,17.3,15-40,0,4.6,0-15,1
+https://www.booking.com/hotel/ar/los-nenufares.es.html,Los Nenúfares,apartment,145.2000000000001,US$,9.4,5,-42.07916,-71.60489,Lago Puelo,17.3,15-40,0,4.8,0-15,1
+https://www.booking.com/hotel/ar/alojamiento-entre-montanas.es.html,Alojamiento Entre Montañas,apartment,112.1,US$,0.0,0,-42.04979,-71.60119,Lago Puelo,14.0,0-15,1,7.2,0-15,1
+https://www.booking.com/hotel/ar/b-amp-b-casapuelo.es.html,Casa Puelo Hostería y Cabañas,bed_and_breakfast,229.9000000000001,US$,9.0,63,-42.05444,-71.59557,Lago Puelo,14.4,0-15,1,6.5,0-15,1
+https://www.booking.com/hotel/ar/posada-pagana-lago-puelo.es.html,Posada Pagana,holiday_home,181.5000000000001,US$,9.7,3,-42.05173,-71.59707,Lago Puelo,14.1,0-15,1,6.8,0-15,1
+https://www.booking.com/hotel/ar/casa-entera-con-balcon-y-patio-propio.es.html,"Casa entera con balcón y patio propio ""altos del Rio Azul""",holiday_home,118.8,US$,9.3,25,-42.05067,-71.60177,Lago Puelo,14.1,0-15,1,7.2,0-15,1
+https://www.booking.com/hotel/ar/el-hostel-secreto.es.html,El hostel secreto,hostel,104.0,US$,9.0,52,-42.07245,-71.61095,Lago Puelo,16.7,15-40,0,5.7,0-15,1
+https://www.booking.com/hotel/ar/rey-sol-reina-luna-lago-puelo.es.html,Rey Sol Reina Luna,farm_holiday,41.14000000000019,US$,9.5,8,-42.07625,-71.6105,Lago Puelo,17.1,15-40,0,5.4,0-15,1
+https://www.booking.com/hotel/ar/cabana-ipua.es.html,Cabaña Accesible Ipua,lodge,200.0,US$,10.0,1,-42.05073,-71.60096,Lago Puelo,14.1,0-15,1,7.1,0-15,1
+https://www.booking.com/hotel/ar/casa-koi.es.html,Villa Del Lago Alojamientos,villa,308.2920000000001,US$,9.4,5,-42.07368,-71.60835,Lago Puelo,16.7,15-40,0,5.5,0-15,1
+https://www.booking.com/hotel/ar/la-estacion-hostel.es.html,La Estacion Hostel,inn,81.9400000000002,US$,9.0,85,-42.06598,-71.60182,Lago Puelo,15.8,15-40,0,5.8,0-15,1
+https://www.booking.com/hotel/ar/cabanas-costa-del-rio.es.html,Cabañas Costa del Rio,chalet,144.0,US$,6.0,3,-42.06701,-71.60309,Lago Puelo,15.9,15-40,0,5.8,0-15,1
+https://www.booking.com/hotel/ar/zonda-hostel-cultural.es.html,Zonda hostel cultural,guest_house,140.33580000000012,US$,9.8,31,-42.06432,-71.60436,Lago Puelo,15.6,15-40,0,6.1,0-15,1
+https://www.booking.com/hotel/ar/cabana-ucihuen.es.html,Cabañas UCIHUEN,holiday_home,148.00010000000012,US$,9.6,50,-42.06838,-71.60075,Lago Puelo,16.0,15-40,0,5.6,0-15,1
+https://www.booking.com/hotel/ar/sueno-de-los-abis-lago-puelo.es.html,Sueño de los Abis,holiday_home,141.5700000000001,US$,10.0,1,-42.0565,-71.59556,Lago Puelo,14.6,0-15,1,6.4,0-15,1
+https://www.booking.com/hotel/ar/cabana-lago-puelo-lago-puelo4.es.html,Cabaña Lago Puelo,holiday_home,298.8700000000001,US$,9.3,4,-42.06719,-71.60342,Lago Puelo,15.9,15-40,0,5.8,0-15,1
+https://www.booking.com/hotel/ar/casa-lafken.es.html,Casa LAFKEN - a metros del Parque Nacional Lago Puelo,apartment,155.0,US$,10.0,2,-42.087,-71.60939,Lago Puelo,18.2,15-40,0,4.5,0-15,1
+https://www.booking.com/hotel/ar/cabana-en-el-bosque-lago-puelo.es.html,cabaña en el bosque,holiday_home,107.2,US$,0.0,0,-42.07638,-71.61118,Lago Puelo,17.1,15-40,0,5.4,0-15,1
+https://www.booking.com/hotel/ar/aurum-patagonia.es.html,Aurum patagonia hotel,hotel,200.0,US$,10.0,1,-42.06131,-71.59741,Lago Puelo,15.2,15-40,0,6.0,0-15,1
+https://www.booking.com/hotel/ar/linaje-boutique-amp-relax.es.html,Linaje Hotel Boutique & Relax,hotel,484.0000000000001,US$,9.0,3,-42.06127,-71.59713,Lago Puelo,15.2,15-40,0,6.0,0-15,1
+https://www.booking.com/hotel/ar/casa-con-jardin-en-el-centro-pet-friendly-mi-casa-tu-casa-e.es.html,"Mi Casa Tu Casa E , Céntrica y Pet friendly",holiday_home,246.0,US$,9.7,17,-42.06485,-71.6009,Lago Puelo,15.6,15-40,0,5.9,0-15,1
+https://www.booking.com/hotel/ar/aurum-patagonia-lago-puelo.es.html,Aurum Patagonia Hotel,hotel,170.0,US$,8.7,3,-42.06124,-71.59717,Lago Puelo,15.2,15-40,0,6.0,0-15,1
+https://www.booking.com/hotel/ar/casa-en-el-centro-cerca-de-todo.es.html,"Mi Casa Tu Casa D , apto mascotas",holiday_home,272.0,US$,9.2,30,-42.06482,-71.60095,Lago Puelo,15.6,15-40,0,5.9,0-15,1
+https://www.booking.com/hotel/ar/cabana-cordon-situacion.es.html,Cabaña Cordón Situación,chalet,180.0,US$,9.5,32,-43.06938,-71.48059,Trevelin,13.2,0-15,1,31.8,15-40,0
+https://www.booking.com/hotel/ar/el-quincho-de-los-abuelos.es.html,El Quincho de los Abuelos,apartment,120.0,US$,8.9,11,-43.08006,-71.46311,Trevelin,11.8,0-15,1,33.4,15-40,0
+https://www.booking.com/hotel/ar/patagonia-trevelin.es.html,Patagonia,chalet,170.0,US$,9.8,9,-43.09323,-71.45692,Trevelin,11.5,0-15,1,35.0,15-40,0
+https://www.booking.com/hotel/ar/trevelin-alojamientos.es.html,Trevelin Alojamientos,apartment,166.32,US$,8.0,1,-43.06214,-71.46686,Trevelin,12.1,0-15,1,31.5,15-40,0
+https://www.booking.com/hotel/ar/trevelin-alojamientos-trevelin.es.html,Trevelin Alojamientos,apartment,140.24,US$,7.0,1,-43.06215,-71.46687,Trevelin,12.1,0-15,1,31.5,15-40,0
+https://www.booking.com/hotel/ar/la-chabela-02.es.html,La Chabela 02,apartment,144.0,US$,9.5,4,-43.09318,-71.46281,Trevelin,12.0,0-15,1,34.8,15-40,0
+https://www.booking.com/hotel/ar/adeva.es.html,Adeva,apartment,100.0,US$,9.4,8,-43.08018,-71.45917,Trevelin,11.5,0-15,1,33.6,15-40,0
+https://www.booking.com/hotel/ar/los-abuelos-trevelin.es.html,Los abuelos,apartment,170.0,US$,10.0,1,-43.09507,-71.46735,Trevelin,12.4,0-15,1,34.9,15-40,0
+https://www.booking.com/hotel/ar/arwen-suite-2.es.html,ARWEN Suites 2,apartment,300.0,US$,9.4,7,-43.07711,-71.46242,Trevelin,11.7,0-15,1,33.2,15-40,0
+https://www.booking.com/hotel/ar/arwen-suite.es.html,ARWEN Suites 1,apartment,270.0,US$,9.5,15,-43.07725,-71.46252,Trevelin,11.7,0-15,1,33.2,15-40,0
+https://www.booking.com/hotel/ar/valle-florido-3.es.html,Valle Florido 3,holiday_home,212.0,US$,9.4,19,-43.08269,-71.46581,Trevelin,12.0,0-15,1,33.6,15-40,0
+https://www.booking.com/hotel/ar/cabana-trevelin.es.html,cabaña azul,chalet,170.0,US$,9.5,41,-43.09763,-71.46005,Trevelin,11.9,0-15,1,35.4,15-40,0
+https://www.booking.com/hotel/ar/la-perlita-trevelin.es.html,La Perlita de Trevelin,chalet,150.0,US$,7.2,5,-43.08318,-71.46339,Trevelin,11.9,0-15,1,33.8,15-40,0
+https://www.booking.com/hotel/ar/casa-los-robles-trevelin.es.html,Casa Los Robles,holiday_home,108.0,US$,9.6,14,-43.09659,-71.4718,Trevelin,12.8,0-15,1,34.9,15-40,0
+https://www.booking.com/hotel/ar/cabaa-as-costa-del-percy.es.html,Cabañas Costa del Percy,lodge,124.0,US$,9.5,32,-43.08312,-71.46658,Trevelin,12.1,0-15,1,33.7,15-40,0
+https://www.booking.com/hotel/ar/akira-cabanas.es.html,Akira Cabañas,holiday_home,100.0,US$,10.0,1,-43.06049,-71.46843,Trevelin,12.2,0-15,1,31.3,15-40,0
+https://www.booking.com/hotel/ar/la-galensa.es.html,La Galensa,apartment,96.8000000000002,US$,8.8,44,-43.08194,-71.46015,Trevelin,11.6,0-15,1,33.7,15-40,0
+https://www.booking.com/hotel/ar/sassenach-trevelin.es.html,Sassenach,apartment,126.36,US$,9.0,4,-43.08496,-71.46385,Trevelin,11.9,0-15,1,33.9,15-40,0
+https://www.booking.com/hotel/ar/calendulas-del-cabo.es.html,Calendulas del Cabo,apartment,106.4800000000002,US$,8.2,94,-43.09937,-71.46783,Trevelin,12.5,0-15,1,35.3,15-40,0
+https://www.booking.com/hotel/ar/sassenach.es.html,Sassenach,apartment,130.0,US$,8.7,3,-43.08491,-71.46381,Trevelin,11.9,0-15,1,33.9,15-40,0
+https://www.booking.com/hotel/ar/hosteria-las-rosas-trevelin.es.html,Hostería Las Rosas Trevelin,inn,327.9100000000001,US$,9.5,2,-43.09834,-71.45948,Trevelin,11.8,0-15,1,35.4,15-40,0
+https://www.booking.com/hotel/ar/hexagonal-cabin.es.html,Hexagonal Cabaña,holiday_home,170.0,US$,10.0,2,-43.07691,-71.49171,Trevelin,14.1,0-15,1,32.3,15-40,0
+https://www.booking.com/hotel/ar/la-floral-lodge-de-cordillera.es.html,La Floral Lodge de Cordillera,chalet,399.30000000000007,US$,8.8,4,-43.16028,-71.49042,Trevelin,17.0,15-40,0,41.2,40-80,0
+https://www.booking.com/hotel/ar/cabana-calida-y-versatil.es.html,La Tranquera - Cabaña Cálida y Versátil,apartment,130.0,US$,9.9,36,-43.07528,-71.4583,Trevelin,11.4,0-15,1,33.1,15-40,0
+https://www.booking.com/hotel/ar/ladera-de-nant-y-fall.es.html,Cabañas Ladera de Nant y Fall -Tiny Houses-,holiday_home,180.0,US$,9.3,62,-43.17384,-71.50895,Trevelin,19.1,15-40,0,42.3,40-80,0
+https://www.booking.com/hotel/ar/complejo-aiken-trevelin.es.html,Complejo Aiken,holiday_home,180.0,US$,9.9,9,-43.08149,-71.45411,Trevelin,11.1,0-15,1,33.9,15-40,0
+https://www.booking.com/hotel/ar/refugio-patagonico-trevelin.es.html,refugio patagonico,apartment,120.0,US$,0.0,0,-43.08503,-71.46253,Trevelin,11.8,0-15,1,34.0,15-40,0
+https://www.booking.com/hotel/ar/krystob-trevelin1.es.html,KrysTob,apartment,240.0,US$,0.0,0,-43.10389,-71.46794,Trevelin,12.6,0-15,1,35.8,15-40,0
+https://www.booking.com/hotel/ar/mosha-departamentos.es.html,Mosha Departamentos,apartment,157.3000000000001,US$,7.9,9,-43.10356,-71.46322,Trevelin,12.3,0-15,1,35.9,15-40,0
+https://www.booking.com/hotel/ar/hosteria-la-portada.es.html,Hostería La Portada,inn,250.0,US$,9.0,57,-43.08356,-71.49332,Trevelin,14.3,0-15,1,33.0,15-40,0
+https://www.booking.com/hotel/ar/casa-terraplen-con-tina-privada-y-vista-a-la-laguna.es.html,Casa Terraplen con tina privada y vista a la laguna,holiday_home,270.0,US$,8.2,5,-42.99316,-71.5679,Trevelin,4.7,0-15,1,21.7,15-40,0
+https://www.booking.com/hotel/ar/don-edmundo-trevelin.es.html,Don Edmundo Trevelin,holiday_home,259.88,US$,9.0,9,-42.99095,-71.5592,Trevelin,5.1,0-15,1,21.6,15-40,0
+https://www.booking.com/hotel/ar/cabana-de-campo-altos-del-futaleufu.es.html,Cabaña de CAMPO Altos del Futaleufu sobre COSTA DE RÍO,chalet,216.0,US$,9.6,5,-43.17571,-71.60683,Trevelin,23.2,15-40,0,40.7,40-80,0
+https://www.booking.com/hotel/ar/cabanas-trevelin-trevelin.es.html,CABAÑAS TREVELIn,chalet,139.3920000000001,US$,8.4,7,-43.07191,-71.46053,Trevelin,11.6,0-15,1,32.7,15-40,0
+https://www.booking.com/hotel/ar/centro-trevelin.es.html,centro,apartment,175.94,US$,9.7,23,-43.08713,-71.46362,Trevelin,11.9,0-15,1,34.2,15-40,0
+https://www.booking.com/hotel/ar/challhuaquen-lodge.es.html,Challhuaquen Lodge,inn,500.0,US$,9.3,43,-43.1765,-71.60028,Trevelin,23.3,15-40,0,40.8,40-80,0
+https://www.booking.com/hotel/ar/casa-en-el-bosque-trevelin.es.html,Casa en el bosque,homestay,160.0,US$,8.9,11,-43.0771,-71.50409,Trevelin,15.1,15-40,0,32.0,15-40,0
+https://www.booking.com/hotel/ar/cabanas-nuestra-vista.es.html,Cabañas Nuestra Vista,lodge,162.0,US$,9.5,44,-43.04453,-71.45402,Trevelin,11.3,0-15,1,30.1,15-40,0
+https://www.booking.com/hotel/ar/cabaa-as-rincones-del-sur.es.html,Cabañas Rincones del Sur,lodge,215.96,US$,8.9,101,-43.08681,-71.4596,Trevelin,11.6,0-15,1,34.2,15-40,0
+https://www.booking.com/hotel/ar/nomade-patagonia-glamping-amp-domos.es.html,Nomade Patagonia Glamping & Domos,camping,239.9000000000001,US$,9.1,109,-43.1749,-71.62141,Trevelin,23.1,15-40,0,40.4,40-80,0
+https://www.booking.com/hotel/ar/puente-viejo-casa-2.es.html,Complejo Puente viejo casa 2,holiday_home,200.0,US$,9.9,19,-43.07096,-71.46666,Trevelin,12.1,0-15,1,32.4,15-40,0
+https://www.booking.com/hotel/ar/casa-yague-trevelin.es.html,Casa Yagüe,holiday_home,520.8,US$,0.0,0,-43.18052,-71.62316,Trevelin,23.8,15-40,0,41.0,40-80,0
+https://www.booking.com/hotel/ar/el-bosque-futaleufu.es.html,El Bosque,holiday_home,290.4000000000001,US$,10.0,9,-43.06219,-71.49317,Trevelin,14.2,0-15,1,30.7,15-40,0
+https://www.booking.com/hotel/ar/criollo-resto-amp-cabanas.es.html,Criollo Restó & Cabañas,hotel,133.1000000000001,US$,9.4,136,-43.04381,-71.46982,Trevelin,12.6,0-15,1,29.5,15-40,0
+https://www.booking.com/hotel/ar/hosteldraiggoch.es.html,HostelDraiggoch,hostel,90.0000000000001,US$,7.9,22,-43.08892,-71.46013,Trevelin,11.7,0-15,1,34.4,15-40,0
+https://www.booking.com/hotel/ar/punto733-loft.es.html,Punto733 loft,apartment,120.0,US$,9.9,26,-43.08878,-71.46375,Trevelin,12.0,0-15,1,34.3,15-40,0
+https://www.booking.com/hotel/ar/tylluan-lodge.es.html,Tylluan Lodge,resort,458.0,US$,9.6,14,-43.06619,-71.51686,Trevelin,13.5,0-15,1,30.6,15-40,0
+https://www.booking.com/hotel/ar/casa-ecologica-en-chacra-organica.es.html,Tierra Caracol - Casa de Campo Ecológica,holiday_home,158.4,US$,8.8,10,-43.11229,-71.43467,Trevelin,10.4,0-15,1,37.6,15-40,0
+https://www.booking.com/hotel/ar/casita-gris.es.html,casita gris,holiday_home,196.0,US$,6.5,2,-43.06715,-71.46186,Trevelin,11.7,0-15,1,32.1,15-40,0
+https://www.booking.com/hotel/ar/oregon-trevelin.es.html,Oregon,apartment,137.28,US$,9.0,4,-43.08995,-71.46364,Trevelin,12.0,0-15,1,34.5,15-40,0
+https://www.booking.com/hotel/ar/cabanas-paihuen.es.html,Cabañas Paihuen,country_house,170.0,US$,9.2,8,-43.13516,-71.43917,Trevelin,12.0,0-15,1,39.9,15-40,0
+https://www.booking.com/hotel/ar/el-rincon-trevelin.es.html,El Rincón,villa,390.0,US$,9.5,6,-43.16942,-71.64486,Trevelin,22.7,15-40,0,39.6,15-40,0
+https://www.booking.com/hotel/ar/cabanas-epuyen-trevelin.es.html,Cabañas Epuyen,holiday_home,181.5000000000001,US$,9.5,13,-43.06831,-71.45932,Trevelin,11.5,0-15,1,32.3,15-40,0
+https://www.booking.com/hotel/ar/abba-departamento-turistico-3.es.html,ABBA Departamento Turístico 3,apartment,123.0,US$,9.9,11,-43.09195,-71.46585,Trevelin,12.2,0-15,1,34.6,15-40,0
+https://www.booking.com/hotel/ar/aldea-aliwen.es.html,Aldea Aliwen,chalet,675.1800000000001,US$,9.1,21,-43.03776,-71.4715,Trevelin,12.9,0-15,1,28.8,15-40,0
+https://www.booking.com/hotel/ar/altos-del-molino.es.html,Altos Del Molino,lodge,170.0,US$,9.6,44,-43.01702,-71.46644,Trevelin,13.1,0-15,1,26.9,15-40,0
+https://www.booking.com/hotel/ar/abba-departamento-turistico-2.es.html,ABBA departamento turístico 2,apartment,98.4000000000002,US$,8.5,9,-43.09233,-71.46553,Trevelin,12.2,0-15,1,34.7,15-40,0
+https://www.booking.com/hotel/ar/abba-departamento-turistico.es.html,ABBA Departamento turistico,apartment,110.7,US$,9.5,16,-43.09201,-71.46562,Trevelin,12.2,0-15,1,34.6,15-40,0
+https://www.booking.com/hotel/ar/nawal-glamping-domos.es.html,Nawal Glamping - Domos,lodge,410.48,US$,9.5,11,-43.13533,-71.43031,Trevelin,11.4,0-15,1,40.1,40-80,0
