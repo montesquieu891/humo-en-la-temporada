@@ -126,6 +126,8 @@ de un incendio forestal, para que una cámara hotelera pueda reclamar, comunicar
   San Martín de los Andes (secundaria: fuego del Lanín a 59 km) y Corcovado. `src/exposicion_alerces.py`.
 - Precios FREE verificados 07/11: catálogo USD 0,004 por ficha y reseñas USD 0,0006 cada una. Todavía no se
   corrió ningún actor de Maps.
+- Piloto de Maps: `src/run_maps.py` (catalogo → seleccion → resenas → diagnostico), con el control de gasto de
+  `run_booking.py`. Cuenta 3 (`APIFY_TOKEN3`, FREE, USD 5 desde el 07/11). Catálogo ≈ USD 1,44 y reseñas ≤ USD 3.
 - FIRMS: se descartan `type` 1/2 (volcán Villarrica en el bbox norte). Crudos nuevos: `firms_crudo_sp_huecos.csv`
   y `firms_crudo_sp_norte.csv`.
 
