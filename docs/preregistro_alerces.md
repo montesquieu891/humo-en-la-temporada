@@ -123,7 +123,7 @@ la diferencia entre expuestos y comparación en el episodio.
 | Origen | `reviewOrigin` = "Google" en las 3.136, aunque se pidió `all` | se filtra `reviewOrigin == "Google"`; en la muestra completa se pide igual `all` y se informa la proporción |
 | Profundidad | 13 de 14 llegan a ene-2024. Camping Las Rocas empieza el 02/02/2025 | sale por elegibilidad (sin período previo) |
 | Cobertura ene–mar 2025 | mediana de 1,0 reseña por ficha y semana, media 2,49, 33% de semanas en 0 | ≥ 1, así que **se mantiene la semana**. La quincena queda como robustez (§5.7) |
-| Período previo | mediana de 40 reseñas por ficha (mar-2024 a ene-2025), mínimo 0 | **mínimo para ser elegible: ≥ 12 reseñas de Google en mar-2024 a ene-2025** (≈ 1 por mes) |
+| Período previo | mediana de 40 reseñas por ficha (mar-2024 a ene-2025), mínimo 0 | **mínimo para ser elegible: ≥ 6 reseñas de Google en mar-2024 a ene-2025** (≈ 1 cada dos meses; ver Cambios) |
 | Costo | ≈ 18% de las reseñas totales de cada ficha son de mar-2024 en adelante. Media de 184 por ficha, ≈ USD 0,11 | muestra completa con `reviewsStartDate=2024-03-01` y `maxReviews=1000` |
 
 **Potencia** (`src/potencia_maps.py`, solo período previo):
@@ -156,3 +156,16 @@ la diferencia entre expuestos y comparación en el episodio.
   - Motivo: Ay Ay Ay María llegó al máximo de 500, pero su primera reseña es del 10/01/2024 (cutoff 01/01/2024),
     así que cubre toda la ventana de análisis.
   - Es un criterio de completitud de datos, no depende del outcome ni del episodio.
+- **07/11/2026, antes del catálogo completo y de la muestra: mínimo de elegibilidad y prefiltro.**
+  - El mínimo de reseñas previas baja de ≥ 12 a **≥ 6**. Motivo: en el piloto, las reseñas del período previo son
+    ≈ 5,6% del total de cada ficha (entre 4% y 19%). Con ≥ 12, una ficha necesitaría ≈ 200 reseñas totales y se
+    perdería la mayoría del catálogo. Las fichas chicas cuestan poco (se paga por reseña), y las que no tienen
+    reseñas en el episodio no aportan, pero no sesgan.
+  - **Prefiltro de costo** en el catálogo: ≥ 50 reseñas totales. Con 50 totales se esperan ≈ 3 previas, así que
+    casi ninguna ficha por debajo llega a 6.
+  - Las dos reglas usan solo el catálogo y el período previo; no se miró el episodio.
+- **Diseño del catálogo completo:** 8 términos (hotel, hostería, cabañas, camping, restaurante, cervecería,
+  excursiones, atracción turística), 40 fichas por búsqueda, 5 zonas (Esquel, Trevelin, PN Los Alerces,
+  Villa La Angostura y San Martín de los Andes). Las reseñas de las 14 fichas del piloto se reutilizan:
+  bajaron desde 2024-01-01 y todas llegan a la ventana completa.
+

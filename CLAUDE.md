@@ -132,6 +132,9 @@ de un incendio forestal, para que una cámara hotelera pueda reclamar, comunicar
   `publishedAtDate` exacta; `reviewOrigin` = Google; `visitedIn` vacío. Mediana de 1 reseña por ficha y semana.
   ≈ 18% de las reseñas totales son de mar-2024 en adelante. Efecto mínimo detectable a una cola ≈ −28% con
   120 + 60 fichas (optimista). Reglas fijadas en el pre-registro §6.
+- **Muestra completa (preparada, sin correr):** `run_maps.py --cuentas … catalogo --completo` (≈ USD 6,40) → `muestra`
+  (≥ 50 reseñas totales) → `resenas --completa` (desde 2024-03-01, máximo 1.000; reutiliza el piloto; ≈ USD 15–20).
+  Hacen falta ≈ USD 22–27 (5–6 cuentas FREE) y subir `TOPE_USD_TOTAL`. Elegibilidad final: ≥ 6 reseñas previas.
 - FIRMS: se descartan `type` 1/2 (volcán Villarrica en el bbox norte). Crudos nuevos: `firms_crudo_sp_huecos.csv`
   y `firms_crudo_sp_norte.csv`.
 

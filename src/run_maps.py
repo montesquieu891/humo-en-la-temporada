@@ -20,6 +20,10 @@ Uso (desde humo/; siempre primero --dry-run):
   python src/run_maps.py --cuenta 3 resenas --dry-run
   python src/run_maps.py --cuenta 3 resenas
   python src/run_maps.py diagnostico
+Muestra completa:
+  python src/run_maps.py --cuentas 4 5 6 7 catalogo --completo --dry-run
+  python src/run_maps.py muestra
+  python src/run_maps.py --cuentas 4 5 6 7 resenas --completa --dry-run
 """
 import argparse
 import glob
@@ -43,6 +47,11 @@ rb.PRECIO_FREE.update({ACTOR_CATALOGO: 0.004, ACTOR_RESENAS: 0.0006})
 RAW = os.path.join(rb.RAIZ, "data", "raw", "maps")
 PROC = os.path.join(rb.RAIZ, "data", "processed")
 TERMINOS = ["hotel", "cabañas", "restaurante", "camping", "excursiones", "atracción turística"]
+# Catálogo completo (Dataset 2 y muestra del test): más rubros y 40 fichas por búsqueda. Cada búsqueda cobra sus
+# fichas aunque se repitan entre búsquedas, así que el costo es términos × máximo × zonas × USD 0,004.
+TERMINOS_COMPLETO = ["hotel", "hostería", "cabañas", "camping", "restaurante", "cervecería", "excursiones",
+                     "atracción turística"]
+ZONAS_COMPARACION = {"villa_la_angostura", "san_martin_de_los_andes"}
 # Una corrida por zona. El parque se define con un punto y un radio, porque como texto el geocoder puede no
 # resolverlo. Las fichas que caen en más de una zona se deduplican por placeId.
 ZONAS = {
@@ -50,7 +59,10 @@ ZONAS = {
     "trevelin": {"locationQuery": "Trevelin, Chubut, Argentina"},
     "pn_los_alerces": {"customGeolocation": {"type": "Point", "coordinates": [-71.70, -42.82], "radiusKm": 25}},
     "villa_la_angostura": {"locationQuery": "Villa La Angostura, Neuquén, Argentina"},
+    # Comparación secundaria (pre-registro §2): solo en el catálogo completo.
+    "san_martin_de_los_andes": {"locationQuery": "San Martín de los Andes, Neuquén, Argentina"},
 }
+ZONAS_PILOTO = ["esquel", "trevelin", "pn_los_alerces", "villa_la_angostura"]
 EPISODIO = ("2025-02-16", "2025-03-01")
 VENTANA_COMPARACION = ("2025-01-19", "2025-03-29")  # episodio ± 28 días
 CUPOS = {  # estrato → {rubro: fichas}. Plan §5.
@@ -76,6 +88,23 @@ def usar_cuenta(c: str):
         (v for v in (f"APIFY_TOKEN_{c}", f"APIFY_TOKEN{c}") if os.getenv(v)), f"APIFY_TOKEN_{c}")
 
 
+def elegir_cuenta(cuentas, est: float, dry_run: bool):
+    """Con --cuentas, usa la primera cuenta cuyo crédito alcanza para el tope de esta corrida (los actores
+    compass/* exigen un tope ≥ USD 0,50, así que una cuenta con menos de eso no puede correr nada)."""
+    if not cuentas:
+        return
+    necesario = max(est * 1.15 + 0.01, TOPE_MINIMO) + 0.03
+    for c in cuentas:
+        usar_cuenta(c)
+        try:
+            if rb.credito_cuenta() >= necesario:
+                return
+        except SystemExit:
+            continue
+    if not dry_run:
+        sys.exit(f"Ninguna de las cuentas {cuentas} tiene USD {necesario:.2f} disponibles para la próxima corrida.")
+
+
 def guardar(items, nombre):
     os.makedirs(RAW, exist_ok=True)
     ruta = os.path.join(RAW, nombre)
@@ -87,21 +116,33 @@ def guardar(items, nombre):
 
 
 def cmd_catalogo(a):
-    zonas = a.solo or list(ZONAS)
+    zonas = a.solo or (list(ZONAS) if a.completo else ZONAS_PILOTO)
+    terminos = TERMINOS_COMPLETO if a.completo else TERMINOS
+    maximo = a.max_por_busqueda or (40 if a.completo else 15)
+    prefijo = "catalogo_full" if a.completo else "catalogo"
+    print(f"Catálogo {'completo' if a.completo else 'piloto'}: {len(zonas)} zonas × {len(terminos)} términos × "
+          f"{maximo} = hasta {len(zonas) * len(terminos) * maximo} fichas cobradas ≈ USD "
+          f"{len(zonas) * len(terminos) * maximo * rb.PRECIO_FREE[ACTOR_CATALOGO]:.2f}")
     for z in zonas:
-        run_input = {"searchStringsArray": TERMINOS, "maxCrawledPlacesPerSearch": a.max_por_busqueda,
+        if os.path.exists(os.path.join(RAW, f"{prefijo}_{z}.json")):
+            print(f"  ya está: {prefijo}_{z}.json")
+            continue
+        run_input = {"searchStringsArray": terminos, "maxCrawledPlacesPerSearch": maximo,
                      "language": "es", "skipClosedPlaces": False, "scrapePlaceDetailPage": False,
                      "maxReviews": 0, "maxImages": 0, "scrapeContacts": False, **ZONAS[z]}
-        est = len(TERMINOS) * a.max_por_busqueda * rb.PRECIO_FREE[ACTOR_CATALOGO] + rb.PRECIO_START * 4
-        items = rb.correr(ACTOR_CATALOGO, run_input, est, f"maps_catalogo_{z}", None, a.dry_run, TOPE_MINIMO)
+        est = len(terminos) * maximo * rb.PRECIO_FREE[ACTOR_CATALOGO] + rb.PRECIO_START * 4
+        elegir_cuenta(a.cuentas, est, a.dry_run)
+        items = rb.correr(ACTOR_CATALOGO, run_input, est, f"maps_{prefijo}_{z}", None, a.dry_run, TOPE_MINIMO)
         if items is not None:
-            guardar(items, f"catalogo_{z}.json")
+            guardar(items, f"{prefijo}_{z}.json")
 
 
-def leer_catalogo() -> pd.DataFrame:
+def leer_catalogo(prefijo: str = "catalogo") -> pd.DataFrame:
     filas = []
-    for p in sorted(glob.glob(os.path.join(RAW, "catalogo_*.json"))):
-        zona = re.sub(r"^catalogo_|\.json$", "", os.path.basename(p))
+    patron = os.path.join(RAW, f"{prefijo}_*.json")
+    archivos = [p for p in sorted(glob.glob(patron)) if prefijo != "catalogo" or "catalogo_full_" not in p]
+    for p in archivos:
+        zona = re.sub(rf"^{prefijo}_|\.json$", "", os.path.basename(p))
         for it in json.load(open(p, encoding="utf-8")):
             loc = it.get("location") or {}
             filas.append({"place_id": it.get("placeId"), "nombre": it.get("title"), "zona_busqueda": zona,
@@ -113,7 +154,7 @@ def leer_catalogo() -> pd.DataFrame:
                           "cerrado_temp": bool(it.get("temporarilyClosed")), "url": it.get("url"),
                           "busqueda": it.get("searchString")})
     if not filas:
-        sys.exit("No hay data/raw/maps/catalogo_*.json: correr primero 'catalogo'.")
+        sys.exit(f"No hay data/raw/maps/{prefijo}_*.json: correr primero 'catalogo'.")
     return pd.DataFrame(filas).dropna(subset=["place_id", "lat", "lng"]).drop_duplicates("place_id")
 
 
@@ -142,7 +183,7 @@ def exposicion(cat: pd.DataFrame) -> pd.DataFrame:
     cat["dist_ventana_km"] = [dmin(a, b, ven) for a, b in zip(cat["lat"], cat["lng"])]
     nivel = np.select([cat["dist_episodio_km"] <= 5, cat["dist_episodio_km"] <= 25, cat["dist_episodio_km"] <= 40],
                       ["alta", "media", "gris"], default="lejos")
-    comp = (cat["zona_busqueda"] == "villa_la_angostura") & (cat["dist_ventana_km"] > 40)
+    comp = cat["zona_busqueda"].isin(ZONAS_COMPARACION) & (cat["dist_ventana_km"] > 40)
     cat["exposicion"] = np.where(comp, "comparacion", np.where(nivel == "lejos", "lejos_no_comparacion", nivel))
     return cat
 
@@ -193,6 +234,30 @@ def cmd_seleccion(a):
         print(sel[["estrato", "rubro", "nombre", "ciudad", "n_resenas", "dist_episodio_km"]].round(1).to_string(index=False))
 
 
+FRAC_DESDE_2024_03 = 0.18  # medido en el piloto (07/11): mediana de reseñas desde mar-2024 / reseñas totales
+
+
+def cmd_muestra(a):
+    """Muestra del test a partir del catálogo completo (pre-registro §3 y §6): expuestas (alta o media) y
+    comparación, en un rubro de la lista, con ≥ a.min_total reseñas totales. Es un prefiltro de costo: la
+    elegibilidad final (≥ 6 reseñas de Google en el período previo) se aplica después de bajar las reseñas."""
+    cat = exposicion(leer_catalogo("catalogo_full"))
+    cat["rubro"] = [rubro_de(f"{c} {cs}") for c, cs in zip(cat["categoria"], cat["categorias"])]
+    cat.to_csv(os.path.join(PROC, "maps_catalogo.csv"), index=False)
+    print(f"Catálogo completo: {len(cat)} fichas únicas → data/processed/maps_catalogo.csv")
+    print(pd.crosstab(cat["exposicion"], cat["rubro"], margins=True).to_string())
+    m = cat[cat["exposicion"].isin(["alta", "media", "comparacion"]) & (cat["rubro"] != "otro")
+            & (cat["n_resenas"] >= a.min_total)].copy()
+    m["est_resenas"] = np.minimum(m["n_resenas"] * FRAC_DESDE_2024_03, a.max_por_ficha).round()
+    m.to_csv(os.path.join(PROC, "maps_muestra.csv"), index=False)
+    precio = rb.PRECIO_FREE[ACTOR_RESENAS]
+    print(f"\nMuestra (≥ {a.min_total} reseñas totales): {len(m)} fichas")
+    print(m.groupby(["exposicion", "zona_busqueda"]).agg(fichas=("place_id", "size"),
+                                                          resenas_est=("est_resenas", "sum")).to_string())
+    print(f"Reseñas estimadas desde 2024-03: {m['est_resenas'].sum():.0f} ≈ USD {m['est_resenas'].sum() * precio:.2f} "
+          f"(fracción {FRAC_DESDE_2024_03} medida en el piloto)")
+
+
 def gasto_etiqueta(prefijo: str) -> float:
     g = pd.read_csv(rb.GASTOS)
     return float(g.loc[g["etiqueta"].astype(str).str.startswith(prefijo), "usd"].sum())
@@ -202,34 +267,52 @@ def cmd_resenas(a):
     """Una corrida por ficha, en orden de estrato: cada una con su propio tope, y antes de cada una se controla
     lo gastado en este paso. Si se acerca al presupuesto, frena y las fichas restantes quedan sin pedir (no a
     medias). Una sola corrida con tope global cortaría en un punto arbitrario."""
-    sel = pd.read_csv(os.path.join(PROC, "maps_piloto_seleccion.csv"))
+    completa = a.completa
+    sel = pd.read_csv(os.path.join(PROC, "maps_muestra.csv" if completa else "maps_piloto_seleccion.csv"))
+    if completa:  # el orden alterna entre niveles de exposición y zonas
+        sel["estrato"] = sel["exposicion"] + "_" + sel["zona_busqueda"]
     # Orden alternado entre estratos (la ficha más chica de cada estrato, después la siguiente, ...): si el
     # presupuesto frena antes, quedan afuera las más grandes de cada estrato y no un estrato entero.
-    orden = {e: k for k, e in enumerate(CUPOS)}
+    orden = {e: k for k, e in enumerate(CUPOS if not completa else sorted(sel["estrato"].unique()))}
     sel = sel.assign(_r=sel.groupby("estrato")["n_resenas"].rank(method="first"), _o=sel["estrato"].map(orden))
     sel = sel.sort_values(["_r", "_o"]).drop(columns=["_r", "_o"])
-    sel["est_resenas"] = np.minimum(sel["n_resenas"] * a.frac_desde_2024, a.max_por_ficha)
+    if not completa:
+        sel["est_resenas"] = np.minimum(sel["n_resenas"] * a.frac_desde_2024, a.max_por_ficha)
     precio = rb.PRECIO_FREE[ACTOR_RESENAS]
     print(f"{len(sel)} fichas | reseñas estimadas desde {a.desde}: {sel['est_resenas'].sum():.0f} (fracción supuesta "
           f"{a.frac_desde_2024}, máx. {a.max_por_ficha} por ficha) ≈ USD {sel['est_resenas'].sum() * precio:.2f} | "
           f"presupuesto del paso: USD {a.presupuesto}")
-    dir_out = os.path.join(RAW, "resenas_piloto")
+    dir_out = os.path.join(RAW, "resenas_full" if completa else "resenas_piloto")
+    etiqueta = "maps_resenas_full" if completa else "maps_resenas"
     os.makedirs(dir_out, exist_ok=True)
     for _, f in sel.iterrows():
         ruta = os.path.join(dir_out, f"{f['place_id']}.json")
         if os.path.exists(ruta):
             print(f"  ya está: {f['nombre']}")
             continue
-        peor = a.max_por_ficha * precio + rb.PRECIO_START * 4
-        usado = gasto_etiqueta("maps_resenas") if os.path.exists(rb.GASTOS) else 0.0
+        piloto = os.path.join(RAW, "resenas_piloto", f"{f['place_id']}.json")
+        if completa and os.path.exists(piloto):
+            # El piloto bajó desde 2024-01-01 con máximo 500 y todas sus fichas llegaron a ene-2024 (verificado
+            # 07/11): cubren la ventana completa. Se reutilizan en vez de pagarlas de nuevo.
+            items = [x for x in json.load(open(piloto, encoding="utf-8"))
+                     if str(x.get("publishedAtDate", "")) >= a.desde]
+            with open(ruta, "w", encoding="utf-8") as fh:
+                json.dump(items, fh, ensure_ascii=False)
+            print(f"  reutilizada del piloto: {f['nombre']} ({len(items)} reseñas desde {a.desde})")
+            continue
+        est = f["est_resenas"] * precio + rb.PRECIO_START * 4
+        # Piloto: se frena con el peor caso (máximo por ficha). Muestra completa: con el estimado, porque el tope
+        # duro de cada corrida (≥ USD 0,50) acota el desvío ficha por ficha.
+        peor = (a.max_por_ficha * precio + rb.PRECIO_START * 4) if not completa else est
+        usado = gasto_etiqueta(etiqueta) if os.path.exists(rb.GASTOS) else 0.0
         if usado + peor > a.presupuesto and not a.dry_run:
-            print(f"  FRENO: gastado en reseñas USD {usado:.2f}; la próxima ficha podría costar hasta USD {peor:.2f} "
-                  f"y pasar el presupuesto de USD {a.presupuesto}. Quedan sin pedir desde: {f['nombre']}")
+            print(f"  FRENO: gastado en este paso USD {usado:.2f}; la próxima ficha ({f['nombre']}) podría costar USD "
+                  f"{peor:.2f} y pasar el presupuesto de USD {a.presupuesto}. Quedan sin pedir desde acá.")
             break
+        elegir_cuenta(a.cuentas, est, a.dry_run)
         run_input = {"placeIds": [f["place_id"]], "maxReviews": a.max_por_ficha, "reviewsSort": "newest",
                      "reviewsStartDate": a.desde, "reviewsOrigin": "all", "language": "es", "personalData": False}
-        est = f["est_resenas"] * precio + rb.PRECIO_START * 4
-        items = rb.correr(ACTOR_RESENAS, run_input, est, f"maps_resenas_{f['estrato']}", None, a.dry_run,
+        items = rb.correr(ACTOR_RESENAS, run_input, est, f"{etiqueta}_{f['estrato']}", None, a.dry_run,
                           TOPE_MINIMO)
         if items is not None:
             with open(ruta, "w", encoding="utf-8") as fh:
@@ -289,26 +372,36 @@ def cmd_diagnostico(a):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--cuenta", default="3", help="1 = APIFY_TOKEN, 3 = APIFY_TOKEN3, ...")
+    ap.add_argument("--cuentas", nargs="+", help="varias cuentas: se usa la primera con crédito para cada corrida")
     sub = ap.add_subparsers(dest="cmd", required=True)
     p = sub.add_parser("catalogo")
     p.add_argument("--solo", nargs="+", choices=list(ZONAS))
-    p.add_argument("--max-por-busqueda", type=int, default=15)
+    p.add_argument("--completo", action="store_true", help="catálogo completo (8 términos, 40 por búsqueda, 5 zonas)")
+    p.add_argument("--max-por-busqueda", type=int)
     p.add_argument("--dry-run", action="store_true")
     p = sub.add_parser("seleccion")
     p.add_argument("--min-resenas", type=int, default=50)
     p.add_argument("--max-resenas", type=int, default=3000)
     p.add_argument("--seed", type=int, default=2025)
+    p = sub.add_parser("muestra")
+    p.add_argument("--min-total", type=int, default=50, help="prefiltro de costo: reseñas totales de la ficha")
+    p.add_argument("--max-por-ficha", type=int, default=1000)
     p = sub.add_parser("resenas")
-    p.add_argument("--desde", default="2024-01-01")
-    p.add_argument("--max-por-ficha", type=int, default=500)
+    p.add_argument("--completa", action="store_true", help="muestra completa (maps_muestra.csv) en vez del piloto")
+    p.add_argument("--desde")
+    p.add_argument("--max-por-ficha", type=int)
     p.add_argument("--frac-desde-2024", type=float, default=0.5)
-    p.add_argument("--presupuesto", type=float, default=3.0)
+    p.add_argument("--presupuesto", type=float)
     p.add_argument("--dry-run", action="store_true")
     p = sub.add_parser("diagnostico")
     p.add_argument("--max-por-ficha", type=int, default=500)
     a = ap.parse_args()
     usar_cuenta(a.cuenta)
-    {"catalogo": cmd_catalogo, "seleccion": cmd_seleccion, "resenas": cmd_resenas,
+    if a.cmd == "resenas":  # valores por defecto según el modo (pre-registro §6)
+        a.desde = a.desde or ("2024-03-01" if a.completa else "2024-01-01")
+        a.max_por_ficha = a.max_por_ficha or (1000 if a.completa else 500)
+        a.presupuesto = a.presupuesto or (15.0 if a.completa else 3.0)
+    {"catalogo": cmd_catalogo, "seleccion": cmd_seleccion, "muestra": cmd_muestra, "resenas": cmd_resenas,
      "diagnostico": cmd_diagnostico}[a.cmd](a)
 
 
