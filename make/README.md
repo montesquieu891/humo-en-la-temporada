@@ -1,5 +1,19 @@
 # Make — escenario mínimo del MVP
 
+## Estado (07/11/2026): hecho y probado
+- Escenario **6938238** ("Integration Apify") en el equipo de Make del grupo, **inactivo**.
+  Blueprint exportado: [`mvp_booking.json`](mvp_booking.json), sin mails ni tokens. Para importarlo:
+  *Create scenario → … → Import Blueprint*, y después volver a elegir las dos conexiones.
+- Conexiones: Apify con el token de la **cuenta 2**, y Google con la cuenta dueña de `humo_mvp`.
+  Ojo: el equipo de Make tiene otras conexiones de Google ("Medcare"). Revisar siempre cuál queda elegida.
+- *Run once* del 07/11: Run an Actor → Get Dataset Items → 10 × Add a Row en `booking_make`.
+  Costo en Apify: USD 0,05 (en `data/processed/apify_gastos.csv`). En Make: ≈ 12 créditos.
+  Primera fila: 2026-11-06 · El Bolsón · Hostel Cosmo · guest_house · 160.34 US$ · 9.3 · 230 reviews.
+- **No activar el escenario así como está:** quedó con la programación por defecto de Make ("Every 15
+  minutes"). Activado, correría el actor cada 15 minutos (≈ USD 0,05 cada vez). Para el escenario semanal:
+  cambiar la programación a semanal y las fechas del input (ver la nota de fechas más abajo).
+- El módulo 1 tiene *Maximum cost per run* = 0,07: es el tope duro de gasto de Apify dentro de Make.
+
 **Objetivo:** que una corrida disparada desde Make agregue filas nuevas a la Google Sheet `humo_mvp`.
 Flujo: **Run an Actor → Get Dataset Items → Google Sheets (Add a Row)**. Al terminar, exportar el
 blueprint a `make/mvp_booking.json` (menú `…` del escenario → *Export Blueprint*).

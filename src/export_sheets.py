@@ -67,6 +67,9 @@ def main():
         ruta = os.path.join(OUT, f"{nombre}.csv")
         df.to_csv(ruta, index=False, encoding="utf-8")
         print(f"{ruta}: {len(df)} filas × {len(df.columns)} columnas")
+    # Pestaña vacía donde escribe el escenario de Make (make/README.md): solo encabezados.
+    tablas["booking_make"] = pd.DataFrame(columns=["fecha_corrida", "destino", "nombre", "tipo", "precio",
+                                                   "moneda", "rating", "reviews", "lat", "lng", "url"])
     escribir_xlsx(tablas, os.path.join(OUT, "humo_mvp.xlsx"))
 
 
@@ -83,6 +86,7 @@ LEEME = [
     ("panel", "Alojamiento × mes de estadía × temporada (muestra de reviews, sin alojamientos truncados)."),
     ("reviews", "Booking vía Apify voyager/booking-reviews-scraper, 07/11/2026: 1 fila por review en la "
                 "ventana nov-2024 a abr-2026. Sin nombres de usuarios."),
+    ("booking_make", "Vacía: la llena el escenario de Make (Run Actor → Get Dataset Items → Add a Row)."),
     ("kpi_did", "Primer número y sus chequeos: DiD 2×2, placebo, sin Bariloche y FE alojamiento × mes "
                 "calendario (preliminar). Mostrar siempre con su IC95%."),
     ("", None),
@@ -112,7 +116,7 @@ def escribir_xlsx(tablas: dict, ruta: str):
                     celda.font = base
             if ws.title == "leeme":
                 ws["A1"].font = Font(name="Arial", size=12, bold=True)
-                for r in (4, 11):
+                for r in (4, 12):
                     ws.cell(r, 1).font = negrita
                 ws.column_dimensions["A"].width = 16
                 ws.column_dimensions["B"].width = 110
@@ -125,7 +129,8 @@ def escribir_xlsx(tablas: dict, ruta: str):
             ws.freeze_panes = "A2"
             ws.auto_filter.ref = ws.dimensions
             for i, col in enumerate(tablas[ws.title].columns, start=1):
-                ancho = min(max(len(str(col)), *(len(str(v)) for v in tablas[ws.title][col].head(200))) + 2, 45)
+                valores = [len(str(v)) for v in tablas[ws.title][col].head(200)]
+                ancho = min(max([len(str(col))] + valores) + 2, 45)
                 ws.column_dimensions[get_column_letter(i)].width = ancho
                 if col in fechas.get(ws.title, []):
                     for celda in ws.iter_rows(min_row=2, min_col=i, max_col=i):

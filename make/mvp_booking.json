@@ -1,0 +1,160 @@
+{
+  "name": "humo_mvp_booking (Run Actor -> Get Dataset Items -> Google Sheets)",
+  "flow": [
+    {
+      "id": 1,
+      "module": "apify:runActorNew",
+      "version": 1,
+      "parameters": {"__IMTCONN__": 12194851},
+      "mapper": {
+        "actorId": "oeiQgfg5fsmIJB7Cn",
+        "runSync": true,
+        "actor_search_type": "user",
+        "maxTotalChargeUsd": "0.07",
+        "inputBodyoeiQgfg5fsmIJB7Cn": "{\"search\": \"El Bolsón, Río Negro, Argentina\", \"maxItems\": 10, \"checkIn\": \"2027-01-15\", \"checkOut\": \"2027-01-17\", \"currency\": \"USD\", \"language\": \"es\", \"adults\": 2, \"rooms\": 1, \"sortBy\": \"distance_from_search\", \"extractAdditionalHotelData\": false}"
+      },
+      "metadata": {
+        "designer": {"x": 0, "y": 0},
+        "restore": {
+          "expect": {
+            "memory": {"mode": "chose", "label": "Empty"},
+            "actorId": {"mode": "chose", "label": "Booking Scraper (voyager/booking-scraper)"},
+            "runSync": {"mode": "chose"},
+            "actor_search_type": {"label": "Recently used Actors"}
+          },
+          "parameters": {"__IMTCONN__": {"data": {"scoped": "true", "connection": "apify"}, "label": "Apify API token (cuenta del grupo)"}}
+        },
+        "parameters": [{"name": "__IMTCONN__", "type": "account:apify2,apify", "label": "Connection", "required": true}],
+        "expect": [
+          {"name": "actor_search_type", "type": "select", "label": "Search Actors from", "required": true, "validate": {"enum": ["user", "store"]}},
+          {"name": "runSync", "type": "boolean", "label": "Run synchronously", "required": true},
+          {"name": "build", "type": "text", "label": "Build"},
+          {"name": "timeout", "type": "uinteger", "label": "Timeout"},
+          {"name": "memory", "type": "select", "label": "Memory", "validate": {"enum": [128, 256, 512, 1024, 2048, 4096, 8192, 16384, 32768]}},
+          {"name": "actorId", "type": "select", "label": "Actor", "required": true},
+          {"name": "inputBodyoeiQgfg5fsmIJB7Cn", "type": "text", "label": "Input JSON", "required": true},
+          {"name": "maxTotalChargeUsd", "type": "number", "label": "Maximum cost per run"},
+          {"name": "maxItems", "type": "hidden", "label": "Maximum charged results"}
+        ]
+      }
+    },
+    {
+      "id": 2,
+      "module": "apify:fetchDatasetItems",
+      "version": 1,
+      "parameters": {"__IMTCONN__": 12194851},
+      "mapper": {"type": "clean", "limit": "10", "format": "json", "datasetId": "{{1.defaultDatasetId}}"},
+      "metadata": {
+        "designer": {"x": 300, "y": 0},
+        "restore": {
+          "expect": {"type": {"mode": "chose", "label": "Clean"}, "format": {"mode": "chose", "label": "JSON"}},
+          "parameters": {"__IMTCONN__": {"data": {"scoped": "true", "connection": "apify"}, "label": "Apify API token (cuenta del grupo)"}}
+        },
+        "parameters": [{"name": "__IMTCONN__", "type": "account:apify2,apify", "label": "Connection", "required": true}],
+        "expect": [
+          {"name": "datasetId", "type": "text", "label": "Dataset ID", "required": true},
+          {"name": "type", "type": "select", "label": "Data transformation", "required": true, "validate": {"enum": ["clean", "simplified", "none"]}},
+          {"name": "format", "type": "select", "label": "Format", "required": true, "validate": {"enum": ["json", "csv", "html", "xml", "rss", "xlsx"]}},
+          {"name": "limit", "type": "uinteger", "label": "Limit", "validate": {"max": 100000, "min": 1}},
+          {"name": "offset", "type": "uinteger", "label": "Offset", "validate": {"min": 0}},
+          {"name": "fields", "type": "text", "label": "Fields"},
+          {"name": "omit", "type": "text", "label": "Omit Fields"}
+        ]
+      }
+    },
+    {
+      "id": 3,
+      "module": "google-sheets:addRow",
+      "version": 2,
+      "parameters": {"__IMTCONN__": 12194946},
+      "mapper": {
+        "from": "drive",
+        "mode": "select",
+        "values": {
+          "0": "{{formatDate(now; \"YYYY-MM-DD\")}}",
+          "1": "El Bolsón",
+          "2": "{{2.name}}",
+          "3": "{{2.type}}",
+          "4": "{{2.price}}",
+          "5": "{{2.currency}}",
+          "6": "{{2.rating}}",
+          "7": "{{2.reviews}}",
+          "8": "{{2.location.lat}}",
+          "9": "{{2.location.lng}}",
+          "10": "{{2.url}}"
+        },
+        "sheetId": "booking_make",
+        "spreadsheetId": "/1xIuQfaYO3wlE4UxFy8ipW6bTrWsIjfAB/1BuKRhJyEQs7hcKrLFykM4VoKoZ62TD9_5zrpp2DNDWs",
+        "includesHeaders": true,
+        "insertDataOption": "INSERT_ROWS",
+        "useColumnHeaders": false,
+        "valueInputOption": "USER_ENTERED",
+        "insertUnformatted": false
+      },
+      "metadata": {
+        "designer": {"x": 600, "y": 0},
+        "restore": {
+          "expect": {
+            "from": {"label": "My Drive"},
+            "mode": {"label": "Search by path"},
+            "sheetId": {"label": "booking_make"},
+            "spreadsheetId": {"path": ["Capstone", "humo_mvp"]},
+            "includesHeaders": {"label": "Yes"},
+            "insertDataOption": {"mode": "chose", "label": "Insert rows"},
+            "useColumnHeaders": {"label": "No"},
+            "valueInputOption": {"mode": "chose", "label": "User entered"},
+            "insertUnformatted": {"mode": "chose"}
+          },
+          "parameters": {"__IMTCONN__": {"data": {"scoped": "true", "connection": "google"}, "label": "Google (dueño de humo_mvp)"}}
+        },
+        "parameters": [{"name": "__IMTCONN__", "type": "account:google", "label": "Connection", "required": true}],
+        "expect": [
+          {"name": "mode", "type": "select", "label": "Search Method", "required": true, "validate": {"enum": ["select", "fromAll", "map"]}},
+          {"name": "insertUnformatted", "type": "boolean", "label": "Unformatted", "required": true},
+          {"name": "valueInputOption", "type": "select", "label": "Value input option", "required": true, "validate": {"enum": ["USER_ENTERED", "RAW"]}},
+          {"name": "insertDataOption", "type": "select", "label": "Insert data option", "validate": {"enum": ["INSERT_ROWS", "OVERWRITE"]}},
+          {"name": "from", "type": "select", "label": "Drive", "required": true, "validate": {"enum": ["drive", "share", "team"]}},
+          {"name": "spreadsheetId", "type": "file", "label": "Spreadsheet Name", "required": true},
+          {"name": "sheetId", "type": "select", "label": "Sheet Name", "required": true},
+          {"name": "includesHeaders", "type": "select", "label": "Table contains headers", "required": true, "validate": {"enum": [true, false]}},
+          {"name": "useColumnHeaders", "type": "select", "label": "Use column headers as IDs of the columns", "required": true, "validate": {"enum": [true, false]}},
+          {
+            "name": "values",
+            "type": "collection",
+            "label": "Values in columns",
+            "spec": [
+              {"name": "0", "type": "text", "label": "fecha_corrida (A)"},
+              {"name": "1", "type": "text", "label": "destino (B)"},
+              {"name": "2", "type": "text", "label": "nombre (C)"},
+              {"name": "3", "type": "text", "label": "tipo (D)"},
+              {"name": "4", "type": "text", "label": "precio (E)"},
+              {"name": "5", "type": "text", "label": "moneda (F)"},
+              {"name": "6", "type": "text", "label": "rating (G)"},
+              {"name": "7", "type": "text", "label": "reviews (H)"},
+              {"name": "8", "type": "text", "label": "lat (I)"},
+              {"name": "9", "type": "text", "label": "lng (J)"},
+              {"name": "10", "type": "text", "label": "url (K)"}
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "metadata": {
+    "instant": false,
+    "version": 1,
+    "designer": {"orphans": []},
+    "scenario": {
+      "dlq": false,
+      "slots": null,
+      "dataloss": false,
+      "maxErrors": 3,
+      "autoCommit": true,
+      "roundtrips": 1,
+      "sequential": false,
+      "confidential": false,
+      "freshVariables": false,
+      "autoCommitTriggerLast": true
+    }
+  }
+}
